@@ -1,0 +1,11 @@
+{
+  "death.attack.rods_from_god.kinetic_explosion": "%1$s was struck by a kinetic bombardment",
+  "death.attack.rods_from_god.kinetic_explosion.item": "%1$s was struck by a kinetic bombardment from %2$s using %3$s",
+  "death.attack.rods_from_god.kinetic_explosion.player": "%1$s was struck by a kinetic bombardment from %2$s",
+  "entity.rods_from_god.smoke_bomb": "Smoke Bomb",
+  "entity.rods_from_god.tungsten_rod": "Tungsten Rod",
+  "gamerule.rodsFromGodKineticExplosionCanMakeFire": "Rods from God - Kinetic Explosions Can Produce Fire",
+  "gamerule.rodsFromGodKineticExplosionSourceType": "Rods from God - Kinetic Explosion Source Type",
+  "item.rods_from_god.aiming_device": "Rods from God - Aiming Device",
+  "item.rods_from_god.smoke_bomb": "Smoke Bomb"
+}
