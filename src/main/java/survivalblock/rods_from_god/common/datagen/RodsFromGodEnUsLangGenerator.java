@@ -3,6 +3,7 @@ package survivalblock.rods_from_god.common.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
+import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
@@ -19,6 +20,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         // entity
         translationBuilder.add(RodsFromGodEntityTypes.TUNGSTEN_ROD, "Tungsten Rod");
         translationBuilder.add(RodsFromGodEntityTypes.SMOKE_BOMB, "Smoke Bomb");
+        translationBuilder.add(RodsFromGodEntityTypes.ROD_LANDING_MARKER, "Tungsten Rod Landing Marker");
 
         // damage
         translationBuilder.add("death.attack.rods_from_god.kinetic_explosion", "%1$s was struck by a kinetic bombardment");
@@ -32,5 +34,19 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         // item
         translationBuilder.add(RodsFromGodItems.AIMING_DEVICE, "Rods from God - Aiming Device");
         translationBuilder.add(RodsFromGodItems.SMOKE_BOMB, "Smoke Bomb");
+        translationBuilder.add(RodsFromGodItems.LIGHTNING_SPLASH_POTION, "Splash Potion of Lightning");
+        translationBuilder.add(RodsFromGodItems.SUPER_BOUNCY_SLIME_BLOCK, "Super Bouncy Slime Block");
+        translationBuilder.add(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT, "Corrupted Star Fragment");
+
+        // components
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_cooldown", "Cooldown Ticks : %s");
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_max_explosions", "Maximum Number of Explosions : %s");
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_explosion_power", "Explosion Power : %s");
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_inverse_explosion_damage_factor", "Inverse Explosion Damage Factor : %s");
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_creates_fire", "Creates Fire");
+        translationBuilder.add("item.rods_from_god.corrupted_star_fragment.keep_corrupted_star_fragment", "Keep on Explosion");
+
+        // sounds
+        translationBuilder.add("subtitles.entity.rods_from_god.smoke_bomb.throw", "Smoke Bomb Thrown");
     }
 }

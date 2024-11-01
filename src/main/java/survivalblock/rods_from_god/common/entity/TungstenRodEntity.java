@@ -22,6 +22,7 @@ import net.minecraft.world.explosion.ExplosionBehavior;
 import org.jetbrains.annotations.Nullable;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodGameRules;
 
@@ -193,6 +194,7 @@ public class TungstenRodEntity extends Entity {
                 */
                 this.shouldExplode = true;
                 this.updateExplosionPos();
+                RodsFromGodEntityComponents.TUNGSTEN_ROD_LANDED.get(this).setLanded(true);
             }
             if (this.shouldExplode) {
                 this.explode(serverWorld);
@@ -227,7 +229,12 @@ public class TungstenRodEntity extends Entity {
         final ExplosionBehavior lessDamageExplosionBehavior = new ExplosionBehavior() {
             @Override
             public float calculateDamage(Explosion explosion, Entity entity) {
-                return super.calculateDamage(explosion, entity) / Math.max(0, TungstenRodEntity.this.inverseExplosionDamageFactor); // thanks, Patbox
+                return super.calculateDamage(explosion, entity) / Math.max(1, TungstenRodEntity.this.inverseExplosionDamageFactor); // thanks, Patbox
+            }
+
+            @Override
+            public float getKnockbackModifier(Entity entity) {
+                return entity instanceof TungstenRodEntity || entity instanceof RodLandingMarkerEntity ? 0 : super.getKnockbackModifier(entity);
             }
         };
         if (this.explosionCounter == 0) {
@@ -239,5 +246,13 @@ public class TungstenRodEntity extends Entity {
         if (this.explosionCounter >= this.maxExplosions) {
             this.discard();
         }
+        if (this.explosionCounter > 1) {
+            this.setInvisible(true);
+        }
+    }
+
+    @Override
+    public boolean doesRenderOnFire() {
+        return false;
     }
 }

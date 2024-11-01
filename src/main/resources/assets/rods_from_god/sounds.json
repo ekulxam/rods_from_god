@@ -1,0 +1,8 @@
+{
+  "entity.rods_from_god.smoke_bomb.throw": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.entity.rods_from_god.smoke_bomb.throw"
+  }
+}

@@ -11,9 +11,11 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.ExplosionBehavior;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
@@ -53,6 +55,7 @@ public class SmokeBombEntity extends ThrownItemEntity {
             this.spawnParticles(serverWorld, hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), random.nextBetween(60, 100), 2f, 1f, 2f);
             List<PlayerEntity> players = serverWorld.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(10, 5, 10), Entity::isAlive);
             players.forEach(player -> RodsFromGodEntityComponents.SMOKE_SCREEN.get(player).setSmokeScreenTicks((int) (MAX_SMOKE_SCREEN_TICKS * 0.98)));
+            serverWorld.createExplosion(this, serverWorld.getDamageSources().explosion(this, this.getOwner() instanceof PlayerEntity player ? player : this), new ExplosionBehavior(), this.getPos(), 0.2f, false, World.ExplosionSourceType.NONE);
             this.discard();
         }
     }

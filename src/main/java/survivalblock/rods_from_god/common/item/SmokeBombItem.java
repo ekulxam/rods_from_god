@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ProjectileItem;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -14,6 +13,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import survivalblock.rods_from_god.common.entity.SmokeBombEntity;
+import survivalblock.rods_from_god.common.init.RodsFromGodSoundEvents;
 
 public class SmokeBombItem extends Item implements ProjectileItem {
 
@@ -29,7 +29,7 @@ public class SmokeBombItem extends Item implements ProjectileItem {
                 user.getX(),
                 user.getY(),
                 user.getZ(),
-                SoundEvents.ENTITY_EXPERIENCE_BOTTLE_THROW,
+                RodsFromGodSoundEvents.SMOKE_BOMB_THROW,
                 SoundCategory.NEUTRAL,
                 0.5F,
                 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
@@ -39,7 +39,7 @@ public class SmokeBombItem extends Item implements ProjectileItem {
             smokeBombEntity.setItem(itemStack);
             smokeBombEntity.setVelocity(user, user.getPitch(), user.getYaw(), -20.0F, 1.4F, 1.0F);
             world.spawnEntity(smokeBombEntity);
-            user.getItemCooldownManager().set(this, 10);
+            user.getItemCooldownManager().set(this, 80);
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));

@@ -3,11 +3,21 @@
   "package": "survivalblock.rods_from_god.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "corruptedstarfragment.EntityAccessor",
+    "corruptedstarfragment.LivingEntityMixin",
+    "lightningsplashpotion.BrewingRecipeRegistryMixin",
+    "lightningsplashpotion.PotionContentsComponentAccessor",
+    "lightningsplashpotion.PotionEntityMixin",
+    "superbouncyslimeblock.SlimeBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "client.InGameHudMixin"
+    "corruptedstarfragment.client.LivingEntityRendererMixin",
+    "corruptedstarfragment.client.PlayerEntityRendererMixin",
+    "lightningsplashpotion.client.ItemColorsMixin",
+    "smokebomb.client.InGameHudMixin",
+    "superbouncyslimeblock.client.RenderLayersMixin"
   ]
 }

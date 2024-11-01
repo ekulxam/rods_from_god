@@ -2,6 +2,13 @@ package survivalblock.rods_from_god.common;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.PotionContentsComponent;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.item.SplashPotionItem;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +25,7 @@ public class RodsFromGod implements ModInitializer {
 		RodsFromGodSoundEvents.init();
 		RodsFromGodGameRules.init();
 		RodsFromGodDataComponentTypes.init();
+		RodsFromGodBlocks.init();
 		RodsFromGodItems.init();
 	}
 
