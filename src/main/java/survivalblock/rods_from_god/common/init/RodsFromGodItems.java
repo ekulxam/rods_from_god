@@ -12,10 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import survivalblock.rods_from_god.common.RodsFromGod;
-import survivalblock.rods_from_god.common.item.AimingDeviceItem;
-import survivalblock.rods_from_god.common.item.CorruptedStarFragmentItem;
-import survivalblock.rods_from_god.common.item.LightningSplashPotionItem;
-import survivalblock.rods_from_god.common.item.SmokeBombItem;
+import survivalblock.rods_from_god.common.item.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +25,7 @@ public class RodsFromGodItems {
     public static final Item LIGHTNING_SPLASH_POTION = registerItem("lightning_splash_potion", new LightningSplashPotionItem(new Item.Settings().maxCount(1).component(DataComponentTypes.POTION_CONTENTS, LIGHTING_POTION_CONTENTS)));
     public static final Item SUPER_BOUNCY_SLIME_BLOCK = registerBlockItem(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK, false);
     public static final Item CORRUPTED_STAR_FRAGMENT = registerItem("corrupted_star_fragment", new CorruptedStarFragmentItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+    public static final Item THE_ONE_WATCH = registerItem("the_one_watch", new OneWatchToRuleThemAll(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, RodsFromGod.id(name), item);

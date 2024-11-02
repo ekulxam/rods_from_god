@@ -3,12 +3,14 @@
   "package": "survivalblock.rods_from_god.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "corruptedstarfragment.DamageSourceAccessor",
     "corruptedstarfragment.EntityAccessor",
     "corruptedstarfragment.LivingEntityMixin",
     "lightningsplashpotion.BrewingRecipeRegistryMixin",
     "lightningsplashpotion.PotionContentsComponentAccessor",
     "lightningsplashpotion.PotionEntityMixin",
-    "superbouncyslimeblock.SlimeBlockMixin"
+    "superbouncyslimeblock.SlimeBlockMixin",
+    "theonewatch.TickCommandMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -16,6 +16,9 @@ public class RodsFromGodDataComponentTypes {
     public static final ComponentType<Boolean> AIMING_DEVICE_CREATES_FIRE = ComponentType.<Boolean>builder().codec(Codec.BOOL).packetCodec(PacketCodecs.BOOL).build();
     public static final ComponentType<Boolean> KEEP_CORRUPTED_STAR_FRAGMENT = ComponentType.<Boolean>builder().codec(Codec.BOOL).packetCodec(PacketCodecs.BOOL).build();
 
+    public static final ComponentType<String> ONE_WATCH_SUBCOMMAND = ComponentType.<String>builder().codec(Codec.STRING).packetCodec(PacketCodecs.STRING).build();
+    public static final ComponentType<String> ONE_WATCH_ARGUMENTS = ComponentType.<String>builder().codec(Codec.STRING).packetCodec(PacketCodecs.STRING).build();
+
     public static void init() {
         Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("aiming_device_cooldown"), AIMING_DEVICE_COOLDOWN);
         Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("aiming_device_max_explosions"), AIMING_DEVICE_MAX_EXPLOSIONS);
@@ -23,5 +26,7 @@ public class RodsFromGodDataComponentTypes {
         Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("aiming_device_inverse_explosion_damage_factor"), AIMING_DEVICE_INVERSE_EXPLOSION_DAMAGE_FACTOR);
         Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("aiming_device_creates_fire"), AIMING_DEVICE_CREATES_FIRE);
         Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("keep_corrupted_star_fragment"), KEEP_CORRUPTED_STAR_FRAGMENT);
+        Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("one_watch_subcommand"), ONE_WATCH_SUBCOMMAND);
+        Registry.register(Registries.DATA_COMPONENT_TYPE, RodsFromGod.id("one_watch_arguments"), ONE_WATCH_ARGUMENTS);
     }
 }

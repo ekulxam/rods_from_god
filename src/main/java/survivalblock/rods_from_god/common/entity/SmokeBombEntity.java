@@ -11,20 +11,26 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.AdvancedExplosionBehavior;
 import net.minecraft.world.explosion.ExplosionBehavior;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodGameRules;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
 import java.util.List;
+import java.util.Optional;
+
 import static survivalblock.rods_from_god.common.component.SmokeScreenComponent.MAX_SMOKE_SCREEN_TICKS;
 
 @SuppressWarnings("unused")
 public class SmokeBombEntity extends ThrownItemEntity {
+
+    private static final ExplosionBehavior EXPLOSION_BEHAVIOR = new AdvancedExplosionBehavior(false, true, Optional.empty(), Optional.empty());
+
     public SmokeBombEntity(EntityType<? extends SmokeBombEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -55,7 +61,7 @@ public class SmokeBombEntity extends ThrownItemEntity {
             this.spawnParticles(serverWorld, hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), random.nextBetween(60, 100), 2f, 1f, 2f);
             List<PlayerEntity> players = serverWorld.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(10, 5, 10), Entity::isAlive);
             players.forEach(player -> RodsFromGodEntityComponents.SMOKE_SCREEN.get(player).setSmokeScreenTicks((int) (MAX_SMOKE_SCREEN_TICKS * 0.98)));
-            serverWorld.createExplosion(this, serverWorld.getDamageSources().explosion(this, this.getOwner() instanceof PlayerEntity player ? player : this), new ExplosionBehavior(), this.getPos(), 0.2f, false, World.ExplosionSourceType.NONE);
+            serverWorld.createExplosion(this, serverWorld.getDamageSources().explosion(this, this.getOwner() instanceof PlayerEntity player ? player : this), EXPLOSION_BEHAVIOR, this.getPos(), 0.3f, false, serverWorld.getGameRules().getBoolean(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS) ? World.ExplosionSourceType.TRIGGER : World.ExplosionSourceType.TNT);
             this.discard();
         }
     }

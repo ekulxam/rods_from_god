@@ -3,9 +3,11 @@ package survivalblock.rods_from_god.common.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
+import survivalblock.rods_from_god.common.TickSubcommand;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
+import survivalblock.rods_from_god.common.init.RodsFromGodTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -30,6 +32,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         // gamerules
         translationBuilder.add("gamerule.rodsFromGodKineticExplosionCanMakeFire", "Rods from God - Kinetic Explosions Can Produce Fire");
         translationBuilder.add("gamerule.rodsFromGodKineticExplosionSourceType", "Rods from God - Kinetic Explosion Source Type");
+        translationBuilder.add("gamerule.rodsFromGodSmokeBombsTriggerBlocks", "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
 
         // item
         translationBuilder.add(RodsFromGodItems.AIMING_DEVICE, "Rods from God - Aiming Device");
@@ -37,6 +40,16 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodItems.LIGHTNING_SPLASH_POTION, "Splash Potion of Lightning");
         translationBuilder.add(RodsFromGodItems.SUPER_BOUNCY_SLIME_BLOCK, "Super Bouncy Slime Block");
         translationBuilder.add(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT, "Corrupted Star Fragment");
+        translationBuilder.add(RodsFromGodItems.THE_ONE_WATCH, "The One Watch");
+
+        // screen
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand", "Subcommand");
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.query", "Query (no arguments)");
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.rate", "Rate (1 float argument, default value is 20)");
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.step", "Step (1 time argument or stop)");
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.sprint", "Sprint (1 time argument or stop)");
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.freeze", "Freeze (no arguments)");
+        translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.unfreeze", "Unfreeze (no arguments)");
 
         // components
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_cooldown", "Cooldown Ticks : %s");
@@ -46,7 +59,21 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_creates_fire", "Creates Fire");
         translationBuilder.add("item.rods_from_god.corrupted_star_fragment.keep_corrupted_star_fragment", "Keep on Explosion");
 
+        // tooltip lore
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.hidden", "Press and hold shift to see lore");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.0", "Two Watches for the modders venturing alone,");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.1", "Three for the teams under the sky,");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.2", "One for the dragon sleeping in stone,");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.3", "All for participants ready to try,");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.4", "In the Land of Stasis where the hourglasses fly.");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.5", "  One Watch to perceive all, One Watch to lap them,");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.6", "  One Watch to return all, and One Watch to guide them");
+        translationBuilder.add("item.rods_from_god.the_one_watch.lore.7", "In the Land of Stasis where the hourglasses fly.");
+
         // sounds
         translationBuilder.add("subtitles.entity.rods_from_god.smoke_bomb.throw", "Smoke Bomb Thrown");
+
+        // item tags
+        translationBuilder.add(RodsFromGodTags.RodsFromGodItemTags.WATCHES, "Modfest 1.21 Watches");
     }
 }
