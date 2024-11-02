@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "rods_from_god",
-	"version": "{version}",
+	"version": "${version}",
 	"name": "Rods from God",
 	"description": "I am the kinetic impact that is approaching",
 	"authors": [
