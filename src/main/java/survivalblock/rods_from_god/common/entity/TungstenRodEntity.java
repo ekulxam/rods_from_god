@@ -7,9 +7,11 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.crash.CrashException;
 import net.minecraft.util.crash.CrashReport;
 import net.minecraft.util.crash.CrashReportSection;
@@ -21,10 +23,7 @@ import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.ExplosionBehavior;
 import org.jetbrains.annotations.Nullable;
 import survivalblock.rods_from_god.common.RodsFromGod;
-import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
-import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
-import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
-import survivalblock.rods_from_god.common.init.RodsFromGodGameRules;
+import survivalblock.rods_from_god.common.init.*;
 
 @SuppressWarnings("unused")
 public class TungstenRodEntity extends Entity {
@@ -238,9 +237,13 @@ public class TungstenRodEntity extends Entity {
             }
         };
         if (this.explosionCounter == 0) {
-            serverWorld.createExplosion(this, source, lessDamageExplosionBehavior, this.explosionPos, this.explosionPower, this.createsFire && gameRules.getBoolean(RodsFromGodGameRules.KINETIC_EXPLOSION_CAN_MAKE_FIRE), sourceType);
+            serverWorld.createExplosion(this, source, lessDamageExplosionBehavior, this.explosionPos.getX(), this.explosionPos.getY(), this.explosionPos.getZ(), this.explosionPower,
+                    this.createsFire && gameRules.getBoolean(RodsFromGodGameRules.KINETIC_EXPLOSION_CAN_MAKE_FIRE),
+                    sourceType, ParticleTypes.EXPLOSION, ParticleTypes.EXPLOSION_EMITTER, RodsFromGodSoundEvents.TUNGSTEN_ROD_KINETIC_EXPLOSION);
         } else {
-            serverWorld.createExplosion(this, source, lessDamageExplosionBehavior,  this.explosionPos, this.explosionPower, false, sourceType);
+            serverWorld.createExplosion(this, source, lessDamageExplosionBehavior, this.explosionPos.getX(), this.explosionPos.getY(), this.explosionPos.getZ(), this.explosionPower,
+                    false,
+                    sourceType, ParticleTypes.EXPLOSION, ParticleTypes.EXPLOSION_EMITTER, RodsFromGodSoundEvents.TUNGSTEN_ROD_KINETIC_EXPLOSION);
         }
         this.explosionCounter++;
         if (this.explosionCounter >= this.maxExplosions) {
@@ -254,5 +257,10 @@ public class TungstenRodEntity extends Entity {
     @Override
     public boolean doesRenderOnFire() {
         return false;
+    }
+
+    @Override
+    public boolean isImmuneToExplosion(Explosion explosion) {
+        return true;
     }
 }

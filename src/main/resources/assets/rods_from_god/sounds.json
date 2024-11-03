@@ -4,5 +4,14 @@
       "random/bow"
     ],
     "subtitle": "subtitles.entity.rods_from_god.smoke_bomb.throw"
+  },
+  "entity.rods_from_god.tungsten_rod.kinetic_explosion": {
+    "sounds": [
+      "random/explode1",
+      "random/explode2",
+      "random/explode3",
+      "random/explode4"
+    ],
+    "subtitle": "subtitles.entity.rods_from_god.tungsten_rod.kinetic_explosion"
   }
 }

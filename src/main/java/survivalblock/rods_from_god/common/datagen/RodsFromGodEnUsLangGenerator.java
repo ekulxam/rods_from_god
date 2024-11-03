@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
 import survivalblock.rods_from_god.common.TickSubcommand;
-import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
-import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
-import survivalblock.rods_from_god.common.init.RodsFromGodItems;
-import survivalblock.rods_from_god.common.init.RodsFromGodTags;
+import survivalblock.rods_from_god.common.init.*;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -41,6 +38,9 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodItems.SUPER_BOUNCY_SLIME_BLOCK, "Super Bouncy Slime Block");
         translationBuilder.add(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT, "Corrupted Star Fragment");
         translationBuilder.add(RodsFromGodItems.THE_ONE_WATCH, "The One Watch");
+        translationBuilder.add("item.minecraft.potion.effect.gravity_increase", "Potion of Gravity Increase");
+        translationBuilder.add("item.minecraft.splash_potion.effect.gravity_increase", "Splash Potion of Gravity Increase");
+        translationBuilder.add("item.minecraft.lingering_potion.effect.gravity_increase", "Lingering Potion of Gravity Increase");
 
         // screen
         translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand", "Subcommand");
@@ -58,6 +58,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_inverse_explosion_damage_factor", "Inverse Explosion Damage Factor : %s");
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_creates_fire", "Creates Fire");
         translationBuilder.add("item.rods_from_god.corrupted_star_fragment.keep_corrupted_star_fragment", "Keep on Explosion");
+        translationBuilder.add("item.rods_from_god.the_one_watch.arguments", "Argument(s) : %s");
 
         // tooltip lore
         translationBuilder.add("item.rods_from_god.the_one_watch.lore.hidden", "Press and hold shift to see lore");
@@ -72,8 +73,12 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
 
         // sounds
         translationBuilder.add("subtitles.entity.rods_from_god.smoke_bomb.throw", "Smoke Bomb Thrown");
+        translationBuilder.add("subtitles.entity.rods_from_god.tungsten_rod.kinetic_explosion", "Kinetic Explosion");
 
         // item tags
         translationBuilder.add(RodsFromGodTags.RodsFromGodItemTags.WATCHES, "Modfest 1.21 Watches");
+
+        // status effect
+        translationBuilder.add(RodsFromGodStatusEffects.GRAVITY_INCREASE.value(), "Gravity Increase");
     }
 }

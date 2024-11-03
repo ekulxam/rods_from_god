@@ -11,6 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 
@@ -81,5 +82,10 @@ public class RodLandingMarkerEntity extends Entity {
     @Override
     public boolean doesRenderOnFire() {
         return false;
+    }
+
+    @Override
+    public boolean isImmuneToExplosion(Explosion explosion) {
+        return true;
     }
 }

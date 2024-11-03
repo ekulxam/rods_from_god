@@ -7,6 +7,8 @@ import net.minecraft.block.DispenserBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.item.*;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -58,9 +60,25 @@ public class RodsFromGodItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SLIME_BLOCK, SUPER_BOUNCY_SLIME_BLOCK);
         });
+        DispenserBlock.registerProjectileBehavior(LIGHTNING_SPLASH_POTION);
         FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
             builder.registerItemRecipe(Items.SPLASH_POTION, Items.LIGHTNING_ROD, LIGHTNING_SPLASH_POTION);
+            builder.registerPotionRecipe(Potions.THICK, Items.ANCIENT_DEBRIS, RodsFromGodStatusEffects.RodsFromGodPotions.GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.STRONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.VERY_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.VERY_STRONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.VERY_VERY_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.VERY_VERY_STRONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.VERY_VERY_VERY_STRONG_GRAVITY_INCREASE);
+
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.GRAVITY_INCREASE, Items.REDSTONE, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.STRONG_GRAVITY_INCREASE, Items.REDSTONE, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.VERY_STRONG_GRAVITY_INCREASE, Items.REDSTONE, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.VERY_VERY_STRONG_GRAVITY_INCREASE, Items.REDSTONE, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_VERY_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.VERY_VERY_VERY_STRONG_GRAVITY_INCREASE, Items.REDSTONE, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_VERY_VERY_STRONG_GRAVITY_INCREASE);
+
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.LONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.LONG_STRONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_STRONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_VERY_STRONG_GRAVITY_INCREASE);
+            builder.registerPotionRecipe(RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_VERY_STRONG_GRAVITY_INCREASE, Items.GLOWSTONE_DUST, RodsFromGodStatusEffects.RodsFromGodPotions.LONG_VERY_VERY_VERY_STRONG_GRAVITY_INCREASE);
         });
-        DispenserBlock.registerProjectileBehavior(LIGHTNING_SPLASH_POTION);
     }
 }

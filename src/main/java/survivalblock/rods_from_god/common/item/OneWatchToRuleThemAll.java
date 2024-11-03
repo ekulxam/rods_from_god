@@ -54,7 +54,6 @@ public class OneWatchToRuleThemAll extends Item {
             tickCommandBroadcastToOps = false;
             runCommand(serverWorld, user, 3, command);
             tickCommandBroadcastToOps = true;
-            user.sendMessage(Text.literal("aaaaa"), true);
         }
         return TypedActionResult.success(stack, world.isClient);
     }

@@ -28,6 +28,8 @@ public class RodsFromGod implements ModInitializer {
 		RodsFromGodDataComponentTypes.init();
 		RodsFromGodBlocks.init();
 		RodsFromGodItems.init();
+		RodsFromGodStatusEffects.init();
+		RodsFromGodStatusEffects.RodsFromGodPotions.init(); // I don't understand how classloading works here; is this even necessary?
 		AimingDeviceFireRecipe.init();
 		AimingDeviceUndoFireRecipe.init();
 		PayloadTypeRegistry.playC2S().register(TheOneWatchComponentC2SPayload.ID, TheOneWatchComponentC2SPayload.CODEC);
