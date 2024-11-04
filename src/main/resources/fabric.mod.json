@@ -3,7 +3,7 @@
 	"id": "rods_from_god",
 	"version": "${version}",
 	"name": "Rods from God",
-	"description": "I am the kinetic impact that is approaching",
+	"description": "I am the kinetic bombardment that is approaching",
 	"authors": [
 		"Survivalblock"
 	],
@@ -42,7 +42,8 @@
 		"cardinal-components": [
 			"rods_from_god:death_explosion",
 			"rods_from_god:smoke_screen",
-			"rods_from_god:tungsten_rod_landed"
+			"rods_from_god:tungsten_rod_landed",
+			"rods_from_god:solar_laser"
 		]
 	}
 }

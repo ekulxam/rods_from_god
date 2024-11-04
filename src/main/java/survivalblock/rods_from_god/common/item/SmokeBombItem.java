@@ -30,7 +30,7 @@ public class SmokeBombItem extends Item implements ProjectileItem {
                 user.getY(),
                 user.getZ(),
                 RodsFromGodSoundEvents.SMOKE_BOMB_THROW,
-                SoundCategory.NEUTRAL,
+                SoundCategory.PLAYERS,
                 0.5F,
                 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
         );

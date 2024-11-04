@@ -11,6 +11,7 @@ public class RodsFromGodSoundEvents {
 
     public static final SoundEvent SMOKE_BOMB_THROW = SoundEvent.of(RodsFromGod.id("entity.rods_from_god.smoke_bomb.throw"));
     public static final RegistryEntry.Reference<SoundEvent> TUNGSTEN_ROD_KINETIC_EXPLOSION = registerReference("entity.rods_from_god.tungsten_rod.kinetic_explosion");
+    public static final SoundEvent SOLAR_PRISM_HEADSET_CHARGE = SoundEvent.of(RodsFromGod.id("item.rods_from_god.solar_prism_headset.charge"));
 
     private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
         return registerReference(RodsFromGod.id(id));
@@ -26,5 +27,6 @@ public class RodsFromGodSoundEvents {
 
     public static void init() {
         Registry.register(Registries.SOUND_EVENT, SMOKE_BOMB_THROW.getId(), SMOKE_BOMB_THROW);
+        Registry.register(Registries.SOUND_EVENT, SOLAR_PRISM_HEADSET_CHARGE.getId(), SOLAR_PRISM_HEADSET_CHARGE);
     }
 }

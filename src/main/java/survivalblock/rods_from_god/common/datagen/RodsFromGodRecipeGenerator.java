@@ -37,6 +37,13 @@ public class RodsFromGodRecipeGenerator extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(Items.GHAST_TEAR))
                 .input(Items.WIND_CHARGE).criterion(FabricRecipeProvider.hasItem(Items.WIND_CHARGE),
                         FabricRecipeProvider.conditionsFromItem(Items.WIND_CHARGE)).offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, RodsFromGodItems.EVOKER_INVOKER).pattern("XTX").pattern("TBT").pattern("XTX")
+                .input('X', Items.DIAMOND_BLOCK).criterion(FabricRecipeProvider.hasItem(Items.DIAMOND_BLOCK),
+                        FabricRecipeProvider.conditionsFromItem(Items.DIAMOND_BLOCK))
+                .input('T', Items.TOTEM_OF_UNDYING).criterion(FabricRecipeProvider.hasItem(Items.TOTEM_OF_UNDYING),
+                        FabricRecipeProvider.conditionsFromItem(Items.TOTEM_OF_UNDYING))
+                .input('B', Items.ENCHANTED_BOOK).criterion(FabricRecipeProvider.hasItem(Items.ENCHANTED_BOOK),
+                        FabricRecipeProvider.conditionsFromItem(Items.ENCHANTED_BOOK)).offerTo(exporter);
         ComplexRecipeJsonBuilder.create(AimingDeviceFireRecipe::new).offerTo(exporter, "aiming_device_fire");
         ComplexRecipeJsonBuilder.create(AimingDeviceUndoFireRecipe::new).offerTo(exporter, "aiming_device_undo_fire");
     }

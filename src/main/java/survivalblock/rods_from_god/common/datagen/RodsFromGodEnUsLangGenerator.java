@@ -3,7 +3,6 @@ package survivalblock.rods_from_god.common.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
-import survivalblock.rods_from_god.common.TickSubcommand;
 import survivalblock.rods_from_god.common.init.*;
 
 import java.util.concurrent.CompletableFuture;
@@ -25,6 +24,12 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("death.attack.rods_from_god.kinetic_explosion", "%1$s was struck by a kinetic bombardment");
         translationBuilder.add("death.attack.rods_from_god.kinetic_explosion.player", "%1$s was struck by a kinetic bombardment from %2$s");
         translationBuilder.add("death.attack.rods_from_god.kinetic_explosion.item", "%1$s was struck by a kinetic bombardment from %2$s using %3$s");
+        translationBuilder.add("death.attack.rods_from_god.solar_laser", "%1$s was hit by a solar laser from %2$s");
+        translationBuilder.add("death.attack.rods_from_god.solar_laser.player", "%1$s was hit by a solar laser from %2$s");
+        translationBuilder.add("death.attack.rods_from_god.solar_laser.item", "%1$s was hit by a solar laser from %2$s using %3$s");
+        translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat", "%1$s overheated from using a solar laser");
+        translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat.player", "%%1$s overheated from using a solar laser whilst fighting %2$s");
+        translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat.item", "%%1$s overheated from using a solar laser whilst fighting %2$s");
 
         // gamerules
         translationBuilder.add("gamerule.rodsFromGodKineticExplosionCanMakeFire", "Rods from God - Kinetic Explosions Can Produce Fire");
@@ -38,6 +43,8 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodItems.SUPER_BOUNCY_SLIME_BLOCK, "Super Bouncy Slime Block");
         translationBuilder.add(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT, "Corrupted Star Fragment");
         translationBuilder.add(RodsFromGodItems.THE_ONE_WATCH, "The One Watch");
+        translationBuilder.add(RodsFromGodItems.EVOKER_INVOKER, "The Illager's Guide to Spellcasting : Volume 1 : Fangs");
+        translationBuilder.add(RodsFromGodItems.SOLAR_PRISM_HEADSET, "Solar Prism Headset");
         translationBuilder.add("item.minecraft.potion.effect.gravity_increase", "Potion of Gravity Increase");
         translationBuilder.add("item.minecraft.splash_potion.effect.gravity_increase", "Splash Potion of Gravity Increase");
         translationBuilder.add("item.minecraft.lingering_potion.effect.gravity_increase", "Lingering Potion of Gravity Increase");
@@ -59,6 +66,8 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_creates_fire", "Creates Fire");
         translationBuilder.add("item.rods_from_god.corrupted_star_fragment.keep_corrupted_star_fragment", "Keep on Explosion");
         translationBuilder.add("item.rods_from_god.the_one_watch.arguments", "Argument(s) : %s");
+        translationBuilder.add("item.rods_from_god.solar_prism_headset.no_overheat", "Does Not Overheat");
+        translationBuilder.add("item.rods_from_god.evoker_invoker.evoker_invoker_cooldown", "Cooldown Ticks : %s");
 
         // tooltip lore
         translationBuilder.add("item.rods_from_god.the_one_watch.lore.hidden", "Press and hold shift to see lore");
@@ -74,6 +83,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         // sounds
         translationBuilder.add("subtitles.entity.rods_from_god.smoke_bomb.throw", "Smoke Bomb Thrown");
         translationBuilder.add("subtitles.entity.rods_from_god.tungsten_rod.kinetic_explosion", "Kinetic Explosion");
+        translationBuilder.add("subtitles.item.rods_from_god.solar_prism_headset.charge", "Solar Prism Headset Charges");
 
         // item tags
         translationBuilder.add(RodsFromGodTags.RodsFromGodItemTags.WATCHES, "Modfest 1.21 Watches");

@@ -62,7 +62,7 @@ public class AimingDeviceItem extends Item {
         return TypedActionResult.success(stack, world.isClient());
     }
 
-    protected static BlockHitResult raycast(World world, PlayerEntity player) {
+    public static BlockHitResult raycast(World world, PlayerEntity player) {
         Vec3d vec3d = player.getEyePos();
         Vec3d vec3d2 = vec3d.add(player.getRotationVector(player.getPitch(), player.getYaw()).multiply(Math.max(player.getBlockInteractionRange(), 4.5) * 256));
         return world.raycast(new RaycastContext(vec3d, vec3d2, RaycastContext.ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player));

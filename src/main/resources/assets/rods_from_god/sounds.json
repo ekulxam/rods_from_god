@@ -13,5 +13,13 @@
       "random/explode4"
     ],
     "subtitle": "subtitles.entity.rods_from_god.tungsten_rod.kinetic_explosion"
+  },
+  "item.rods_from_god.solar_prism_headset.charge": {
+    "sounds": [
+      "rods_from_god:charge1",
+      "rods_from_god:charge2",
+      "rods_from_god:charge3"
+    ],
+    "subtitle": "subtitles.item.rods_from_god.solar_prism_headset.charge"
   }
 }

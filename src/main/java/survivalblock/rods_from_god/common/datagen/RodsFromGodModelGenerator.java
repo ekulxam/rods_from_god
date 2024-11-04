@@ -24,5 +24,6 @@ public class RodsFromGodModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(RodsFromGodItems.SMOKE_BOMB, Models.GENERATED);
         itemModelGenerator.register(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(RodsFromGodItems.THE_ONE_WATCH, Models.GENERATED); // texture idea: clock/compass, but I put an eye and end portal texture in it
+        itemModelGenerator.register(RodsFromGodItems.EVOKER_INVOKER, Models.GENERATED);
     }
 }

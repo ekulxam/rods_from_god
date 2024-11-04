@@ -17,6 +17,7 @@ public class RodsFromGodDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(RodsFromGodModelGenerator::new);
 		pack.addProvider(RodsFromGodBlockLootTableGenerator::new);
 		pack.addProvider(RodsFromGodRecipeGenerator::new);
+		pack.addProvider(RodsFromGodTagGenerator.RodsFromGodDamageTypeTagGenerator::new);
 		pack.addProvider(RodsFromGodTagGenerator.RodsFromGodItemTagGenerator::new);
 	}
 

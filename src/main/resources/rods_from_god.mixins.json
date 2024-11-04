@@ -9,6 +9,7 @@
     "lightningsplashpotion.BrewingRecipeRegistryMixin",
     "lightningsplashpotion.PotionContentsComponentAccessor",
     "lightningsplashpotion.PotionEntityMixin",
+    "solarprismheadset.ServerWorldAccessor",
     "superbouncyslimeblock.SlimeBlockMixin",
     "theonewatch.TickCommandMixin"
   ],
@@ -20,6 +21,9 @@
     "corruptedstarfragment.client.PlayerEntityRendererMixin",
     "lightningsplashpotion.client.ItemColorsMixin",
     "smokebomb.client.InGameHudMixin",
+    "solarprismheadset.client.BeaconBlockEntityRendererAccessor",
+    "solarprismheadset.client.InGameHudMixin",
+    "solarprismheadset.client.PlayerEntityRendererMixin",
     "superbouncyslimeblock.client.RenderLayersMixin"
   ]
 }

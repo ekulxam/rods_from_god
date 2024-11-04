@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -28,6 +28,8 @@ public class RodsFromGodItems {
     public static final Item SUPER_BOUNCY_SLIME_BLOCK = registerBlockItem(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK, false);
     public static final Item CORRUPTED_STAR_FRAGMENT = registerItem("corrupted_star_fragment", new CorruptedStarFragmentItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
     public static final Item THE_ONE_WATCH = registerItem("the_one_watch", new OneWatchToRuleThemAll(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+    public static final Item EVOKER_INVOKER = registerItem("evoker_invoker", new EvokerInvokerItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item SOLAR_PRISM_HEADSET = registerItem("solar_prism_headset", new SolarPrismHeadsetItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, RodsFromGod.id(name), item);
@@ -52,6 +54,8 @@ public class RodsFromGodItems {
             entries.add(AIMING_DEVICE);
             entries.add(SMOKE_BOMB);
             entries.add(CORRUPTED_STAR_FRAGMENT);
+            entries.add(EVOKER_INVOKER);
+            entries.add(SOLAR_PRISM_HEADSET);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(LIGHTNING_SPLASH_POTION);
