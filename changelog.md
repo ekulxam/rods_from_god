@@ -1,4 +1,3 @@
-Rods from God 1.0.3
- - Fixed/added tooltips for The One Watch
- - Added the Gravity Increase status effect and its potions
- - Added subtitles for Kinetic Explosions
+Rods from God 1.0.4
+ - Added The Illager's Guide to Spellcasting : Volume 1 : Fangs
+ - Added the Solar Prism Headset
