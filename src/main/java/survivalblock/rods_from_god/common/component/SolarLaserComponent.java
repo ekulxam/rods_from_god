@@ -53,7 +53,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             }
             ticksUsed++;
             if (this.ticksUsed % 3 == 0 && !world.isClient()) {
-                world.playSound(null, this.obj.getX(), this.obj.getY(), this.obj.getZ(), RodsFromGodSoundEvents.SOLAR_PRISM_HEADSET_AMBIENT, SoundCategory.PLAYERS, 0.8F, 1.0F);
+                world.playSound(null, this.obj.getX(), this.obj.getY(), this.obj.getZ(), RodsFromGodSoundEvents.SOLAR_PRISM_HEADSET_AMBIENT, SoundCategory.PLAYERS, 0.85F, 1.0F);
             }
         } else {
             overheatTicks--;
@@ -64,8 +64,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         if (overheatTicks >= MAX_OVERHEATING_TICKS) {
             if (!world.isClient()) {
                 DamageSource source = new DamageSource(RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT, world), this.obj);
-                this.obj.damage(source, 0.4f);
-                this.obj.setOnFireForTicks(30);
+                this.obj.damage(source, 0.75f);
             }
         }
         if (overheatTicks % 10 == 0) {
@@ -108,8 +107,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         entities.remove(this.obj);
         DamageSource source = new DamageSource(RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER, serverWorld), this.obj);
         entities.forEach(entity -> {
-            entity.damage(source, 1);
-            if (!entity.isInvulnerable()) entity.setOnFireForTicks(40);
+            entity.damage(source, 2);
         });
     }
 

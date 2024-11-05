@@ -31,18 +31,21 @@ public class EvokerInvokerItem extends Item {
         ItemStack stack = user.getStackInHand(hand);
         if (!world.isClient()) {
             Box box = user.getBoundingBox();
-            List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(30), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND));
+            List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(64), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND));
             LivingEntity livingEntity = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
             if (livingEntity != null) {
+                // no use doing cooldown and checking for more entities if there is no entity in range
+                int cooldownTicks = stack.getComponents().getOrDefault(RodsFromGodDataComponentTypes.EVOKER_INVOKER_COOLDOWN, 120);
+                if (cooldownTicks > 0) user.getItemCooldownManager().set(this, cooldownTicks);
                 castSpell(user, livingEntity);
                 livings.remove(livingEntity);
                 LivingEntity livingEntity1 = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
-                castSpell(user, livingEntity1);
-                livings.remove(livingEntity1);
-                LivingEntity livingEntity2 = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
-                castSpell(user, livingEntity2);
-                int cooldownTicks = stack.getComponents().getOrDefault(RodsFromGodDataComponentTypes.EVOKER_INVOKER_COOLDOWN, 120);
-                if (cooldownTicks > 0) user.getItemCooldownManager().set(this, cooldownTicks);
+                if (livingEntity1 != null) {
+                    castSpell(user, livingEntity1);
+                    livings.remove(livingEntity1);
+                    LivingEntity livingEntity2 = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
+                    castSpell(user, livingEntity2);
+                }
             }
         }
         return TypedActionResult.consume(stack);

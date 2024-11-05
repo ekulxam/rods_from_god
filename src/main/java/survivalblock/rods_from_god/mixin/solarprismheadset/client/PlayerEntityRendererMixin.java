@@ -65,7 +65,7 @@ public class PlayerEntityRendererMixin {
         float q = -innerRadius;
         float t = -1.0F + h;
         float u = (float) maxY * heightScale * (0.5F / innerRadius) + t;
-        BeaconBlockEntityRendererAccessor.amarong$invokeRenderBeamLayer(matrices, vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(textureId, false)), color, yOffset, i, 0.0F, innerRadius, innerRadius, 0.0F, n, 0.0F, 0.0F, q, 0.0F, 1.0F, u, t);
+        BeaconBlockEntityRendererAccessor.rods_from_god$invokeRenderBeamLayer(matrices, vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(textureId, false)), color, yOffset, i, 0.0F, innerRadius, innerRadius, 0.0F, n, 0.0F, 0.0F, q, 0.0F, 1.0F, u, t);
         matrices.pop();
         j = -outerRadius;
         float k = -outerRadius;
@@ -73,7 +73,7 @@ public class PlayerEntityRendererMixin {
         n = -outerRadius;
         t = -1.0F + h;
         u = (float) maxY * heightScale + t;
-        BeaconBlockEntityRendererAccessor.amarong$invokeRenderBeamLayer(matrices, vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(textureId, true)), ColorHelper.Argb.withAlpha(32, color), yOffset, i, j, k, outerRadius, m, n, outerRadius, outerRadius, outerRadius, 0.0F, 1.0F, u, t);
+        BeaconBlockEntityRendererAccessor.rods_from_god$invokeRenderBeamLayer(matrices, vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(textureId, true)), ColorHelper.Argb.withAlpha(32, color), yOffset, i, j, k, outerRadius, m, n, outerRadius, outerRadius, outerRadius, 0.0F, 1.0F, u, t);
         matrices.pop();
     }
 }
