@@ -31,7 +31,7 @@ public class EvokerInvokerItem extends Item {
         ItemStack stack = user.getStackInHand(hand);
         if (!world.isClient()) {
             Box box = user.getBoundingBox();
-            List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(64), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND));
+            List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(45), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND));
             LivingEntity livingEntity = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
             if (livingEntity != null) {
                 // no use doing cooldown and checking for more entities if there is no entity in range

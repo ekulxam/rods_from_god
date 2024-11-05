@@ -65,6 +65,8 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             if (!world.isClient()) {
                 DamageSource source = new DamageSource(RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT, world), this.obj);
                 this.obj.damage(source, 0.75f);
+                DamageSource fireSource = this.obj.getDamageSources().onFire();
+                if (!this.obj.isInvulnerableTo(fireSource)) this.obj.setFireTicks(30);
             }
         }
         if (overheatTicks % 10 == 0) {
@@ -102,12 +104,14 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             Vec3d lowerCorner = vec3d.subtract(boxRadius, boxRadius, boxRadius);
             Vec3d upperCorner = vec3d.add(boxRadius, boxRadius, boxRadius);
             Box box = new Box(lowerCorner, upperCorner);
-            getEntitiesAndAddToCollection(serverWorld, (entity -> entity.getBoundingBox().intersects(box) && entity instanceof LivingEntity), entities);
+            getEntitiesAndAddToCollection(serverWorld, (entity -> entity instanceof LivingEntity && entity.getBoundingBox().intersects(box)), entities);
         }
         entities.remove(this.obj);
         DamageSource source = new DamageSource(RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER, serverWorld), this.obj);
         entities.forEach(entity -> {
-            entity.damage(source, 2);
+            entity.damage(source, 1.375f);
+            DamageSource fireSource = this.obj.getDamageSources().onFire();
+            if (!entity.isInvulnerableTo(fireSource)) entity.setFireTicks(60); // approximately equivalent to fire aspect lvl 1.5 (at least in the old versions, forgot what it is in 1.21)
         });
     }
 
