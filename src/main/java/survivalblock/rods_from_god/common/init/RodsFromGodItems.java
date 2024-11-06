@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;

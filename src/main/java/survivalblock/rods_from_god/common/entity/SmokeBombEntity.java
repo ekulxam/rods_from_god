@@ -61,7 +61,7 @@ public class SmokeBombEntity extends ThrownItemEntity {
             this.spawnParticles(serverWorld, hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), random.nextBetween(60, 100), 2f, 1f, 2f);
             List<PlayerEntity> players = serverWorld.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(10, 5, 10), Entity::isAlive);
             players.forEach(player -> RodsFromGodEntityComponents.SMOKE_SCREEN.get(player).setSmokeScreenTicks((int) (MAX_SMOKE_SCREEN_TICKS * 0.98)));
-            serverWorld.createExplosion(this, serverWorld.getDamageSources().explosion(this, this.getOwner() instanceof PlayerEntity player ? player : this), EXPLOSION_BEHAVIOR, this.getPos(), 0.3f, false, serverWorld.getGameRules().getBoolean(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS) ? World.ExplosionSourceType.TRIGGER : World.ExplosionSourceType.TNT);
+            serverWorld.createExplosion(this, serverWorld.getDamageSources().explosion(this, this.getOwner() instanceof PlayerEntity player ? player : this), EXPLOSION_BEHAVIOR, this.getPos(), 0.6f, false, serverWorld.getGameRules().getBoolean(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS) ? World.ExplosionSourceType.TRIGGER : World.ExplosionSourceType.TNT);
             this.discard();
         }
     }

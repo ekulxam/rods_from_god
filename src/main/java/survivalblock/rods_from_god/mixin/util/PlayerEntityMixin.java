@@ -8,8 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.common.init.RodsFromGodTags;
 
-@Debug(export = true)
-@Mixin(PlayerEntity.class)
+@Mixin(value = PlayerEntity.class, priority = 500)
 public class PlayerEntityMixin {
 
     @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/damage/DamageSource;isIn(Lnet/minecraft/registry/tag/TagKey;)Z"))

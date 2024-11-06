@@ -24,6 +24,7 @@
     "smokebomb.client.InGameHudMixin",
     "solarprismheadset.client.BeaconBlockEntityRendererAccessor",
     "solarprismheadset.client.InGameHudMixin",
+    "solarprismheadset.client.EntityRendererMixin",
     "solarprismheadset.client.PlayerEntityRendererMixin",
     "superbouncyslimeblock.client.RenderLayersMixin"
   ]

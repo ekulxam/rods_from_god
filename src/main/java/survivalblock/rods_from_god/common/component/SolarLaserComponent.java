@@ -36,6 +36,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
     private final PlayerEntity obj;
     private int overheatTicks = 0;
     private int ticksUsed = 0;
+    private boolean wasDay = true;
 
     public SolarLaserComponent(PlayerEntity player) {
         this.obj = player;
@@ -45,7 +46,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
     public void tick() {
         World world = this.obj.getWorld();
         ItemStack stack = this.obj.getEquippedStack(EquipmentSlot.HEAD);
-        if (stack.isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET) && RodsFromGodUtil.isAffectedByDaylight(this.obj)) {
+        if (stack.isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET) && underTheSun()) {
             if (stack.getOrDefault(RodsFromGodDataComponentTypes.SOLAR_PRISM_HEADSET_OVERHEAT, true)) {
                 overheatTicks++;
             } else {
@@ -80,10 +81,16 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         if (!(this.obj.getWorld() instanceof ServerWorld serverWorld)) {
             return;
         }
+        boolean isDay = serverWorld.isDay();
+        if (wasDay != isDay || serverWorld.getTime() % 40 == 0) {
+            // apparently the client thinks it's always day somehow (according to the output and usages of the isDay method)
+            wasDay = isDay;
+            RodsFromGodEntityComponents.SOLAR_LASER.sync(this.obj);
+        }
         if (this.obj.isSpectator()) {
             return;
         }
-        if (!RodsFromGodUtil.isAffectedByDaylight(this.obj)) {
+        if (!underTheSun()) {
             return;
         }
         if (!this.obj.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET)) {
@@ -119,12 +126,14 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
     public void readFromNbt(NbtCompound nbtCompound, RegistryWrapper.WrapperLookup wrapperLookup) {
         this.overheatTicks = nbtCompound.getInt("overheatTicks");
         this.ticksUsed = nbtCompound.getInt("ticksUsed");
+        this.wasDay = nbtCompound.getBoolean("wasDay");
     }
 
     @Override
     public void writeToNbt(NbtCompound nbtCompound, RegistryWrapper.WrapperLookup wrapperLookup) {
         nbtCompound.putInt("overheatTicks", this.overheatTicks);
         nbtCompound.putInt("ticksUsed", this.ticksUsed);
+        nbtCompound.putBoolean("wasDay", this.wasDay);
     }
 
     public int getOverheatTicks() {
@@ -147,5 +156,9 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             }
             return LazyIterationConsumer.NextIteration.CONTINUE;
         });
+    }
+
+    public boolean underTheSun() {
+        return RodsFromGodUtil.isAffectedByDaylight(this.obj) && wasDay; // ignores weather, not going to fix
     }
 }

@@ -11,7 +11,6 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.entity.TungstenRodEntity;
-import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 
 @Environment(value= EnvType.CLIENT)
 public class OctagonalPrismEntityRenderer extends EntityRenderer<TungstenRodEntity> {

@@ -1,9 +1,6 @@
 package survivalblock.rods_from_god.common;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -16,7 +13,7 @@ public class RodsFromGodUtil {
         }
         World world = living.getWorld();
         if (world.isDay()) {
-            float f = living.getBrightnessAtEyes();
+            @SuppressWarnings("deprecation") float f = living.getBrightnessAtEyes();
             BlockPos blockPos = BlockPos.ofFloored(living.getX(), living.getEyeY(), living.getZ());
             return f > 0.5F && world.isSkyVisible(blockPos);
         }

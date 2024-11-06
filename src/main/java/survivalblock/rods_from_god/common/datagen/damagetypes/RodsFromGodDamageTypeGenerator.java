@@ -2,14 +2,9 @@ package survivalblock.rods_from_god.common.datagen.damagetypes;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.entity.damage.DamageType;
-import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.world.World;
 import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class RodsFromGodDamageTypeGenerator extends FabricDamageTypeProvider {

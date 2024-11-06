@@ -8,13 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import survivalblock.rods_from_god.client.screen.Erm;
-import survivalblock.rods_from_god.common.RodsFromGodUtil;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.TickSubcommand;
 

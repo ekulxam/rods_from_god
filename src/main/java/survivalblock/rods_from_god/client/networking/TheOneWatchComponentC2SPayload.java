@@ -4,7 +4,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Hand;
 import survivalblock.rods_from_god.common.RodsFromGod;
 
 import java.util.Objects;
