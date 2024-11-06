@@ -23,6 +23,7 @@ public class RodsFromGodTagGenerator {
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER);
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN).add(RodsFromGodDamageTypes.SOLAR_LASER);
+            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodDamageTypeTags.BYPASSES_CREATIVE).add(RodsFromGodDamageTypes.SOLAR_LASER);
             getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK).add(RodsFromGodDamageTypes.SOLAR_LASER);
 
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
@@ -51,4 +52,6 @@ public class RodsFromGodTagGenerator {
             getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodItemTags.WATCHES).addOptional(Identifier.of("unstable_timepiece", "unstable_timepiece"));
         }
     }
+
+
 }
