@@ -1,4 +1,2 @@
-Rods from God 1.0.7
- - Solar Prism Headset sets entities on fire again
- - Solar Prism Headset damage output is decreased slightly
- - Reduced the range of The Illager's Guide to Spellcasting : Volume 1 : Fangs
+Rods from God 1.0.8
+ - Solar Prism Headset can now kill creative players. That is all. Have a good day.
