@@ -12,6 +12,8 @@
     "solarprismheadset.ServerWorldAccessor",
     "superbouncyslimeblock.SlimeBlockMixin",
     "theonewatch.TickCommandMixin",
+    "tungstenrod.EntityAttributesMixin",
+    "tungstenrod.EntityTrackerEntryMixin",
     "util.PlayerEntityMixin"
   ],
   "injectors": {
@@ -23,9 +25,10 @@
     "lightningsplashpotion.client.ItemColorsMixin",
     "smokebomb.client.InGameHudMixin",
     "solarprismheadset.client.BeaconBlockEntityRendererAccessor",
-    "solarprismheadset.client.InGameHudMixin",
     "solarprismheadset.client.EntityRendererMixin",
+    "solarprismheadset.client.InGameHudMixin",
     "solarprismheadset.client.PlayerEntityRendererMixin",
-    "superbouncyslimeblock.client.RenderLayersMixin"
+    "superbouncyslimeblock.client.RenderLayersMixin",
+    "tungstenrod.client.ClientPlayNetworkHandlerMixin"
   ]
 }

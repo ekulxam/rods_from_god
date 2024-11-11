@@ -63,6 +63,8 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_max_explosions", "Maximum Number of Explosions : %s");
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_explosion_power", "Explosion Power : %s");
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_inverse_explosion_damage_factor", "Inverse Explosion Damage Factor : %s");
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_gravity", "Gravity : %s");
+        translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_scale", "Scale : %s");
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_creates_fire", "Creates Fire");
         translationBuilder.add("item.rods_from_god.corrupted_star_fragment.keep_corrupted_star_fragment", "Keep on Explosion");
         translationBuilder.add("item.rods_from_god.the_one_watch.arguments", "Argument(s) : %s");
@@ -84,9 +86,6 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.rods_from_god.smoke_bomb.throw", "Smoke Bomb Thrown");
         translationBuilder.add("subtitles.entity.rods_from_god.tungsten_rod.kinetic_explosion", "Kinetic Explosion");
         translationBuilder.add("subtitles.item.rods_from_god.solar_prism_headset.ambient", "Solar Prism Headset Hums");
-
-        // item tags
-        translationBuilder.add(RodsFromGodTags.RodsFromGodItemTags.WATCHES, "Modfest 1.21 Watches");
 
         // status effect
         translationBuilder.add(RodsFromGodStatusEffects.GRAVITY_INCREASE.value(), "Gravity Increase");

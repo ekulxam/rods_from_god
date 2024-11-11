@@ -20,7 +20,11 @@ import net.minecraft.world.World;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
 import survivalblock.rods_from_god.common.RodsFromGodUtil;
-import survivalblock.rods_from_god.common.init.*;
+import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
+import survivalblock.rods_from_god.common.init.RodsFromGodItems;
+import survivalblock.rods_from_god.common.init.RodsFromGodSoundEvents;
 import survivalblock.rods_from_god.mixin.solarprismheadset.ServerWorldAccessor;
 
 import java.util.Collection;
@@ -29,7 +33,6 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
-@SuppressWarnings("unused")
 public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedComponent {
 
     public static final int MAX_OVERHEATING_TICKS = 600;
@@ -46,7 +49,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
     public void tick() {
         World world = this.obj.getWorld();
         ItemStack stack = this.obj.getEquippedStack(EquipmentSlot.HEAD);
-        if (stack.isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET) && underTheSun()) {
+        if (stack.isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET) && underTheSun(true)) {
             if (stack.getOrDefault(RodsFromGodDataComponentTypes.SOLAR_PRISM_HEADSET_OVERHEAT, true)) {
                 overheatTicks++;
             } else {
@@ -90,7 +93,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         if (this.obj.isSpectator()) {
             return;
         }
-        if (!underTheSun()) {
+        if (!underTheSun(true)) {
             return;
         }
         if (!this.obj.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET)) {
@@ -158,7 +161,11 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         });
     }
 
-    public boolean underTheSun() {
-        return RodsFromGodUtil.isAffectedByDaylight(this.obj) && wasDay; // ignores weather, not going to fix
+    public boolean underTheSun(boolean accountForUltrawarm) {
+        // ignores weather, not going to fix
+        if (RodsFromGodUtil.isAffectedByDaylight(this.obj) && wasDay) {
+            return true;
+        }
+        return accountForUltrawarm && this.obj.getWorld().getDimension().ultrawarm();
     }
 }

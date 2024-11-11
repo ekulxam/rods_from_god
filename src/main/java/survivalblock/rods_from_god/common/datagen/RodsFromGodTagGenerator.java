@@ -38,20 +38,5 @@ public class RodsFromGodTagGenerator {
         }
     }
 
-    public static class RodsFromGodItemTagGenerator extends FabricTagProvider.ItemTagProvider {
-
-        public RodsFromGodItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
-            super(output, completableFuture);
-        }
-
-        @Override
-        protected void configure(RegistryWrapper.WrapperLookup lookup) {
-            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodItemTags.WATCHES).addOptional(Identifier.of("chronoception", "stopwatch"));
-            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodItemTags.WATCHES).addOptional(Identifier.of("shattered_stopwatch", "stopwatch"));
-            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodItemTags.WATCHES).addOptional(Identifier.of("rewindwatch", "rewind_watch"));
-            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodItemTags.WATCHES).addOptional(Identifier.of("unstable_timepiece", "unstable_timepiece"));
-        }
-    }
-
 
 }

@@ -44,6 +44,15 @@ public class RodsFromGodRecipeGenerator extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(Items.TOTEM_OF_UNDYING))
                 .input('B', Items.ENCHANTED_BOOK).criterion(FabricRecipeProvider.hasItem(Items.ENCHANTED_BOOK),
                         FabricRecipeProvider.conditionsFromItem(Items.ENCHANTED_BOOK)).offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, RodsFromGodItems.SOLAR_PRISM_HEADSET).pattern("ABA").pattern("DCD").pattern("ABA")
+                .input('A', Items.TINTED_GLASS).criterion(FabricRecipeProvider.hasItem(Items.TINTED_GLASS),
+                        FabricRecipeProvider.conditionsFromItem(Items.TINTED_GLASS))
+                .input('B', Items.DIAMOND).criterion(FabricRecipeProvider.hasItem(Items.DIAMOND),
+                        FabricRecipeProvider.conditionsFromItem(Items.DIAMOND))
+                .input('C', Items.NETHERITE_HELMET).criterion(FabricRecipeProvider.hasItem(Items.NETHERITE_HELMET),
+                        FabricRecipeProvider.conditionsFromItem(Items.NETHERITE_HELMET))
+                .input('D', Items.NETHER_STAR).criterion(FabricRecipeProvider.hasItem(Items.NETHER_STAR),
+                        FabricRecipeProvider.conditionsFromItem(Items.NETHER_STAR)).offerTo(exporter);
         ComplexRecipeJsonBuilder.create(AimingDeviceFireRecipe::new).offerTo(exporter, "aiming_device_fire");
         ComplexRecipeJsonBuilder.create(AimingDeviceUndoFireRecipe::new).offerTo(exporter, "aiming_device_undo_fire");
     }

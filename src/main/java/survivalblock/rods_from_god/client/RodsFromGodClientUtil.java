@@ -41,7 +41,7 @@ public class RodsFromGodClientUtil {
         if (clientPlayer.isSpectator()) {
             return false;
         }
-        if (!RodsFromGodEntityComponents.SOLAR_LASER.get(clientPlayer).underTheSun()) {
+        if (!RodsFromGodEntityComponents.SOLAR_LASER.get(clientPlayer).underTheSun(true)) {
             return false;
         }
         return clientPlayer.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET);

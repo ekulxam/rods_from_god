@@ -27,6 +27,9 @@
 		],
 		"cardinal-components-entity": [
 			"survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents"
+		],
+		"emi": [
+			"survivalblock.rods_from_god.common.compat.RodsFromGodEMIPlugin"
 		]
 	},
 	"mixins": [

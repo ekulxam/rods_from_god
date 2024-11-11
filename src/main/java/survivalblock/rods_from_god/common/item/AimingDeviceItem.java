@@ -1,5 +1,7 @@
 package survivalblock.rods_from_god.common.item;
 
+import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -52,6 +54,15 @@ public class AimingDeviceItem extends Item {
                 tungstenRod.setExplosionPower(stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_EXPLOSION_POWER, DEFAULT_EXPLOSION_POWER));
                 tungstenRod.setInverseExplosionDamageFactor(stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_INVERSE_EXPLOSION_DAMAGE_FACTOR, DEFAULT_INVERSE_EXPLOSION_DAMAGE_FACTOR));
                 tungstenRod.setCreatesFire(stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_CREATES_FIRE, DEFAULT_FIRE_BOOLEAN_VALUE));
+                AttributeContainer attributes = tungstenRod.getAttributes();
+                if (attributes == null) {
+                    tungstenRod.resetAttributes();
+                }
+                // if this is null at this point, we have a problem
+                //noinspection DataFlowIssue
+                attributes.getCustomInstance(EntityAttributes.GENERIC_GRAVITY).setBaseValue(stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_GRAVITY, DEFAULT_GRAVITY));
+                //noinspection DataFlowIssue
+                attributes.getCustomInstance(EntityAttributes.GENERIC_SCALE).setBaseValue(stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_SCALE, DEFAULT_SCALE));
             }
             if (cooldownTicks > 0) user.getItemCooldownManager().set(this, cooldownTicks);
             world.spawnEntity(tungstenRod);
@@ -76,5 +87,7 @@ public class AimingDeviceItem extends Item {
         tooltip.add(Text.translatable("item.rods_from_god.aiming_device.aiming_device_max_explosions", stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_MAX_EXPLOSIONS, DEFAULT_MAX_EXPLOSIONS)).formatted(Formatting.GRAY));
         tooltip.add(Text.translatable("item.rods_from_god.aiming_device.aiming_device_explosion_power", stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_EXPLOSION_POWER, DEFAULT_EXPLOSION_POWER)).formatted(Formatting.GRAY));
         tooltip.add(Text.translatable("item.rods_from_god.aiming_device.aiming_device_inverse_explosion_damage_factor", stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_INVERSE_EXPLOSION_DAMAGE_FACTOR, DEFAULT_INVERSE_EXPLOSION_DAMAGE_FACTOR)).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("item.rods_from_god.aiming_device.aiming_device_gravity", stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_GRAVITY, DEFAULT_GRAVITY)).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("item.rods_from_god.aiming_device.aiming_device_scale", stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE_SCALE, DEFAULT_SCALE)).formatted(Formatting.GRAY));
     }
 }

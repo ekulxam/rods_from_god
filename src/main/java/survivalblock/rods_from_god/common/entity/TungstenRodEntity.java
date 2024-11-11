@@ -1,5 +1,6 @@
 package survivalblock.rods_from_god.common.entity;
 
+import net.minecraft.command.argument.NbtPathArgumentType;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.damage.DamageSource;
@@ -23,6 +24,8 @@ import net.minecraft.world.explosion.ExplosionBehavior;
 import org.jetbrains.annotations.Nullable;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.*;
+
+import java.util.Set;
 
 @SuppressWarnings("unused")
 public class TungstenRodEntity extends Entity {
@@ -261,5 +264,30 @@ public class TungstenRodEntity extends Entity {
     @Override
     public boolean isImmuneToExplosion(Explosion explosion) {
         return true;
+    }
+
+    @Override
+    public final EntityDimensions getDimensions(EntityPose pose) {
+        return this.getBaseDimensions(pose).scaled(this.getScale());
+    }
+
+    protected EntityDimensions getBaseDimensions(EntityPose pose) {
+        return this.getType().getDimensions();
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    protected boolean setAttributes(AttributeContainer attributes) {
+        if (attributes != null) {
+            this.attributes.setFrom(attributes);
+            return true;
+        }
+        return false;
+    }
+
+    public void resetAttributes() {
+        AttributeContainer attributes = new AttributeContainer(DefaultAttributeContainer.builder()
+                        .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE)
+                        .add(EntityAttributes.GENERIC_GRAVITY, DEFAULT_GRAVITY).build());
+        this.setAttributes(attributes);
     }
 }
