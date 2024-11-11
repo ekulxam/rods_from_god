@@ -1,7 +1,6 @@
-Rods from God 1.0.9
- - Update CCA version (6.1.1 -> 6.1.2)
- - Fixed Solar Laser not rendering if too far away but still in range of the laser's damage zone
- - Fixed Solar Laser rendering through blocks (forgot to square root a distance value)
- - Fixed Solar Laser dealing damage during night/midnight
- - Updated README because I forgot it existed
- - Make the Gravity Increase status effect image 18x18 instead of 180x180
+Rods from God 1.1.0+1.21.1
+ - Append minecraft version to the mod version
+ - Fixed Tungsten Rod scale (this is big, so bump minor version)
+ - Added recipe for Solar Prism Headset
+ - Removed the Modfest Watches item tag because it's probably better to do it via datapack, and it makes my mod less constrained by Modfest 1.21
+ - Added EMI compat

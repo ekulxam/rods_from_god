@@ -19,6 +19,10 @@ repositories {
 		name "mod menu"
 		url "https://maven.terraformersmc.com"
 	}
+	maven {
+		name "modrinth"
+		url "https://api.modrinth.com/maven"
+	}
 }
 
 fabricApi {
@@ -36,7 +40,12 @@ dependencies {
 
 	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
-	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+	modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
+
+	modCompileOnly "dev.emi:emi-fabric:${project.emi_version}"
+	modRuntimeOnly "dev.emi:emi-fabric:${project.emi_version}"
 }
 
 processResources {
