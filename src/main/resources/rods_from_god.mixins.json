@@ -1,0 +1,36 @@
+{
+  "required": true,
+  "package": "survivalblock.rods_from_god.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "corruptedstarfragment.DamageSourceAccessor",
+    "corruptedstarfragment.EntityAccessor",
+    "corruptedstarfragment.LivingEntityMixin",
+    "lightningsplashpotion.BrewingRecipeRegistryMixin",
+    "lightningsplashpotion.PotionContentsComponentAccessor",
+    "lightningsplashpotion.PotionEntityMixin",
+    "solarprismheadset.ServerWorldAccessor",
+    "superbouncyslimeblock.SlimeBlockMixin",
+    "theonewatch.ServerTickManagerMixin",
+    "theonewatch.TickCommandMixin",
+    "tungstenrod.EntityAttributesMixin",
+    "tungstenrod.EntityTrackerEntryMixin",
+    "util.PlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "corruptedstarfragment.client.LivingEntityRendererMixin",
+    "corruptedstarfragment.client.PlayerEntityRendererMixin",
+    "lightningsplashpotion.client.ItemColorsMixin",
+    "smokebomb.client.InGameHudMixin",
+    "solarprismheadset.client.BeaconBlockEntityRendererAccessor",
+    "solarprismheadset.client.EntityRendererMixin",
+    "solarprismheadset.client.InGameHudMixin",
+    "solarprismheadset.client.PlayerEntityRendererMixin",
+    "superbouncyslimeblock.client.RenderLayersMixin",
+    "theonewatch.client.OneWatchToRuleThemAllMixin",
+    "tungstenrod.client.ClientPlayNetworkHandlerMixin"
+  ]
+}
