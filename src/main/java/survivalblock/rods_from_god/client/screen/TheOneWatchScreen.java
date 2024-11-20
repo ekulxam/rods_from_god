@@ -71,10 +71,7 @@ public class TheOneWatchScreen extends Screen {
     public void saveAndClose() {
         // I'm sorry, Bawnorton
         ClientPlayNetworking.send(new TheOneWatchComponentC2SPayload(
-                this.subcommand.getName(),
-                this.textFieldWidget.getText(),
-                this.slot,
-                this.playerEntityId));
+                this.subcommand.getName(), this.textFieldWidget.getText(), this.slot, this.playerEntityId));
         this.close();
     }
 

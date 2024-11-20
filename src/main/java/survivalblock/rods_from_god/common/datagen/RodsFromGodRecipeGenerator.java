@@ -20,14 +20,14 @@ public class RodsFromGodRecipeGenerator extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, RodsFromGodItems.SUPER_BOUNCY_SLIME_BLOCK).pattern("xx").pattern("xx").input('x', Items.SLIME_BLOCK)
-                .criterion(FabricRecipeProvider.hasItem(Items.SLIME_BLOCK),
-                        FabricRecipeProvider.conditionsFromItem(Items.SLIME_BLOCK)).offerTo(exporter);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, Items.SLIME_BLOCK, RecipeCategory.MISC, RodsFromGodItems.SUPER_BOUNCY_SLIME_BLOCK);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, RodsFromGodItems.CORRUPTED_STAR_FRAGMENT)
                 .input(Items.CREEPER_HEAD).criterion(FabricRecipeProvider.hasItem(Items.CREEPER_HEAD),
                         FabricRecipeProvider.conditionsFromItem(Items.CREEPER_HEAD))
                 .input(Items.NETHER_STAR).criterion(FabricRecipeProvider.hasItem(Items.NETHER_STAR),
-                        FabricRecipeProvider.conditionsFromItem(Items.NETHER_STAR)).offerTo(exporter);
+                        FabricRecipeProvider.conditionsFromItem(Items.NETHER_STAR))
+                .input(Items.TOTEM_OF_UNDYING).criterion(FabricRecipeProvider.hasItem(Items.TOTEM_OF_UNDYING),
+                        FabricRecipeProvider.conditionsFromItem(Items.TOTEM_OF_UNDYING)).offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, RodsFromGodItems.SMOKE_BOMB, 4)
                 .input(Items.GUNPOWDER).criterion(FabricRecipeProvider.hasItem(Items.GUNPOWDER),
                         FabricRecipeProvider.conditionsFromItem(Items.GUNPOWDER))

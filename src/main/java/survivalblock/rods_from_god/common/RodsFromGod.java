@@ -36,6 +36,7 @@ public class RodsFromGod implements ModInitializer {
 		ServerPlayNetworking.registerGlobalReceiver(TheOneWatchComponentC2SPayload.ID, (payload, context) -> {
 			Entity entity = context.player().getWorld().getEntityById(payload.entityId);
 			if (entity instanceof PlayerEntity player) {
+				// hmm, I just realized that players might be able to send payloads with entity ids that belong to other players
 				ItemStack stack = player.getInventory().getStack(payload.slot);
 				if (!stack.isOf(RodsFromGodItems.THE_ONE_WATCH)) {
 					return;

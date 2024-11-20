@@ -1,6 +1,5 @@
 package survivalblock.rods_from_god.common.compat;
 
-import dev.emi.emi.EmiUtil;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiCraftingRecipe;
@@ -11,7 +10,6 @@ import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.util.Identifier;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
@@ -20,14 +18,12 @@ import survivalblock.rods_from_god.common.recipe.AimingDeviceUndoFireRecipe;
 
 import java.util.List;
 
-
 public class RodsFromGodEMIPlugin implements EmiPlugin {
 
     @Override
     public void register(EmiRegistry registry) {
         RecipeManager manager = registry.getRecipeManager();
 
-        // Use vanilla's concept of your recipes and pass them to your EmiRecipe representation
         for (RecipeEntry<CraftingRecipe> entry : manager.listAllOfType(RecipeType.CRAFTING)) {
             CraftingRecipe recipe = entry.value();
             if (recipe instanceof AimingDeviceFireRecipe) {

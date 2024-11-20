@@ -13,15 +13,14 @@ import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.component.SmokeScreenComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 
+import static survivalblock.rods_from_god.client.RodsFromGodClient.SMOKE_SCREEN_OVERLAY;
+
 @Mixin(value = InGameHud.class, priority = 1500)
 public abstract class InGameHudMixin {
 
     @Shadow @Final private MinecraftClient client;
 
     @Shadow protected abstract void renderOverlay(DrawContext context, Identifier texture, float opacity);
-
-    @Unique
-    private static final Identifier SMOKE_SCREEN_OVERLAY = RodsFromGod.id("textures/misc/smoke_screen_overlay.png");
 
     @Inject(method = "renderMiscOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getFrozenTicks()I", shift = At.Shift.BEFORE))
     private void renderSmokeScreen(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {

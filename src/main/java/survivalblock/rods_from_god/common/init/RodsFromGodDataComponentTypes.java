@@ -19,7 +19,6 @@ public class RodsFromGodDataComponentTypes {
     public static final ComponentType<Boolean> KEEP_CORRUPTED_STAR_FRAGMENT = ComponentType.<Boolean>builder().codec(Codec.BOOL).packetCodec(PacketCodecs.BOOL).build();
     public static final ComponentType<Boolean> SOLAR_PRISM_HEADSET_OVERHEAT = ComponentType.<Boolean>builder().codec(Codec.BOOL).packetCodec(PacketCodecs.BOOL).build();
     public static final ComponentType<Integer> EVOKER_INVOKER_COOLDOWN = ComponentType.<Integer>builder().codec(Codec.INT).packetCodec(PacketCodecs.VAR_INT).build();
-
     public static final ComponentType<String> ONE_WATCH_SUBCOMMAND = ComponentType.<String>builder().codec(Codec.STRING).packetCodec(PacketCodecs.STRING).build();
     public static final ComponentType<String> ONE_WATCH_ARGUMENTS = ComponentType.<String>builder().codec(Codec.STRING).packetCodec(PacketCodecs.STRING).build();
 

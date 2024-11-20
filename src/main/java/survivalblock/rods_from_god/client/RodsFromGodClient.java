@@ -9,6 +9,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import survivalblock.rods_from_god.client.entity.OctagonalPrismEntityModel;
 import survivalblock.rods_from_god.client.entity.OctagonalPrismEntityRenderer;
 import survivalblock.rods_from_god.client.entity.SmallPlaneEntityModel;
@@ -23,6 +24,9 @@ public class RodsFromGodClient implements ClientModInitializer {
 
 	public static final EntityModelLayer TUNGSTEN_ROD = new EntityModelLayer(RodsFromGod.id("tungsten_rod"), "main");
 	public static final EntityModelLayer ROD_LANDING_MARKER = new EntityModelLayer(RodsFromGod.id("rod_landing_marker"), "main");
+
+	public static final Identifier SMOKE_SCREEN_OVERLAY = RodsFromGod.id("textures/misc/smoke_screen_overlay.png");
+	public static final Identifier SOLAR_LASER_OVERHEAT_OVERLAY = RodsFromGod.id("textures/misc/solar_laser_overheat_overlay.png");
 
 	@Override
 	public void onInitializeClient() {

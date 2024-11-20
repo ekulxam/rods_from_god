@@ -8,6 +8,7 @@ import java.util.function.ToIntFunction;
 
 @SuppressWarnings({"unused", "deprecation"})
 public enum TickSubcommand implements StringIdentifiable {
+
     /**
      * As defined in {@link net.minecraft.server.command.TickCommand}
      */

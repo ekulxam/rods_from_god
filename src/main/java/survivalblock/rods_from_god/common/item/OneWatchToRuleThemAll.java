@@ -17,7 +17,6 @@ import survivalblock.rods_from_god.common.TickSubcommand;
 
 import java.util.Objects;
 
-
 public class OneWatchToRuleThemAll extends Item {
 
     public static boolean tickCommandBroadcastToOps = true;

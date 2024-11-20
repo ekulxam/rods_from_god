@@ -17,8 +17,10 @@ import net.minecraft.util.math.*;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class EvokerInvokerItem extends Item {
@@ -31,21 +33,28 @@ public class EvokerInvokerItem extends Item {
         ItemStack stack = user.getStackInHand(hand);
         if (!world.isClient()) {
             Box box = user.getBoundingBox();
-            List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(45), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND));
-            LivingEntity livingEntity = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
-            if (livingEntity != null) {
-                // no use doing cooldown and checking for more entities if there is no entity in range
-                int cooldownTicks = stack.getComponents().getOrDefault(RodsFromGodDataComponentTypes.EVOKER_INVOKER_COOLDOWN, 120);
-                if (cooldownTicks > 0) user.getItemCooldownManager().set(this, cooldownTicks);
+            TargetPredicate targetPredicate = TargetPredicate.createAttackable();
+            Vec3d userPos = new Vec3d(user.getX(), user.getY(), user.getZ());
+            List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(45), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND) && targetPredicate.test(user, entity));
+            Comparator<LivingEntity> sortByClosestLivingEntity = (first, second) -> (int) (100d * ((first.squaredDistanceTo(userPos) - second.squaredDistanceTo(userPos))));
+            livings.sort(sortByClosestLivingEntity);
+            int fangSets = 10;
+            // int fangSets = stack.getComponents().getOrDefault(RodsFromGodDataComponentTypes.EVOKER_INVOKER_FANG_SETS, 3);
+            for (int i = 0; i < fangSets; i++) {
+                if (livings.isEmpty()) {
+                    break;
+                }
+                LivingEntity livingEntity = livings.getFirst();
+                if (livingEntity == null) {
+                    break;
+                }
+                if (i == 0) {
+                    // no use doing cooldown and checking for more entities if there is no entity in range
+                    int cooldownTicks = stack.getComponents().getOrDefault(RodsFromGodDataComponentTypes.EVOKER_INVOKER_COOLDOWN, 120);
+                    if (cooldownTicks > 0) user.getItemCooldownManager().set(this, cooldownTicks);
+                }
                 castSpell(user, livingEntity);
                 livings.remove(livingEntity);
-                LivingEntity livingEntity1 = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
-                if (livingEntity1 != null) {
-                    castSpell(user, livingEntity1);
-                    livings.remove(livingEntity1);
-                    LivingEntity livingEntity2 = world.getClosestEntity(livings, TargetPredicate.createAttackable(), user, user.getX(), user.getY(), user.getZ());
-                    castSpell(user, livingEntity2);
-                }
             }
         }
         return TypedActionResult.consume(stack);
@@ -55,10 +64,7 @@ public class EvokerInvokerItem extends Item {
     yeah, yeah, strike me down for being a hypocrite, whatever
     I don't have a lot of time to do mixin hacks for this, okay?
      */
-    public static void castSpell(PlayerEntity player, LivingEntity livingEntity) {
-        if (player == null || livingEntity == null) {
-            return;
-        }
+    public static void castSpell(@NotNull PlayerEntity player, @NotNull LivingEntity livingEntity) {
         double d = Math.min(livingEntity.getY(), player.getY());
         double e = Math.max(livingEntity.getY(), player.getY()) + 1.0;
         float f = (float) MathHelper.atan2(livingEntity.getZ() - player.getZ(), livingEntity.getX() - player.getX());
