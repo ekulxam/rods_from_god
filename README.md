@@ -2,7 +2,26 @@ I am the kinetic bombardment that is approaching...
 
 This project adds miscellaneous superweapons for modfest.
 
-Items / Blocks / Entities / Effects
+## Lore
+In ancient times did fall the Rods from sky
+Their impacts toppled peaks and shattered stone
+They came from restless lords in heavens' high
+To end an Age in flame and splintered bone
+
+When weary gods grew old, ready for rest
+They sought an heir to take their golden crown
+Through frost and fire the heir was put to test
+Until, at last, a successor was found
+
+As for the artifacts they owned and used
+Left in the sands of time to gather dust
+Fell to the world in meteors they fused
+Buried in geodes deep within the crust
+
+Powers trapped in the ne'er-ending void
+Ensnared within the worlds of the cuboid
+
+## Items / Blocks / Entities / Effects
 1. Aiming Device and Tungsten Rods - The aiming device is an item that "aims" the Tungsten Rods. Right-click on a block to summon a landing marker, which tells players where the rod will land. The rod will hit the ground shortly after and explode. Explosion power (damage and knockback), an inverse damage factor, creating fire, cooldown, and maximum explosions are all configurable via item components on the aiming device or directly through NBT for the rod.
 2. Smoke Bomb - A throwable projectile item that summons smoke bombs. Smoke bombs deal slight damage upon impact and spawn smoke particles. They also apply a gray overlay (to simulate a smokescreen) to players within range.
 3. Splash Potion of Lightning - Lightning Splash Potions can be brewed with any Splash Potion (even mundane, water, awkward, thick, etc.) and a lightning rod. The new lightning potion will keep the effects of the splash potion it was brewed with.
