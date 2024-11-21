@@ -38,7 +38,7 @@ public class EvokerInvokerItem extends Item {
             List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(45), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND) && targetPredicate.test(user, entity));
             Comparator<LivingEntity> sortByClosestLivingEntity = (first, second) -> (int) (100d * ((first.squaredDistanceTo(userPos) - second.squaredDistanceTo(userPos))));
             livings.sort(sortByClosestLivingEntity);
-            int fangSets = 10;
+            int fangSets = 3;
             // int fangSets = stack.getComponents().getOrDefault(RodsFromGodDataComponentTypes.EVOKER_INVOKER_FANG_SETS, 3);
             for (int i = 0; i < fangSets; i++) {
                 if (livings.isEmpty()) {

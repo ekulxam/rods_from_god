@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -20,8 +21,11 @@ public class RodsFromGod implements ModInitializer {
 	public static final String MOD_ID = "rods_from_god";
 	public static final Logger LOGGER = LoggerFactory.getLogger("Rods from God");
 
+	public static boolean isConnectorLoaded = false;
+
 	@Override
 	public void onInitialize() {
+		resetIsConnectorLoaded();
 		RodsFromGodEntityTypes.init();
 		RodsFromGodSoundEvents.init();
 		RodsFromGodGameRules.init();
@@ -49,5 +53,11 @@ public class RodsFromGod implements ModInitializer {
 
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);
+	}
+
+	@SuppressWarnings("UnusedReturnValue")
+    public static boolean resetIsConnectorLoaded() {
+		isConnectorLoaded = FabricLoader.getInstance().isModLoaded("connector");
+		return isConnectorLoaded;
 	}
 }

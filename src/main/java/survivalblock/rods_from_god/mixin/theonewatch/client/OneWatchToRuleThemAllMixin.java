@@ -23,7 +23,6 @@ import survivalblock.rods_from_god.common.item.OneWatchToRuleThemAll;
 
 import java.util.Objects;
 
-@Debug(export = true)
 @Environment(EnvType.CLIENT)
 @Mixin(OneWatchToRuleThemAll.class)
 public class OneWatchToRuleThemAllMixin {
