@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import survivalblock.rods_from_god.client.RodsFromGodClientUtil;
+import survivalblock.rods_from_god.common.component.SolarLaserComponent;
 
 @Mixin(value = EntityRenderer.class, priority = 10000) // I'm not joking around anymore
 public class EntityRendererMixin {
@@ -30,8 +31,9 @@ public class EntityRendererMixin {
         if (!(entity instanceof AbstractClientPlayerEntity player)) {
             return;
         }
-        double distance = Math.sqrt(player.getEyePos().squaredDistanceTo(camera.getPos())); // ahh I keep forgetting to use sqrt
-        if (distance > 400) {
+        double squaredDistance = Math.sqrt(player.getEyePos().squaredDistanceTo(camera.getPos()));
+        int maxDistance = SolarLaserComponent.MAX_RENDER_DISTANCE;
+        if (squaredDistance > (maxDistance * maxDistance)) {
             return;
         }
         if (RodsFromGodClientUtil.shouldRenderBeam(player)) {

@@ -12,6 +12,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
+import survivalblock.rods_from_god.common.component.SolarLaserComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.mixin.solarprismheadset.client.BeaconBlockEntityRendererAccessor;
@@ -22,7 +23,7 @@ public class RodsFromGodClientUtil {
         if (!shouldRenderBeam(clientPlayer)) {
             return;
         }
-        HitResult hitResult = clientPlayer.raycast(384, tickDelta, false);
+        HitResult hitResult = clientPlayer.raycast(SolarLaserComponent.MAX_RAYCAST_DISTANCE, tickDelta, false);
         if (!(hitResult instanceof BlockHitResult)) {
             return;
         }

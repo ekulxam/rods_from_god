@@ -37,6 +37,8 @@ import java.util.function.Predicate;
 
 public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedComponent {
 
+    public static final double MAX_RAYCAST_DISTANCE = 384;
+    public static final int MAX_RENDER_DISTANCE = ((int) Math.ceil(MAX_RAYCAST_DISTANCE / 100d)) * 100;
     public static final int MAX_OVERHEATING_TICKS = 600;
     private final PlayerEntity obj;
     private int overheatTicks = 0;
@@ -71,14 +73,22 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             if (world instanceof ServerWorld serverWorld) {
                 RegistryEntry.Reference<DamageType> damageTypeReference = RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT, world);
                 DamageSource source;
-                if (serverWorld.getServer().isPvpEnabled()) {
+                boolean pvp = serverWorld.getServer().isPvpEnabled();
+                if (pvp) {
                     source = new DamageSource(damageTypeReference, this.obj);
                 } else {
                     source = new DamageSource(damageTypeReference);
                 }
-                this.obj.damage(source, 0.75f);
+                boolean damaged = this.obj.damage(source, 0.75f);
+                if (!damaged && !pvp) {
+                    this.obj.damage(new DamageSource(damageTypeReference), 0.75f);
+                }
                 DamageSource fireSource = this.obj.getDamageSources().onFire();
-                if (!this.obj.isInvulnerableTo(fireSource)) this.obj.setFireTicks(30);
+                if (!this.obj.isInvulnerableTo(fireSource)) {
+                    if (this.obj.getFireTicks() <= 2) {
+                        this.obj.setFireTicks(32);
+                    }
+                }
             }
         }
         if (overheatTicks % 10 == 0) {
@@ -107,7 +117,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         if (!this.obj.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET)) {
             return;
         }
-        HitResult hitResult = this.obj.raycast(384, 1.0F, false);
+        HitResult hitResult = this.obj.raycast(MAX_RAYCAST_DISTANCE, 1.0F, false);
         if (!(hitResult instanceof BlockHitResult)) {
             return;
         }
@@ -125,11 +135,15 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             getEntitiesAndAddToCollection(serverWorld, (entity -> entity instanceof LivingEntity && entity.getBoundingBox().intersects(box)), entities);
         }
         entities.remove(this.obj);
-        DamageSource source = new DamageSource(RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER, serverWorld), this.obj);
+        DamageSource source = new DamageSource(RodsFromGodDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER_SECONDARY, serverWorld), this.obj);
         entities.forEach(entity -> {
             entity.damage(source, 1.375f);
             DamageSource fireSource = this.obj.getDamageSources().onFire();
-            if (!entity.isInvulnerableTo(fireSource)) entity.setFireTicks(60); // approximately equivalent to fire aspect lvl 1.5 (at least in the old versions, forgot what it is in 1.21)
+            if (!entity.isInvulnerableTo(fireSource)) {
+                if (entity.getFireTicks() <= 2) {
+                    entity.setFireTicks(62); // approximately equivalent to fire aspect lvl 1.5 (at least in the old versions, forgot what it is in 1.21)
+                }
+            }
         });
     }
 

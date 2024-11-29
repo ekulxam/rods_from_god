@@ -48,6 +48,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.minecraft.potion.effect.gravity_increase", "Potion of Gravity Increase");
         translationBuilder.add("item.minecraft.splash_potion.effect.gravity_increase", "Splash Potion of Gravity Increase");
         translationBuilder.add("item.minecraft.lingering_potion.effect.gravity_increase", "Lingering Potion of Gravity Increase");
+        translationBuilder.add("item.minecraft.tipped_arrow.effect.gravity_increase", "Lingering Potion of Gravity Increase");
 
         // screen
         translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand", "Subcommand");

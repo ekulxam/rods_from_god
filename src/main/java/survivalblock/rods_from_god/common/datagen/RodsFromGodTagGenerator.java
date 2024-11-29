@@ -6,7 +6,6 @@ import net.minecraft.entity.damage.DamageType;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.DamageTypeTags;
-import net.minecraft.util.Identifier;
 import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodTags;
 
@@ -21,10 +20,10 @@ public class RodsFromGodTagGenerator {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-            getOrCreateTagBuilder(DamageTypeTags.BYPASSES_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER);
-            getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN).add(RodsFromGodDamageTypes.SOLAR_LASER);
-            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodDamageTypeTags.BYPASSES_CREATIVE).add(RodsFromGodDamageTypes.SOLAR_LASER);
-            getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK).add(RodsFromGodDamageTypes.SOLAR_LASER);
+            getOrCreateTagBuilder(DamageTypeTags.BYPASSES_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER_SECONDARY);
+            getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN).add(RodsFromGodDamageTypes.SOLAR_LASER_SECONDARY);
+            getOrCreateTagBuilder(RodsFromGodTags.RodsFromGodDamageTypeTags.BYPASSES_CREATIVE).add(RodsFromGodDamageTypes.SOLAR_LASER_SECONDARY);
+            getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK).add(RodsFromGodDamageTypes.SOLAR_LASER_SECONDARY);
 
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);

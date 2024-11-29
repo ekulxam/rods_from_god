@@ -15,6 +15,7 @@ import java.util.Map;
 public class RodsFromGodDamageTypes {
     public static final RegistryKey<DamageType> KINETIC_EXPLOSION = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, RodsFromGod.id("kinetic_explosion"));
     public static final RegistryKey<DamageType> SOLAR_LASER = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, RodsFromGod.id("solar_laser"));
+    public static final RegistryKey<DamageType> SOLAR_LASER_SECONDARY = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, RodsFromGod.id("solar_laser"));
     public static final RegistryKey<DamageType> SOLAR_LASER_OVERHEAT = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, RodsFromGod.id("solar_laser_overheat"));
 
     public static RegistryEntry.Reference<DamageType> get(RegistryKey<DamageType> key, World world) {
@@ -28,7 +29,7 @@ public class RodsFromGodDamageTypes {
     public static ImmutableMap<RegistryKey<DamageType>, DamageType> asDamageTypes() {
         Map<RegistryKey<DamageType>, DamageType> damageTypes = new HashMap<>();
         damageTypes.put(KINETIC_EXPLOSION, new DamageType("rods_from_god.kinetic_explosion", 0.1F));
-        damageTypes.put(SOLAR_LASER, new DamageType("rods_from_god.solar_laser", 0.1F));
+        damageTypes.put(SOLAR_LASER_SECONDARY, new DamageType("rods_from_god.solar_laser", 0.1F));
         damageTypes.put(SOLAR_LASER_OVERHEAT, new DamageType("rods_from_god.solar_laser_overheat", 0.5F));
         return ImmutableMap.copyOf(damageTypes);
     }
