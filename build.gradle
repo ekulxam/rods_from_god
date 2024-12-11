@@ -11,6 +11,7 @@ base {
 }
 
 repositories {
+	mavenCentral()
 	maven {
 		name "ladysnake"
 		url "https://maven.ladysnake.org/releases"
@@ -23,6 +24,7 @@ repositories {
 		name "modrinth"
 		url "https://api.modrinth.com/maven"
 	}
+	maven { url 'https://jitpack.io' }
 }
 
 fabricApi {
@@ -40,6 +42,9 @@ dependencies {
 
 	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
+	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-world:${project.cardinal_components_version}")
+
+	include modApi("com.github.ekulxam:AtmosphericAPI:${project.atmospheric_api_tag}")
 
 	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 	modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
