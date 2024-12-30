@@ -4,21 +4,17 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import survivalblock.atmosphere.atmospheric_api.not_mixin.command.AtmosphericCommandExecutorUtil;
-import survivalblock.rods_from_god.common.component.EvokerInvokerComponent;
-import survivalblock.rods_from_god.common.component.TheOneWatchComponent;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.command.AtmosphericCommandDirector;
+import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.TickSubcommand;
 
-import java.util.List;
 import java.util.Objects;
 
 public class OneWatchToRuleThemAllItem extends Item {
@@ -48,7 +44,7 @@ public class OneWatchToRuleThemAllItem extends Item {
             }
             tickCommandBroadcastToOps = false;
             isSprintingBecauseOfWatch = Objects.equals(subcommand, TickSubcommand.SPRINT.getName());
-            AtmosphericCommandExecutorUtil.runCommand(serverWorld, user, 3, command);
+            AtmosphericCommandDirector.runCommand(serverWorld, user, 3, command);
             tickCommandBroadcastToOps = true;
         }
         return TypedActionResult.success(stack, world.isClient);

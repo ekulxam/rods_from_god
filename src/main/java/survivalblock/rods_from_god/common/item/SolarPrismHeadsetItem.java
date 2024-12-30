@@ -11,11 +11,11 @@ import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import survivalblock.rods_from_god.common.component.item.SolarPrismHeadsetComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 
 import java.util.List;
@@ -55,7 +55,8 @@ public class SolarPrismHeadsetItem extends Item implements Equipment {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         super.appendTooltip(stack, context, tooltip, type);
-        if (!stack.getOrDefault(RodsFromGodDataComponentTypes.SOLAR_PRISM_HEADSET_OVERHEAT, true)) tooltip.add(Text.translatable("item.rods_from_god.solar_prism_headset.no_overheat").formatted(Formatting.GOLD));
+        SolarPrismHeadsetComponent solarPrismHeadsetComponent = stack.getOrDefault(RodsFromGodDataComponentTypes.SOLAR_PRISM_HEADSET, SolarPrismHeadsetComponent.DEFAULT_INSTANCE);
+        solarPrismHeadsetComponent.appendTooltip(context, tooltip::add, type);
     }
 
     @Override

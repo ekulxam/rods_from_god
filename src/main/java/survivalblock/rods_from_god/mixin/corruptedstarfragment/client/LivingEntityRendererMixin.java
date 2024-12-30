@@ -7,7 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import survivalblock.rods_from_god.common.component.DeathExplosionComponent;
+import survivalblock.rods_from_god.common.component.cca.entity.DeathExplosionComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 
 @Mixin(LivingEntityRenderer.class)

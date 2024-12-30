@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 
-import static survivalblock.rods_from_god.common.component.SlimeBlockFlyingComponent.MAX_BOUNCE_AIR_TICKS;
+import static survivalblock.rods_from_god.common.component.cca.entity.SlimeBlockFlyingComponent.MAX_BOUNCE_AIR_TICKS;
 
 @Mixin(ServerPlayNetworkHandler.class)
 public class ServerPlayNetworkHandlerMixin {

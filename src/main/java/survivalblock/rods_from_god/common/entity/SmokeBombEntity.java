@@ -24,7 +24,7 @@ import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import java.util.List;
 import java.util.Optional;
 
-import static survivalblock.rods_from_god.common.component.SmokeScreenComponent.MAX_SMOKE_SCREEN_TICKS;
+import static survivalblock.rods_from_god.common.component.cca.entity.SmokeScreenComponent.MAX_SMOKE_SCREEN_TICKS;
 
 @SuppressWarnings("unused")
 public class SmokeBombEntity extends ThrownItemEntity {
@@ -60,7 +60,7 @@ public class SmokeBombEntity extends ThrownItemEntity {
             Random random = serverWorld.getRandom();
             this.spawnParticles(serverWorld, hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), random.nextBetween(60, 100), 2f, 1f, 2f);
             List<PlayerEntity> players = serverWorld.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(10, 5, 10), Entity::isAlive);
-            players.forEach(player -> RodsFromGodEntityComponents.SMOKE_SCREEN.get(player).setSmokeScreenTicks((int) (MAX_SMOKE_SCREEN_TICKS * 0.98)));
+            players.forEach(player -> RodsFromGodEntityComponents.SMOKE_SCREEN.get(player).setSmokeScreenTicks());
             serverWorld.createExplosion(this, serverWorld.getDamageSources().explosion(this, this.getOwner() instanceof PlayerEntity player ? player : this), EXPLOSION_BEHAVIOR, this.getPos(), 0.6f, false, serverWorld.getGameRules().getBoolean(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS) ? World.ExplosionSourceType.TRIGGER : World.ExplosionSourceType.TNT);
             this.discard();
         }

@@ -12,10 +12,10 @@ import survivalblock.rods_from_god.common.block.SuperBouncySlimeBlock;
 public class RodsFromGodBlocks {
 
     public static final Block SUPER_BOUNCY_SLIME_BLOCK = registerBlock("super_bouncy_slime_block", new SuperBouncySlimeBlock(Blocks.SLIME_BLOCK.getSettings()));
-    public static final Block ARCHIMEDES_LEVER = registerBlock("archimedes_lever", new ArchimedesLeverBlock(AbstractBlock.Settings.create().noCollision().strength(0.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final ArchimedesLeverBlock ARCHIMEDES_LEVER = registerBlock("archimedes_lever", new ArchimedesLeverBlock(AbstractBlock.Settings.create().noCollision().strength(0.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).pistonBehavior(PistonBehavior.DESTROY)));
 
     @SuppressWarnings("SameParameterValue")
-    private static Block registerBlock(String name, Block block) {
+    private static <T extends Block> T registerBlock(String name, T block) {
         return Registry.register(Registries.BLOCK, RodsFromGod.id(name), block);
     }
 

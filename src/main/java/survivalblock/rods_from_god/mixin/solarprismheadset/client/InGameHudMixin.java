@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import survivalblock.rods_from_god.common.component.SolarLaserComponent;
+import survivalblock.rods_from_god.common.component.cca.entity.SolarLaserComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 
 import static survivalblock.rods_from_god.client.RodsFromGodClient.SOLAR_LASER_OVERHEAT_OVERLAY;

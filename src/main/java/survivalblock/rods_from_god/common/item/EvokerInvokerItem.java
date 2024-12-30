@@ -17,7 +17,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
-import survivalblock.rods_from_god.common.component.EvokerInvokerComponent;
+import survivalblock.rods_from_god.common.component.item.EvokerInvokerComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 
 import java.util.Comparator;

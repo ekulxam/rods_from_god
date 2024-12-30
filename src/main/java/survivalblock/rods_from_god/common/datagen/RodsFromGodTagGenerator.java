@@ -6,8 +6,14 @@ import net.minecraft.entity.damage.DamageType;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionOptions;
+import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.DimensionTypes;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.damage_type.AtmosphericDamageTypeTags;
 import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -34,6 +40,17 @@ public class RodsFromGodTagGenerator {
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_SHIELD).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_WOLF_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
             getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
+        }
+    }
+
+    public static class RodsFromGodWorldTagGenerator extends FabricTagProvider<DimensionType> {
+        public RodsFromGodWorldTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, RegistryKeys.DIMENSION_TYPE, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+            getOrCreateTagBuilder(RodsFromGodTags.SUN_AND_MOON).addOptional(DimensionTypes.OVERWORLD);
         }
     }
 }

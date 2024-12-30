@@ -7,10 +7,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
-import survivalblock.rods_from_god.common.component.WorldLeverComponent;
+import survivalblock.rods_from_god.common.component.cca.world.WorldLeverComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents;
 
-@Debug(export = true)
 @Mixin(DebugHud.class)
 public class DebugHudMixin {
 

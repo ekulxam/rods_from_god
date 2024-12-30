@@ -14,9 +14,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import survivalblock.rods_from_god.common.RodsFromGod;
-import survivalblock.rods_from_god.common.component.AimingDeviceComponent;
-import survivalblock.rods_from_god.common.component.EvokerInvokerComponent;
-import survivalblock.rods_from_god.common.component.TheOneWatchComponent;
+import survivalblock.rods_from_god.common.component.item.AimingDeviceComponent;
+import survivalblock.rods_from_god.common.component.item.EvokerInvokerComponent;
+import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
 import survivalblock.rods_from_god.common.item.*;
 
 import java.util.List;
@@ -64,11 +64,15 @@ public class RodsFromGodItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SLIME_BLOCK, SUPER_BOUNCY_SLIME_BLOCK);
         });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
+            entries.addAfter(Items.LEVER, ARCHIMEDES_LEVER);
+        });
         /*
         DO NOT add dispenser behavior for the solar prism headset because mobs should not be wearing it, only players should
         Also, forcing a Curse of Binding solar prism headset into someone's helmet slot is somewhat evil
          */
         DispenserBlock.registerProjectileBehavior(LIGHTNING_SPLASH_POTION);
+        DispenserBlock.registerProjectileBehavior(SMOKE_BOMB);
         // smiling_imp emoji - I'm having too much fun
         FabricBrewingRecipeRegistryBuilder.BUILD.register(RodsFromGodItems::addCustomPotionRecipes);
     }

@@ -17,10 +17,6 @@ public class RodsFromGodDamageTypes {
     public static final RegistryKey<DamageType> SOLAR_LASER = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, RodsFromGod.id("solar_laser"));
     public static final RegistryKey<DamageType> SOLAR_LASER_OVERHEAT = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, RodsFromGod.id("solar_laser_overheat"));
 
-    public static RegistryEntry.Reference<DamageType> get(RegistryKey<DamageType> key, World world) {
-        return world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key);
-    }
-
     /**
      * Creates a map with the {@link RegistryKey<DamageType>}s as keys and {@link DamageType}s as values
      * @return an {@link ImmutableMap}

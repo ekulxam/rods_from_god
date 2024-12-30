@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import survivalblock.rods_from_god.common.component.DeathExplosionComponent;
+import survivalblock.rods_from_god.common.component.cca.entity.DeathExplosionComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;

@@ -22,9 +22,7 @@ public class SlimeBlockMixin {
             double e = -vec3d.y;
             double f = Math.max(0, e - 3);
             e = Math.min(7, Math.max(f * 5.5, e) * 2);
-            if (entity instanceof ServerPlayerEntity serverPlayer) {
-                RodsFromGodEntityComponents.SLIME_BLOCK_FLYING.get(serverPlayer).bouncedOnBlock();
-            }
+            RodsFromGodEntityComponents.SLIME_BLOCK_FLYING.get(entity).bouncedOnBlock();
             return d * e;
         }
         return original;

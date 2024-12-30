@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import survivalblock.rods_from_god.client.screen.TheOneWatchScreen;
-import survivalblock.rods_from_god.common.component.TheOneWatchComponent;
+import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.item.OneWatchToRuleThemAllItem;
 

@@ -7,7 +7,7 @@ import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
 import org.ladysnake.cca.api.v3.entity.RespawnCopyStrategy;
 import survivalblock.rods_from_god.common.RodsFromGod;
-import survivalblock.rods_from_god.common.component.*;
+import survivalblock.rods_from_god.common.component.cca.entity.*;
 import survivalblock.rods_from_god.common.entity.TungstenRodEntity;
 
 public class RodsFromGodEntityComponents implements EntityComponentInitializer {

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import survivalblock.rods_from_god.client.RodsFromGodClientUtil;
-import survivalblock.rods_from_god.common.component.SolarLaserComponent;
+import survivalblock.rods_from_god.common.component.cca.entity.SolarLaserComponent;
 
 @Mixin(value = EntityRenderer.class, priority = 10000) // I'm not joking around anymore
 public class EntityRendererMixin {

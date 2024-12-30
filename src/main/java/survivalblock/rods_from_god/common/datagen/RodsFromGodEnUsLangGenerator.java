@@ -74,6 +74,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.rods_from_god.corrupted_star_fragment.keep_corrupted_star_fragment", "Keep on Explosion");
         translationBuilder.add("item.rods_from_god.the_one_watch.arguments", "Argument(s) : %s");
         translationBuilder.add("item.rods_from_god.solar_prism_headset.no_overheat", "Does Not Overheat");
+        translationBuilder.add("item.rods_from_god.solar_prism_headset.always_active", "Always Active");
         translationBuilder.add("item.rods_from_god.evoker_invoker.evoker_invoker_cooldown", "Cooldown Ticks : %s");
         translationBuilder.add("item.rods_from_god.evoker_invoker.evoker_invoker_max_sets", "Maximum Number of Fang Sets : %s");
         translationBuilder.add("item.rods_from_god.evoker_invoker.evoker_invoker_max_distance", "Maximum Distance : %s");
@@ -96,5 +97,24 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
 
         // status effect
         translationBuilder.add(RodsFromGodStatusEffects.GRAVITY_INCREASE.value(), "Gravity Increase");
+
+        // command
+        translationBuilder.add("commands.worldlever.setlifted.success", "Set to the value of lifted in the World Lever Component to %2$s for dimension %1$s");
+        translationBuilder.add("commands.worldlever.query.switching.true", "The World Lever Component of dimension %1$s is currently switching");
+        translationBuilder.add("commands.worldlever.query.switching.false", "The World Lever Component of dimension %1$s is not currently switching");
+        translationBuilder.add("commands.worldlever.query.lifted.true", "The World Lever Component of dimension %1$s is currently lifted");
+        translationBuilder.add("commands.worldlever.query.lifted.false", "The World Lever Component of dimension %1$s is not currently lifted");
+        translationBuilder.add("commands.worldlever.query.canswitch.true", "The World Lever Component of dimension %1$s can normally switch");
+        translationBuilder.add("commands.worldlever.query.canswitch.false", "The World Lever Component of dimension %1$s cannot normally switch");
+
+        // packs
+        translationBuilder.add("dataPack.rods_from_god.archimedes_lever_allow_lifting_overworld.name", "Rods from God - Archimedes Lever : Allow Lifting Overworld");
+
+        // config
+        translationBuilder.add("rods_from_god.yacl.category.main", "Rods from God");
+        translationBuilder.add("rods_from_god.yacl.category.main.tooltip", "Config");
+        translationBuilder.add("rods_from_god.yacl.group.client", "Client");
+        translationBuilder.add("rods_from_god.yacl.option.boolean.allowScreenShakingForArchimedesLever", "Archimedes Lever - Allow Screen Shaking");
+        translationBuilder.add("rods_from_god.yacl.option.boolean.allowScreenShakingForArchimedesLever.desc", "Toggles the option for screen shaking during world lifting caused by the Archimedes Lever");
     }
 }

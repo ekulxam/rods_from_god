@@ -12,7 +12,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import survivalblock.rods_from_god.common.component.SolarLaserComponent;
+import survivalblock.rods_from_god.common.component.cca.entity.SolarLaserComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.mixin.solarprismheadset.client.BeaconBlockEntityRendererAccessor;
@@ -42,10 +42,7 @@ public class RodsFromGodClientUtil {
         if (clientPlayer.isSpectator()) {
             return false;
         }
-        if (!RodsFromGodEntityComponents.SOLAR_LASER.get(clientPlayer).underTheSun(true)) {
-            return false;
-        }
-        return clientPlayer.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.SOLAR_PRISM_HEADSET);
+        return RodsFromGodEntityComponents.SOLAR_LASER.get(clientPlayer).underTheSun(true);
     }
 
     @SuppressWarnings("UnreachableCode")

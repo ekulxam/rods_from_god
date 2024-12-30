@@ -11,7 +11,7 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;
 import survivalblock.rods_from_god.common.RodsFromGod;
-import survivalblock.rods_from_god.common.component.AimingDeviceComponent;
+import survivalblock.rods_from_god.common.component.item.AimingDeviceComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;

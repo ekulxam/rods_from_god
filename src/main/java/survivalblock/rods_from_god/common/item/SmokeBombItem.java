@@ -58,7 +58,7 @@ public class SmokeBombItem extends Item implements ProjectileItem {
     public ProjectileItem.Settings getProjectileSettings() {
         return ProjectileItem.Settings.builder()
                 .uncertainty(ProjectileItem.Settings.DEFAULT.uncertainty() * 0.5F)
-                .power(ProjectileItem.Settings.DEFAULT.power() * 2.5F)
+                .power(ProjectileItem.Settings.DEFAULT.power() * 1.625F)
                 .build();
     }
 }
