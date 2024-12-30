@@ -25,6 +25,10 @@ repositories {
 		url "https://api.modrinth.com/maven"
 	}
 	maven { url 'https://jitpack.io' }
+	maven {
+		name 'Xander Maven'
+		url 'https://maven.isxander.dev/releases'
+	}
 }
 
 fabricApi {
@@ -46,7 +50,10 @@ dependencies {
 
 	include modApi("com.github.ekulxam:AtmosphericAPI:${project.atmospheric_api_tag}")
 
-	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+	modApi("dev.isxander:yet-another-config-lib:${project.yet_another_config_lib_version}")
+
+	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
+
 	modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
 
 	modCompileOnly "dev.emi:emi-fabric:${project.emi_version}"
