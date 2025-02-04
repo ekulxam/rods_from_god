@@ -8,6 +8,7 @@ import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
 import org.ladysnake.cca.api.v3.entity.RespawnCopyStrategy;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.component.cca.entity.*;
+import survivalblock.rods_from_god.common.entity.BookEntity;
 import survivalblock.rods_from_god.common.entity.TungstenRodEntity;
 
 public class RodsFromGodEntityComponents implements EntityComponentInitializer {
@@ -17,6 +18,7 @@ public class RodsFromGodEntityComponents implements EntityComponentInitializer {
     public static final ComponentKey<TungstenRodLandedComponent> TUNGSTEN_ROD_LANDED = ComponentRegistry.getOrCreate(RodsFromGod.id("tungsten_rod_landed"), TungstenRodLandedComponent.class);
     public static final ComponentKey<SolarLaserComponent> SOLAR_LASER = ComponentRegistry.getOrCreate(RodsFromGod.id("solar_laser"), SolarLaserComponent.class);
     public static final ComponentKey<SlimeBlockFlyingComponent> SLIME_BLOCK_FLYING = ComponentRegistry.getOrCreate(RodsFromGod.id("slime_block_flying"), SlimeBlockFlyingComponent.class);
+    public static final ComponentKey<BookTargetComponent> BOOK_TARGET = ComponentRegistry.getOrCreate(RodsFromGod.id("book_target"), BookTargetComponent.class);
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
@@ -25,5 +27,6 @@ public class RodsFromGodEntityComponents implements EntityComponentInitializer {
         registry.registerFor(TungstenRodEntity.class, TUNGSTEN_ROD_LANDED, TungstenRodLandedComponent::new);
         registry.registerForPlayers(SOLAR_LASER, SolarLaserComponent::new, RespawnCopyStrategy.NEVER_COPY);
         registry.registerFor(Entity.class, SLIME_BLOCK_FLYING, SlimeBlockFlyingComponent::new);
+        registry.registerFor(BookEntity.class, BOOK_TARGET, BookTargetComponent::new);
     }
 }

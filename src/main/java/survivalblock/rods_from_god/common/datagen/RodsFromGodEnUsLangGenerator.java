@@ -19,6 +19,8 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodEntityTypes.TUNGSTEN_ROD, "Tungsten Rod");
         translationBuilder.add(RodsFromGodEntityTypes.SMOKE_BOMB, "Smoke Bomb");
         translationBuilder.add(RodsFromGodEntityTypes.ROD_LANDING_MARKER, "Tungsten Rod Landing Marker");
+        translationBuilder.add(RodsFromGodEntityTypes.BOOK, "Omnipotent Arcane Book");
+        translationBuilder.add(RodsFromGodEntityTypes.ENCHANTED_ARROW, "Enchanted Arrow");
 
         // damage
         translationBuilder.add("death.attack.rods_from_god.kinetic_explosion", "%1$s was struck by a kinetic bombardment");

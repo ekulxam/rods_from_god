@@ -1,6 +1,7 @@
 package survivalblock.rods_from_god.client;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -11,10 +12,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import survivalblock.rods_from_god.client.entity.OctagonalPrismEntityModel;
-import survivalblock.rods_from_god.client.entity.OctagonalPrismEntityRenderer;
-import survivalblock.rods_from_god.client.entity.SmallPlaneEntityModel;
-import survivalblock.rods_from_god.client.entity.SmallPlaneEntityRenderer;
+import survivalblock.rods_from_god.client.entity.*;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.compat.config.RodsFromGodConfig;
 import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
@@ -39,6 +37,8 @@ public class RodsFromGodClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(ROD_LANDING_MARKER, SmallPlaneEntityModel::getTexturedModelData);
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.ROD_LANDING_MARKER,
 				(ctx -> new SmallPlaneEntityRenderer(ctx, new SmallPlaneEntityModel(ctx.getPart(ROD_LANDING_MARKER)), 0.5f)));
+		EntityRendererRegistry.register(RodsFromGodEntityTypes.BOOK, BookEntityRenderer::new);
+		EntityRendererRegistry.register(RodsFromGodEntityTypes.ENCHANTED_ARROW, EnchantedArrowEntityRenderer::new);
 		ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipType, list) -> {
 			if (stack.isOf(RodsFromGodItems.THE_ONE_WATCH)) {
 				if (Screen.hasShiftDown()) {

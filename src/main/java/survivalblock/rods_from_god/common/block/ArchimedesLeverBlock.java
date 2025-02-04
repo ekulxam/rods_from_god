@@ -3,6 +3,7 @@ package survivalblock.rods_from_god.common.block;
 import com.mojang.serialization.MapCodec;
 
 import java.util.List;
+import java.util.function.Function;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,8 +31,8 @@ public class ArchimedesLeverBlock extends ExtendedLeverBlock {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends ExtendedLeverBlock> T getInstance() {
-        return (T) this;
+    public ArchimedesLeverBlock getInstance() {
+        return this;
     }
 
     @Override

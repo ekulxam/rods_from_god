@@ -8,7 +8,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.crash.CrashException;
@@ -33,7 +32,7 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
     public static final String EXPLOSION_POS_NBT_KEY = "explosionPos";
     public static final String MAXIMUM_EXPLOSIONS_NBT_KEY = "maxExplosions";
     public static final String EXPLOSION_POWER_NBT_KEY = "explosionPower";
-    public static final String INVERSE_EXPLOSION_DAMAGE_FACTOR = "inverseExplosionDamageFactor";
+    public static final String INVERSE_EXPLOSION_DAMAGE_FACTOR_NBT_KEY = "inverseExplosionDamageFactor";
     public static final String FIRE_NBT_KEY = "createsFire";
     public static final int DEFAULT_MAX_EXPLOSIONS = 5;
     public static final int DEFAULT_EXPLOSION_POWER = 10;
@@ -96,8 +95,8 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         if (nbt.contains(EXPLOSION_POWER_NBT_KEY)) {
             this.explosionPower = nbt.getFloat(EXPLOSION_POWER_NBT_KEY);
         }
-        if (nbt.contains(INVERSE_EXPLOSION_DAMAGE_FACTOR)) {
-            this.inverseExplosionDamageFactor = nbt.getFloat(INVERSE_EXPLOSION_DAMAGE_FACTOR);
+        if (nbt.contains(INVERSE_EXPLOSION_DAMAGE_FACTOR_NBT_KEY)) {
+            this.inverseExplosionDamageFactor = nbt.getFloat(INVERSE_EXPLOSION_DAMAGE_FACTOR_NBT_KEY);
         }
         if (nbt.contains(FIRE_NBT_KEY)) {
             this.createsFire = nbt.getBoolean(FIRE_NBT_KEY);
@@ -127,7 +126,7 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         nbt.putInt(EXPLOSION_COUNTER_NBT_KEY, this.explosionCounter);
         nbt.putInt(MAXIMUM_EXPLOSIONS_NBT_KEY, this.maxExplosions);
         nbt.putFloat(EXPLOSION_POWER_NBT_KEY, this.explosionPower);
-        nbt.putFloat(INVERSE_EXPLOSION_DAMAGE_FACTOR, this.inverseExplosionDamageFactor);
+        nbt.putFloat(INVERSE_EXPLOSION_DAMAGE_FACTOR_NBT_KEY, this.inverseExplosionDamageFactor);
         nbt.putBoolean(FIRE_NBT_KEY, this.createsFire);
         nbt.put(EXPLOSION_POS_NBT_KEY, this.toNbtList(this.explosionPos.getX(), this.explosionPos.getY(), this.explosionPos.getZ()));
     }
