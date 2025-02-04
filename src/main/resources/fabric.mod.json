@@ -8,7 +8,7 @@
 		"Survivalblock"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://modrinth.com/mod/rods-from-god",
 		"sources": "https://github.com/ekulxam/rods_from_god",
 		"issues": "https://github.com/ekulxam/rods_from_god/issues"
 	},
@@ -28,8 +28,14 @@
 		"cardinal-components-entity": [
 			"survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents"
 		],
+		"cardinal-components-world": [
+			"survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents"
+		],
 		"emi": [
 			"survivalblock.rods_from_god.common.compat.RodsFromGodEMIPlugin"
+		],
+		"modmenu": [
+			"survivalblock.rods_from_god.common.compat.config.RodsFromGodModMenuCompat"
 		]
 	},
 	"mixins": [
@@ -46,7 +52,10 @@
 			"rods_from_god:death_explosion",
 			"rods_from_god:smoke_screen",
 			"rods_from_god:tungsten_rod_landed",
-			"rods_from_god:solar_laser"
+			"rods_from_god:solar_laser",
+			"rods_from_god:slime_block_flying",
+			"rods_from_god:book_target",
+			"rods_from_god:world_lever"
 		]
 	}
 }

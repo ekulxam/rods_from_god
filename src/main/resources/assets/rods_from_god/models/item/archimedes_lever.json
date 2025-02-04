@@ -1,0 +1,13 @@
+{
+  "parent": "rods_from_god:block/archimedes_lever",
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [0, 3, 2.5],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "thirdperson_lefthand": {
+      "translation": [0, 3, 2.5],
+      "scale": [0.4, 0.4, 0.4]
+    }
+  }
+}

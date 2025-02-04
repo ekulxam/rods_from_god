@@ -1,36 +1,40 @@
 {
   "required": true,
   "package": "survivalblock.rods_from_god.mixin",
+  "plugin": "survivalblock.rods_from_god.common.compat.RodsFromGodMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "archimedeslever.LeverBlockMixin",
+    "book.PersistentProjectileEntityMixin",
     "corruptedstarfragment.DamageSourceAccessor",
     "corruptedstarfragment.EntityAccessor",
     "corruptedstarfragment.LivingEntityMixin",
     "lightningsplashpotion.BrewingRecipeRegistryMixin",
     "lightningsplashpotion.PotionContentsComponentAccessor",
     "lightningsplashpotion.PotionEntityMixin",
-    "solarprismheadset.ServerWorldAccessor",
+    "superbouncyslimeblock.ServerPlayNetworkHandlerMixin",
     "superbouncyslimeblock.SlimeBlockMixin",
     "theonewatch.ServerTickManagerMixin",
     "theonewatch.TickCommandMixin",
-    "tungstenrod.EntityAttributesMixin",
-    "tungstenrod.EntityTrackerEntryMixin",
-    "util.PlayerEntityMixin"
+    "tungstenrod.EntityAttributesMixin"
   ],
-  "injectors": {
-    "defaultRequire": 1
-  },
   "client": [
+    "archimedeslever.client.DebugHudMixin",
+    "archimedeslever.client.WorldRendererMixin",
+    "book.client.ProjectileEntityRendererMixin",
+    "compat.client.RodsFromGodConfigMixin",
     "corruptedstarfragment.client.LivingEntityRendererMixin",
     "corruptedstarfragment.client.PlayerEntityRendererMixin",
     "lightningsplashpotion.client.ItemColorsMixin",
     "smokebomb.client.InGameHudMixin",
-    "solarprismheadset.client.BeaconBlockEntityRendererAccessor",
+    "solarprismheadset.client.BeaconBlockEntityRendererMixin",
     "solarprismheadset.client.EntityRendererMixin",
     "solarprismheadset.client.InGameHudMixin",
     "solarprismheadset.client.PlayerEntityRendererMixin",
     "superbouncyslimeblock.client.RenderLayersMixin",
-    "theonewatch.client.OneWatchToRuleThemAllMixin",
-    "tungstenrod.client.ClientPlayNetworkHandlerMixin"
-  ]
+    "theonewatch.client.OneWatchToRuleThemAllMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
