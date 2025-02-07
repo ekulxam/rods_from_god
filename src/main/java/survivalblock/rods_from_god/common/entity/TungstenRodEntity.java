@@ -41,7 +41,7 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
     public static final float DEFAULT_SCALE = 16.0f;
     public static final double DEFAULT_GRAVITY = 0.1d;
 
-    protected float prevScale = DEFAULT_SCALE;
+    protected float prevScale = 0;
     protected boolean shouldExplode = false;
     protected int explosionCounter = 0;
     protected Vec3d explosionPos = Vec3d.ZERO;

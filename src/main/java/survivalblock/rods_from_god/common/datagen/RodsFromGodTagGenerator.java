@@ -46,20 +46,6 @@ public class RodsFromGodTagGenerator {
         }
     }
 
-    public static class RodsFromGodItemTagGenerator extends FabricTagProvider.ItemTagProvider {
-        public RodsFromGodItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-            super(output, registriesFuture);
-        }
-
-        @Override
-        protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-            getOrCreateTagBuilder(RodsFromGodTags.BOOK_UTILITY).addOptional(Registries.ITEM.getId(Items.BOOK));
-            getOrCreateTagBuilder(RodsFromGodTags.BOOK_UTILITY).addOptional(Registries.ITEM.getId(Items.ENCHANTED_BOOK));
-            getOrCreateTagBuilder(RodsFromGodTags.BOOK_UTILITY).addOptional(Registries.ITEM.getId(Items.ENCHANTING_TABLE));
-            getOrCreateTagBuilder(RodsFromGodTags.BOOK_UTILITY).addOptional(Registries.ITEM.getId(RodsFromGodItems.EVOKER_INVOKER));
-        }
-    }
-
     public static class RodsFromGodWorldTagGenerator extends FabricTagProvider<DimensionType> {
         public RodsFromGodWorldTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
             super(output, RegistryKeys.DIMENSION_TYPE, registriesFuture);

@@ -2,21 +2,32 @@ package survivalblock.rods_from_god.common;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.mob.SlimeEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.AtmosphericAPI;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.render.screenshake.ScreenShakePreventerRegistry;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.resource.AtmosphericResourceManagerHelper;
+import survivalblock.rods_from_god.client.networking.BookTargetC2SPayload;
 import survivalblock.rods_from_god.client.networking.TheOneWatchComponentC2SPayload;
+import survivalblock.rods_from_god.common.block.SynthesisTable;
 import survivalblock.rods_from_god.common.compat.config.RodsFromGodConfig;
+import survivalblock.rods_from_god.common.entity.BookEntity;
 import survivalblock.rods_from_god.common.init.RodsFromGodCommands;
 import survivalblock.rods_from_god.common.init.*;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;
@@ -62,12 +73,16 @@ public class RodsFromGod implements ModInitializer {
 		RodsFromGodStatusEffects.init();
 		RodsFromGodStatusEffects.RodsFromGodPotions.init(); // I don't understand how classloading works here; is this even necessary?
 		RodsFromGodCommands.init();
+
+		SynthesisTable.SynthesisScreenHandler.init();
 		AimingDeviceFireRecipe.init();
 		AimingDeviceUndoFireRecipe.init();
 
 		PayloadTypeRegistry.playC2S().register(TheOneWatchComponentC2SPayload.ID, TheOneWatchComponentC2SPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(BookTargetC2SPayload.ID, BookTargetC2SPayload.CODEC);
 
 		ServerPlayNetworking.registerGlobalReceiver(TheOneWatchComponentC2SPayload.ID, TheOneWatchComponentC2SPayload.Receiver.INSTANCE);
+		ServerPlayNetworking.registerGlobalReceiver(BookTargetC2SPayload.ID, BookTargetC2SPayload.Receiver.INSTANCE);
 
 		FabricLoader.getInstance().getModContainer(MOD_ID)
 				.ifPresent(RodsFromGod::registerBuiltinDataPacks);

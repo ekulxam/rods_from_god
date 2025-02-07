@@ -17,7 +17,7 @@ import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 @SuppressWarnings("unused")
 public class EnchantedArrowEntity extends PersistentProjectileEntity {
 
-    public static final float DEFAULT_SCALE = 4;
+    public static final float DEFAULT_SCALE = 3.5f;
     private int duration = 200;
 
     public EnchantedArrowEntity(EntityType<? extends PersistentProjectileEntity> entityType, World world) {

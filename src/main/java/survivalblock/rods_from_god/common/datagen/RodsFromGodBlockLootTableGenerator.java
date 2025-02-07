@@ -17,5 +17,6 @@ public class RodsFromGodBlockLootTableGenerator extends FabricBlockLootTableProv
     public void generate() {
         this.addDrop(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK);
         this.addDrop(RodsFromGodBlocks.ARCHIMEDES_LEVER);
+        this.addDrop(RodsFromGodBlocks.SYNTHESIS_TABLE);
     }
 }

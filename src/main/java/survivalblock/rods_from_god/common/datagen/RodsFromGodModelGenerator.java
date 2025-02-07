@@ -22,6 +22,7 @@ public class RodsFromGodModelGenerator extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleState(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(RodsFromGodBlocks.SYNTHESIS_TABLE);
         excludeAndRegister(RodsFromGodBlocks.ARCHIMEDES_LEVER, blockStateModelGenerator, this::registerCustomLever);
     }
 

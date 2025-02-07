@@ -5,29 +5,36 @@ import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.entity.EntityWithAttributesImpl;
+import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.component.cca.entity.BookTargetComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
-import survivalblock.rods_from_god.common.init.RodsFromGodTags;
+import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
+
+import java.util.function.Function;
 
 public class BookEntity extends EntityWithAttributesImpl {
+
+    public static final Identifier SCALE_MODIFIER_ID = RodsFromGod.id("book_scale");
     public static final String PROJECTILE_DURATION_KEY = "projectileDuration";
     public static final float DEFAULT_SCALE = 1.0F;
+    public static final Function<PlayerEntity, Boolean> CAN_EDIT = PlayerEntity::isCreativeLevelTwoOp;
 
     private static final Random RANDOM = Random.create();
 
-    protected float prevScale = DEFAULT_SCALE;
+    protected float prevScale = 0;
     public int ticks;
     public float nextPageAngle;
     public float pageAngle;
@@ -42,6 +49,10 @@ public class BookEntity extends EntityWithAttributesImpl {
 
     public BookEntity(EntityType<?> type, World world) {
         super(type, world);
+    }
+
+    public BookEntity(World world) {
+        this(RodsFromGodEntityTypes.BOOK, world);
     }
 
     @Override
@@ -140,8 +151,8 @@ public class BookEntity extends EntityWithAttributesImpl {
             h = MathHelper.clamp(h, -i, i);
             this.flipTurn = this.flipTurn + (h - this.flipTurn) * 0.9F;
             this.nextPageAngle = this.nextPageAngle + this.flipTurn;
-        } else if (entity != null && this.age % 3 == 0) {
-            Vec3d vec3d = Vec3d.fromPolar(-this.getPitch(), this.getYaw()).normalize().addRandom(this.random, 0.1f).multiply(5);
+        } else if (entity != null && this.age % 4 == 0) {
+            Vec3d vec3d = Vec3d.fromPolar(-this.getPitch(), this.getYaw()).normalize().addRandom(this.random, 0.05f).multiply(5);
             Vec3d arrowPos = pos.add(vec3d);
             EnchantedArrowEntity arrow = new EnchantedArrowEntity(world, arrowPos.getX(), arrowPos.getY(), arrowPos.getZ(), Items.ARROW.getDefaultStack(), null);
             arrow.setCritical(true);
@@ -156,31 +167,8 @@ public class BookEntity extends EntityWithAttributesImpl {
         }
     }
 
-    @Override
-    public boolean damage(DamageSource source, float amount) {
-        // use /damage, I guess
-        if (source.getAttacker() instanceof PlayerEntity player && !this.getWorld().isClient()) {
-            this.switchTargetingMode(player);
-        }
-        return super.damage(source, amount);
-    }
-
-    public void switchTargetingMode(PlayerEntity player) {
-        if (!player.isCreative() && !player.isSpectator()) {
-            return;
-        }
-        ItemStack stack = player.getWeaponStack();
-        if (stack.isIn(RodsFromGodTags.BOOK_UTILITY)) {
-            this.setOnlyTargetsPlayers(!this.getComponent().onlyTargetsPlayers());
-        }
-    }
-
     public BookTargetComponent getComponent() {
         return RodsFromGodEntityComponents.BOOK_TARGET.get(this);
-    }
-
-    public void setOnlyTargetsPlayers(boolean onlyTargetsPlayers) {
-        this.getComponent().setOnlyTargetsPlayers(onlyTargetsPlayers);
     }
 
     public float getScale() {
@@ -190,17 +178,30 @@ public class BookEntity extends EntityWithAttributesImpl {
 
     @Override
     public final EntityDimensions getDimensions(EntityPose pose) {
-        return this.getBaseDimensions(pose).scaled(this.getScale());
-    }
-
-    @SuppressWarnings("unused")
-    protected EntityDimensions getBaseDimensions(EntityPose pose) {
-        return this.getType().getDimensions();
+        return super.getDimensions(pose).scaled(this.getScale());
     }
 
     @Override
     public AttributeContainer getDefaultAttributeContainer() {
         return new AttributeContainer(DefaultAttributeContainer.builder()
                 .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE).build());
+    }
+
+    public int getProjectileDuration() {
+        return this.projectileDuration;
+    }
+
+    public void setProjectileDuration(int projectileDuration) {
+        this.projectileDuration = projectileDuration;
+    }
+
+    @Override
+    public ActionResult interact(PlayerEntity player, Hand hand) {
+        return ActionResult.success(player.getWorld().isClient);
+    }
+
+    @Override
+    public boolean canHit() {
+        return !this.isRemoved();
     }
 }

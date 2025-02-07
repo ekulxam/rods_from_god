@@ -55,6 +55,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK, "Super Bouncy Slime Block");
         translationBuilder.add(RodsFromGodBlocks.ARCHIMEDES_LEVER, "The Lever that Moves the World");
         translationBuilder.add("block.rods_from_god.archimedes_lever.tooltip", "\"Give me a lever long enough and a fulcrum on which to place it, and I shall move the world.\" - Archimedes");
+        translationBuilder.add(RodsFromGodBlocks.SYNTHESIS_TABLE, "Synthesis Table");
 
         // screen
         translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand", "Subcommand");
@@ -64,6 +65,10 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.sprint", "Sprint (1 time argument or stop)");
         translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.freeze", "Freeze (no arguments)");
         translationBuilder.add("item.rods_from_god.the_one_watch.screen.subcommand.unfreeze", "Unfreeze (no arguments)");
+
+        translationBuilder.add("entity.rods_from_god.book.screen.onlyTargetsPlayers", "Only Targets Players");
+        translationBuilder.add("entity.rods_from_god.book.screen.onlyTargetsPlayers.true", "True");
+        translationBuilder.add("entity.rods_from_god.book.screen.onlyTargetsPlayers.false", "False");
 
         // components
         translationBuilder.add("item.rods_from_god.aiming_device.aiming_device_cooldown", "Cooldown Ticks : %s");

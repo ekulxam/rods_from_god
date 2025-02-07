@@ -19,7 +19,6 @@ public class RodsFromGodDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(RodsFromGodBlockLootTableGenerator::new);
 		pack.addProvider(RodsFromGodRecipeGenerator::new);
 		pack.addProvider(RodsFromGodTagGenerator.RodsFromGodDamageTypeTagGenerator::new);
-		pack.addProvider(RodsFromGodTagGenerator.RodsFromGodItemTagGenerator::new);
 		FabricDataGenerator.Pack datapackForDimensionTags = FabricDataPackGenerator.createBuiltinDataPack(fabricDataGenerator, RodsFromGod.ARCHIMEDES_LEVER_ALLOW_OVERWORLD);
 		datapackForDimensionTags.addProvider(RodsFromGodTagGenerator.RodsFromGodWorldTagGenerator::new);
 	}

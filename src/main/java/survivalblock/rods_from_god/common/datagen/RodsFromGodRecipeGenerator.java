@@ -6,6 +6,7 @@ import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceUndoFireRecipe;
@@ -53,6 +54,34 @@ public class RodsFromGodRecipeGenerator extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(Items.NETHERITE_HELMET))
                 .input('D', Items.NETHER_STAR).criterion(FabricRecipeProvider.hasItem(Items.NETHER_STAR),
                         FabricRecipeProvider.conditionsFromItem(Items.NETHER_STAR)).offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, RodsFromGodBlocks.SYNTHESIS_TABLE)
+                .input(Items.EXPERIENCE_BOTTLE).criterion(FabricRecipeProvider.hasItem(Items.EXPERIENCE_BOTTLE),
+                        FabricRecipeProvider.conditionsFromItem(Items.EXPERIENCE_BOTTLE))
+                .input(Items.BEACON).criterion(FabricRecipeProvider.hasItem(Items.BEACON),
+                        FabricRecipeProvider.conditionsFromItem(Items.BEACON))
+                .input(Items.ECHO_SHARD).criterion(FabricRecipeProvider.hasItem(Items.ECHO_SHARD),
+                        FabricRecipeProvider.conditionsFromItem(Items.ECHO_SHARD))
+                .input(Items.END_CRYSTAL).criterion(FabricRecipeProvider.hasItem(Items.END_CRYSTAL),
+                        FabricRecipeProvider.conditionsFromItem(Items.END_CRYSTAL))
+                .input(Items.CRAFTING_TABLE).criterion(FabricRecipeProvider.hasItem(Items.CRAFTING_TABLE),
+                        FabricRecipeProvider.conditionsFromItem(Items.CRAFTING_TABLE))
+                .input(Items.NETHERITE_BLOCK).criterion(FabricRecipeProvider.hasItem(Items.NETHERITE_BLOCK),
+                        FabricRecipeProvider.conditionsFromItem(Items.NETHERITE_BLOCK))
+                .input(Items.TOTEM_OF_UNDYING).criterion(FabricRecipeProvider.hasItem(Items.TOTEM_OF_UNDYING),
+                        FabricRecipeProvider.conditionsFromItem(Items.TOTEM_OF_UNDYING))
+                .input(Items.CONDUIT).criterion(FabricRecipeProvider.hasItem(Items.CONDUIT),
+                        FabricRecipeProvider.conditionsFromItem(Items.CONDUIT))
+                .input(Items.SHULKER_SHELL).criterion(FabricRecipeProvider.hasItem(Items.SHULKER_SHELL),
+                        FabricRecipeProvider.conditionsFromItem(Items.SHULKER_SHELL)).offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, RodsFromGodItems.AIMING_DEVICE).pattern("  A  ").pattern(" BCB ").pattern("ACDCA").pattern(" BCB ").pattern("  A  ")
+                .input('A', Items.IRON_INGOT).criterion(FabricRecipeProvider.hasItem(Items.IRON_INGOT),
+                        FabricRecipeProvider.conditionsFromItem(Items.IRON_INGOT))
+                .input('B', Items.GLASS).criterion(FabricRecipeProvider.hasItem(Items.GLASS),
+                        FabricRecipeProvider.conditionsFromItem(Items.GLASS))
+                .input('C', Items.CALIBRATED_SCULK_SENSOR).criterion(FabricRecipeProvider.hasItem(Items.CALIBRATED_SCULK_SENSOR),
+                        FabricRecipeProvider.conditionsFromItem(Items.CALIBRATED_SCULK_SENSOR))
+                .input('D', Items.RESPAWN_ANCHOR).criterion(FabricRecipeProvider.hasItem(Items.RESPAWN_ANCHOR),
+                        FabricRecipeProvider.conditionsFromItem(Items.RESPAWN_ANCHOR)).offerTo(exporter);
         ComplexRecipeJsonBuilder.create(AimingDeviceFireRecipe::new).offerTo(exporter, "aiming_device_fire");
         ComplexRecipeJsonBuilder.create(AimingDeviceUndoFireRecipe::new).offerTo(exporter, "aiming_device_undo_fire");
     }

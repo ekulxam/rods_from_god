@@ -8,10 +8,12 @@ import net.minecraft.sound.BlockSoundGroup;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.block.ArchimedesLeverBlock;
 import survivalblock.rods_from_god.common.block.SuperBouncySlimeBlock;
+import survivalblock.rods_from_god.common.block.SynthesisTable;
 
 public class RodsFromGodBlocks {
 
     public static final Block SUPER_BOUNCY_SLIME_BLOCK = registerBlock("super_bouncy_slime_block", new SuperBouncySlimeBlock(Blocks.SLIME_BLOCK.getSettings()));
+    public static final Block SYNTHESIS_TABLE = registerBlock("synthesis_table", new SynthesisTable(Blocks.CRAFTING_TABLE.getSettings()));
     public static final ArchimedesLeverBlock ARCHIMEDES_LEVER = registerBlock("archimedes_lever", new ArchimedesLeverBlock(AbstractBlock.Settings.create().noCollision().strength(0.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).pistonBehavior(PistonBehavior.DESTROY)));
 
     @SuppressWarnings("SameParameterValue")

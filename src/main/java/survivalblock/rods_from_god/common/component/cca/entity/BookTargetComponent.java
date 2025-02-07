@@ -36,12 +36,13 @@ public class BookTargetComponent implements AutoSyncedComponent {
         return this.onlyTargetsPlayers;
     }
 
-    public void setOnlyTargetsPlayers(boolean onlyTargetsPlayers) {
-        this.onlyTargetsPlayers = onlyTargetsPlayers;
-        RodsFromGodEntityComponents.BOOK_TARGET.sync(this.obj);
-    }
-
     public double getRange() {
         return this.range;
+    }
+
+    public void setValues(boolean onlyTargetsPlayers, double range) {
+        this.onlyTargetsPlayers = onlyTargetsPlayers;
+        this.range = range;
+        RodsFromGodEntityComponents.BOOK_TARGET.sync(this.obj);
     }
 }

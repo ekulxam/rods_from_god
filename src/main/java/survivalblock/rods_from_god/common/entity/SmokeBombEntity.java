@@ -35,12 +35,20 @@ public class SmokeBombEntity extends ThrownItemEntity {
         super(entityType, world);
     }
 
-    public SmokeBombEntity(World world, LivingEntity owner) {
+    protected SmokeBombEntity(EntityType<? extends SmokeBombEntity> entityType, World world, LivingEntity owner) {
         super(RodsFromGodEntityTypes.SMOKE_BOMB, owner, world);
     }
 
-    public SmokeBombEntity(World world, double x, double y, double z) {
+    protected SmokeBombEntity(EntityType<? extends SmokeBombEntity> entityType, World world, double x, double y, double z) {
         super(RodsFromGodEntityTypes.SMOKE_BOMB, x, y, z, world);
+    }
+
+    public SmokeBombEntity(World world, LivingEntity owner) {
+        this(RodsFromGodEntityTypes.SMOKE_BOMB, world, owner);
+    }
+
+    public SmokeBombEntity(World world, double x, double y, double z) {
+        this(RodsFromGodEntityTypes.SMOKE_BOMB, world, x, y, z);
     }
 
     @Override

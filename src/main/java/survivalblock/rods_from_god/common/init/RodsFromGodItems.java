@@ -34,8 +34,8 @@ public class RodsFromGodItems {
     public static final Item THE_ONE_WATCH = registerItem("the_one_watch", new OneWatchToRuleThemAllItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).component(RodsFromGodDataComponentTypes.THE_ONE_WATCH, TheOneWatchComponent.DEFAULT_INSTANCE)));
     public static final Item EVOKER_INVOKER = registerItem("evoker_invoker", new EvokerInvokerItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(RodsFromGodDataComponentTypes.EVOKER_INVOKER, EvokerInvokerComponent.DEFAULT_INSTANCE)));
     public static final Item SOLAR_PRISM_HEADSET = registerItem("solar_prism_headset", new SolarPrismHeadsetItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
-    @SuppressWarnings("unused")
     public static final Item ARCHIMEDES_LEVER = registerBlockItem(RodsFromGodBlocks.ARCHIMEDES_LEVER, new Item.Settings().rarity(Rarity.EPIC));
+    public static final Item SYNTHESIS_TABLE = registerBlockItem(RodsFromGodBlocks.SYNTHESIS_TABLE, new Item.Settings());
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, RodsFromGod.id(name), item);
@@ -66,6 +66,9 @@ public class RodsFromGodItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
             entries.addAfter(Items.LEVER, ARCHIMEDES_LEVER);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+            entries.addAfter(Items.CRAFTING_TABLE, SYNTHESIS_TABLE);
         });
         /*
         DO NOT add dispenser behavior for the solar prism headset because mobs should not be wearing it, only players should
