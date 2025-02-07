@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.client.RodsFromGodClientUtil;
 
-@Debug(export = true)
 @Mixin(BeaconBlockEntityRenderer.class)
 public class BeaconBlockEntityRendererMixin {
 

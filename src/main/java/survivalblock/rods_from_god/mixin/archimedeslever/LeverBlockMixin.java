@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.common.block.ArchimedesLeverBlock;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 
-@Debug(export = true)
 @Mixin(LeverBlock.class)
 public class LeverBlockMixin {
 

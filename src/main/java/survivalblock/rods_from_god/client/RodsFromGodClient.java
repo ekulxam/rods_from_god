@@ -5,16 +5,19 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import survivalblock.rods_from_god.client.entity.*;
+import survivalblock.rods_from_god.client.screen.SynthesisScreen;
 import survivalblock.rods_from_god.common.RodsFromGod;
-import survivalblock.rods_from_god.common.compat.config.RodsFromGodConfig;
+import survivalblock.rods_from_god.common.block.SynthesisTable;
 import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
@@ -39,6 +42,9 @@ public class RodsFromGodClient implements ClientModInitializer {
 				(ctx -> new SmallPlaneEntityRenderer(ctx, new SmallPlaneEntityModel(ctx.getPart(ROD_LANDING_MARKER)), 0.5f)));
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.BOOK, BookEntityRenderer::new);
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.ENCHANTED_ARROW, EnchantedArrowEntityRenderer::new);
+
+		HandledScreens.register(SynthesisTable.SynthesisScreenHandler.TYPE, SynthesisScreen::new);
+
 		ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipType, list) -> {
 			if (stack.isOf(RodsFromGodItems.THE_ONE_WATCH)) {
 				if (Screen.hasShiftDown()) {

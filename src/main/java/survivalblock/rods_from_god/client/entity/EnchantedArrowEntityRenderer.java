@@ -28,7 +28,6 @@ public class EnchantedArrowEntityRenderer<T extends EnchantedArrowEntity> extend
         matrixStack.push();
         float scale = arrow.getScale();
         matrixStack.scale(scale, scale, scale);
-        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(arrow.age));
         super.render(arrow, f, g, matrixStack, vertexConsumerProvider, i);
         matrixStack.pop();
     }
