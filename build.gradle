@@ -11,6 +11,7 @@ base {
 }
 
 repositories {
+	mavenLocal();
 	mavenCentral()
 	maven {
 		name "ladysnake"
@@ -48,7 +49,7 @@ dependencies {
 	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 	include modApi("org.ladysnake.cardinal-components-api:cardinal-components-world:${project.cardinal_components_version}")
 
-	include modApi("com.github.ekulxam:AtmosphericAPI:${project.atmospheric_api_tag}")
+	include modApi("survivalblock.atmosphere:atmospheric_api:${project.atmospheric_api_tag}")
 
 	modApi("dev.isxander:yet-another-config-lib:${project.yet_another_config_lib_version}")
 

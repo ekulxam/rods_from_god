@@ -3,23 +3,23 @@ I am the kinetic bombardment that is approaching...
 This project adds miscellaneous superweapons for modfest.
 
 ## Lore
-In ancient times did fall the Rods from sky
-Their impacts toppled peaks and shattered stone
-They came from restless lords in heavens' high
-To end an Age in flame and splintered bone
+In ancient times did fall the Rods from sky</br>
+Their impacts toppled peaks and shattered stone</br>
+They came from restless lords in heavens' high</br>
+To end an Age in flame and splintered bone</br>
 
-When weary gods grew old, ready for rest
-They sought an heir to take their golden crown
-Through frost and fire the heir was put to test
-Until, at last, a successor was found
+When weary gods grew old, ready for rest</br>
+They sought an heir to take their golden crown</br>
+Through frost and fire the heir was put to test</br>
+Until, at last, a successor was found</br>
 
-As for the artifacts they owned and used
-Left in the sands of time to gather dust
-Fell to the world in meteors they fused
-Buried in geodes deep within the crust
+As for the artifacts they owned and used</br>
+Left in the sands of time to gather dust</br>
+Fell to the world in meteors they fused</br>
+Buried in geodes deep within the crust</br>
 
-Powers trapped in the ne'er-ending void
-Ensnared within the worlds of the cuboid
+Powers trapped in the ne'er-ending void</br>
+Ensnared within the worlds of the cuboid</br>
 
 ## Items / Blocks / Entities / Effects
 1. Aiming Device and Tungsten Rods - The aiming device is an item that "aims" the Tungsten Rods. Right-click on a block to summon a landing marker, which tells players where the rod will land. The rod will hit the ground shortly after and explode. Explosion power (damage and knockback), an inverse damage factor, creating fire, cooldown, and maximum explosions are all configurable via item components on the aiming device or directly through NBT for the rod.
@@ -31,5 +31,6 @@ Ensnared within the worlds of the cuboid
 7. Gravity Increase - Status Effect which makes you fall faster. It can be brewed with an ancient debris and a thick potion.
 8. The Illager's Guide to Spellcasting : Volume 1 : Fangs - On use, summons 3 sets of vanilla Evoker Fangs, similar to the Evoker's attack. The evoker fangs will automatically find and target the nearest attackable (does not target creative/spectator or invulnerable) entities.
 9. Solar Prism Headset - TLDR: I put a beacon in a helmet and made it do damage and overheat. ======= Long form if you want to read: The Solar Prism Headset is an equippable item that renders a beacon beam from the player's eye position as a solar laser. The solar laser only activates during the day and when the player is standing in the sun. It deals damage to entities every tick and sets them on fire. However, it can overheat (shown by an overlay) and when it does, you'd better take the helmet off fast if you don't want to die.
-
+10. Archimedes Lever - Makes the celestial bodies (sun and moon) render a lot bigger when on (to simulate the world being "lifted" to the cosmos).
+11. Synthesis Table - your average 5x5 crafting table.
 Created for Modfest 1.21. This mod requires Sinytra Connector and FFAPI (Forgified Fabric API) on NeoForge.
