@@ -14,6 +14,10 @@
     "lightningsplashpotion.PotionEntityMixin",
     "superbouncyslimeblock.ServerPlayNetworkHandlerMixin",
     "superbouncyslimeblock.SlimeBlockMixin",
+    "synthesistable.CraftingScreenHandlerAccessor",
+    "synthesistable.CraftingScreenHandlerMixin",
+    "synthesistable.RawShapedRecipeMixin",
+    "synthesistable.RawShapedRecipeMixin$DataMixin",
     "theonewatch.ServerTickManagerMixin",
     "theonewatch.TickCommandMixin",
     "tungstenrod.EntityAttributesMixin"
@@ -21,6 +25,7 @@
   "client": [
     "archimedeslever.client.DebugHudMixin",
     "archimedeslever.client.WorldRendererMixin",
+    "book.client.BookEntityMixin",
     "book.client.ProjectileEntityRendererMixin",
     "compat.client.RodsFromGodConfigMixin",
     "corruptedstarfragment.client.LivingEntityRendererMixin",
@@ -31,7 +36,7 @@
     "solarprismheadset.client.EntityRendererMixin",
     "solarprismheadset.client.InGameHudMixin",
     "solarprismheadset.client.PlayerEntityRendererMixin",
-    "superbouncyslimeblock.client.RenderLayersMixin",
+    "synthesistable.client.CraftingScreenMixin",
     "theonewatch.client.OneWatchToRuleThemAllMixin"
   ],
   "injectors": {
