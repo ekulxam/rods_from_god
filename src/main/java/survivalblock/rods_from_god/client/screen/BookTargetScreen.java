@@ -5,9 +5,13 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.CyclingButtonWidget;
+import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.gui.widget.ThreePartsLayoutWidget;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import survivalblock.rods_from_god.client.networking.BookTargetC2SPayload;
+import survivalblock.rods_from_god.common.TickSubcommand;
 import survivalblock.rods_from_god.common.component.cca.entity.BookTargetComponent;
 import survivalblock.rods_from_god.common.entity.BookEntity;
 
@@ -16,6 +20,9 @@ public class BookTargetScreen extends Screen {
     protected Screen parent;
     protected ButtonWidget doneButton, cancelButton;
     protected CyclingButtonWidget<Boolean> onlyTargetsPlayersButton;
+    protected TextFieldWidget scaleWidget;
+    protected TextFieldWidget projectileDurationWidget;
+    protected TextFieldWidget rangeWidget;
 
     protected float scale;
     protected int projectileDuration, entityId;
@@ -41,22 +48,38 @@ public class BookTargetScreen extends Screen {
         this.cancelButton = this.addDrawableChild(
                 ButtonWidget.builder(ScreenTexts.CANCEL, button -> this.close()).dimensions(this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20).build()
         );
+
         this.onlyTargetsPlayersButton = this.addDrawableChild(
                 CyclingButtonWidget.<Boolean>builder(value -> Text.translatable("entity.rods_from_god.book.screen.onlyTargetsPlayers." + value))
                         .values(true, false)
                         .omitKeyText()
                         .initially(this.onlyTargetsPlayers)
-                        .build((this.width / 2 - 50 - 100 - 4) * 2, this.height / 2 - 80, 154, 20, Text.translatable("entity.rods_from_god.book.screen.onlyTargetsPlayers"), (button, onlyTargetsPlayers) -> this.onlyTargetsPlayers = onlyTargetsPlayers)
+                        .build(this.width / 2 + 4, this.height / 2 - 80, 150, 20, Text.translatable("entity.rods_from_god.book.screen.onlyTargetsPlayers"), (button, onlyTargetsPlayers) -> this.onlyTargetsPlayers = onlyTargetsPlayers)
         );
-        this.addDrawableChild(doneButton);
-        this.addDrawableChild(cancelButton);
-        this.addDrawableChild(this.onlyTargetsPlayersButton);
+
+        this.scaleWidget = new TextFieldWidget(this.textRenderer, this.width / 2 + 4, this.height / 2 - 50, 150, 20, Text.empty());
+        this.scaleWidget.setPlaceholder(Text.literal(String.valueOf(this.scale)).formatted(Formatting.DARK_GRAY));
+        this.scaleWidget.setEditable(true);
+        this.addDrawableChild(this.scaleWidget);
+
+        this.projectileDurationWidget = new TextFieldWidget(this.textRenderer, this.width / 2 + 4, this.height / 2 - 20, 150, 20, Text.empty());
+        this.projectileDurationWidget.setPlaceholder(Text.literal(String.valueOf(this.projectileDuration)).formatted(Formatting.DARK_GRAY));
+        this.projectileDurationWidget.setEditable(true);
+        this.addDrawableChild(this.projectileDurationWidget);
+
+        this.rangeWidget = new TextFieldWidget(this.textRenderer, this.width / 2 + 4, this.height / 2 + 10, 150, 20, Text.empty());
+        this.rangeWidget.setPlaceholder(Text.literal(String.valueOf(this.range)).formatted(Formatting.DARK_GRAY));
+        this.rangeWidget.setEditable(true);
+        this.addDrawableChild(this.rangeWidget);
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        context.drawText(this.textRenderer, Text.literal("Arguments").getString(), (this.width / 2 - 50 - 100 - 4) * 2, this.height / 2 - 80 - this.textRenderer.fontHeight, 0xFFFFFFFF, true);
+        context.drawText(this.textRenderer, Text.translatable("entity.rods_from_god.book.screen.onlyTargetsPlayers").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 - 83 + this.textRenderer.fontHeight, 0xFFFFFFFF, true);
+        context.drawText(this.textRenderer, Text.translatable("entity.rods_from_god.book.screen.scale").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 - 53 + this.textRenderer.fontHeight, 0xFFFFFFFF, true);
+        context.drawText(this.textRenderer, Text.translatable("entity.rods_from_god.book.screen.projectileDuration").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 - 23 + this.textRenderer.fontHeight, 0xFFFFFFFF, true);
+        context.drawText(this.textRenderer, Text.translatable("entity.rods_from_god.book.screen.range").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 + 7 + this.textRenderer.fontHeight, 0xFFFFFFFF, true);
     }
 
     @Override
@@ -66,6 +89,31 @@ public class BookTargetScreen extends Screen {
     }
 
     public void saveAndClose() {
+        String string;
+        try {
+            string = this.scaleWidget.getText();
+            if (!string.isBlank()) {
+                this.scale = Float.parseFloat(string);
+            }
+        } catch (NumberFormatException ignored) {
+
+        }
+        try {
+            string = this.projectileDurationWidget.getText();
+            if (!string.isBlank()) {
+                this.projectileDuration = Integer.parseInt(string);
+            }
+        } catch (NumberFormatException ignored) {
+
+        }
+        try {
+            string = this.rangeWidget.getText();
+            if (!string.isBlank()) {
+                this.range = Double.parseDouble(string);
+            }
+        } catch (NumberFormatException ignored) {
+
+        }
         ClientPlayNetworking.send(new BookTargetC2SPayload(this.scale,
                 this.projectileDuration,
                 this.onlyTargetsPlayers,

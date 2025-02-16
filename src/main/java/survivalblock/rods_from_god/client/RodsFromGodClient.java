@@ -5,10 +5,13 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.event.player.UseEntityCallback;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.text.Text;
@@ -19,6 +22,7 @@ import survivalblock.rods_from_god.client.screen.SynthesisScreen;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.block.SynthesisTable;
 import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
+import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
@@ -43,6 +47,12 @@ public class RodsFromGodClient implements ClientModInitializer {
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.BOOK, BookEntityRenderer::new);
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.ENCHANTED_ARROW, EnchantedArrowEntityRenderer::new);
 
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS.values().toArray(new Block[0]));
+
+		FabricLoader.getInstance().getModContainer(RodsFromGod.MOD_ID).ifPresent(modContainer -> {
+			ResourceManagerHelper.registerBuiltinResourcePack(RodsFromGodClientUtil.ANIMATED_AIMING_DEVICE_PACK, modContainer, Text.translatable("resourcePack.rods_from_god.animatedaimingdevice.name"), ResourcePackActivationType.DEFAULT_ENABLED);
+		});
+
 		HandledScreens.register(SynthesisTable.SynthesisScreenHandler.TYPE, SynthesisScreen::new);
 
 		ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipType, list) -> {
@@ -54,6 +64,7 @@ public class RodsFromGodClient implements ClientModInitializer {
 					oneWatchComponent.appendTooltip(tooltipContext, list::add, tooltipType);
 					list.add(Text.translatable("item.rods_from_god.the_one_watch.lore.hidden").formatted(Formatting.DARK_GRAY));
 				}
+				return;
 			}
 		});
 	}

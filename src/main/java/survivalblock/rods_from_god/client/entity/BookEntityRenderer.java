@@ -31,7 +31,7 @@ public class BookEntityRenderer<T extends BookEntity> extends EntityRenderer<T> 
     @Override
     public void render(T entity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
         matrixStack.push();
-        matrixStack.translate(0.0F, 0.2F, 0.0F);
+        matrixStack.translate(0.0F, 0.2F + (entity.getHeight() * 0.25), 0.0F);
         float g = (float)entity.ticks + tickDelta;
         matrixStack.translate(0.0F, 0.1F + MathHelper.sin(g * 0.1F) * 0.01F, 0.0F);
         float h = entity.bookRotation - entity.lastBookRotation;

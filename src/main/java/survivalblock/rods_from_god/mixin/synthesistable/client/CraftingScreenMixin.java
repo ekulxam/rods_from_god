@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.client.screen.SynthesisScreen;
-import survivalblock.rods_from_god.common.block.SynthesisTable;
+import survivalblock.rods_from_god.common.block.SynthesisTable.SynthesisScreenHandler;
 
 @Mixin(CraftingScreen.class)
 public abstract class CraftingScreenMixin extends HandledScreen<CraftingScreenHandler> {
@@ -36,7 +36,7 @@ public abstract class CraftingScreenMixin extends HandledScreen<CraftingScreenHa
     @WrapOperation(method = "init", at = @At(value = "NEW", target = "(IIIILnet/minecraft/client/gui/screen/ButtonTextures;Lnet/minecraft/client/gui/widget/ButtonWidget$PressAction;)Lnet/minecraft/client/gui/widget/TexturedButtonWidget;"))
     private TexturedButtonWidget moveRecipeBookOnCreation(int x, int y, int width, int height, ButtonTextures textures, ButtonWidget.PressAction pressAction, Operation<TexturedButtonWidget> original) {
         if ((CraftingScreen) (Object) this instanceof SynthesisScreen) {
-            return original.call(this.x + 122 + SynthesisTable.SynthesisScreenHandler.RESULT_SLOT_X_OFFSET, y + 36, width, height, textures, pressAction);
+            return original.call(this.x + 122 + SynthesisScreenHandler.RESULT_SLOT_X_OFFSET, y + SynthesisScreenHandler.RECIPE_BOOK_Y_OFFSET, width, height, textures, pressAction);
         }
         return original.call(x, y, width, height, textures, pressAction);
     }
@@ -44,7 +44,7 @@ public abstract class CraftingScreenMixin extends HandledScreen<CraftingScreenHa
     @WrapOperation(method = "method_19890", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/ButtonWidget;setPosition(II)V"))
     private void moveRecipeBook(ButtonWidget instance, int x, int y, Operation<Void> original) {
         if ((CraftingScreen) (Object) this instanceof SynthesisScreen) {
-            original.call(instance, this.x + 122 + SynthesisTable.SynthesisScreenHandler.RESULT_SLOT_X_OFFSET, y + 36);
+            original.call(instance, this.x + 122 + SynthesisScreenHandler.RESULT_SLOT_X_OFFSET, y + SynthesisScreenHandler.RECIPE_BOOK_Y_OFFSET);
             return;
         }
         original.call(instance, x, y);

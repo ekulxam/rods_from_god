@@ -49,16 +49,13 @@ public class TheOneWatchScreen extends Screen {
         this.textFieldWidget = new TextFieldWidget(this.textRenderer, this.width / 2 - 50 - 100 - 4, this.height / 2 - 10, 300 + 8, 20, Text.empty());
         this.textFieldWidget.setPlaceholder(Text.literal(this.initialArguments).formatted(Formatting.DARK_GRAY));
         this.textFieldWidget.setEditable(true);
-        this.addDrawableChild(doneButton);
-        this.addDrawableChild(cancelButton);
         this.addDrawableChild(textFieldWidget);
-        this.addDrawableChild(this.subcommandButton);
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        context.drawText(this.textRenderer, Text.literal("Arguments").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 - 10 - this.textRenderer.fontHeight - 10, 0xFFFFFFFF, true);
+        context.drawText(this.textRenderer, Text.translatable("item.rods_from_god.the_one_watch.screen.argument").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 - 10 - this.textRenderer.fontHeight - 10, 0xFFFFFFFF, true);
     }
 
     @Override

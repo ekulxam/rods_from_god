@@ -14,6 +14,7 @@ public class SynthesisScreen extends CraftingScreen {
     public SynthesisScreen(CraftingScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         this.playerInventoryTitleY += 18;
+        this.backgroundHeight += 36;
     }
 
     @Override
