@@ -8,6 +8,7 @@ import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
@@ -19,7 +20,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
-import survivalblock.atmosphere.atmospheric_api.not_mixin.damage_type.AtmosphericDamageTypes;
 import survivalblock.rods_from_god.common.component.item.SolarPrismHeadsetComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
@@ -65,7 +65,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         //noinspection NonStrictComparisonCanBeEquality
         if (overheatTicks >= MAX_OVERHEATING_TICKS) {
             if (world instanceof ServerWorld serverWorld) {
-                RegistryEntry.Reference<DamageType> damageTypeReference = AtmosphericDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT, world);
+                RegistryEntry.Reference<DamageType> damageTypeReference = world.atmospheric_api$getEntryFromKey(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
                 DamageSource source;
                 boolean pvp = serverWorld.getServer().isPvpEnabled();
                 if (pvp) {
@@ -123,7 +123,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             serverWorld.atmospheric_api$getAndAddEntitiesToCollection((entity -> entity instanceof LivingEntity && entity.getBoundingBox().intersects(box)), entities);
         }
         entities.remove(this.obj);
-        DamageSource source = new DamageSource(AtmosphericDamageTypes.get(RodsFromGodDamageTypes.SOLAR_LASER, serverWorld), this.obj);
+        DamageSource source = new DamageSource(serverWorld.atmospheric_api$getEntryFromKey(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.SOLAR_LASER), this.obj);
         entities.forEach(entity -> {
             entity.damage(source, 1.375f);
             DamageSource fireSource = this.obj.getDamageSources().onFire();

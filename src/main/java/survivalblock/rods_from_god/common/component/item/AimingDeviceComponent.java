@@ -11,7 +11,7 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.dynamic.Codecs;
-import survivalblock.atmosphere.atmospheric_api.not_mixin.datafixer.injected_interface.AtmosphericPacketCodecs;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.datafixer.AtmosphericPacketCodecs;
 
 import java.util.Optional;
 import java.util.function.Consumer;

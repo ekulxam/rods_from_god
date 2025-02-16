@@ -2,13 +2,11 @@ package survivalblock.rods_from_god.common.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.CraftingTableBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -49,6 +47,7 @@ public class SynthesisTable extends CraftingTableBlock {
         public static final int CRAFTING_SLOT_COUNT = 1 + 25;
         public static final int MAX_SIDE_LENGTH = 5;
         public static final int RESULT_SLOT_X_OFFSET = 15;
+        public static final int RECIPE_BOOK_Y_OFFSET = 18;
 
         public static boolean isSynthesisAndNotRegularCrafting = false;
 

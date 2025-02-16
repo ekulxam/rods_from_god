@@ -47,7 +47,7 @@ public class WorldLeverComponent implements AutoSyncedComponent, CommonTickingCo
             return false;
         }
         for (ServerPlayerEntity serverPlayer : serverWorld.getPlayers()) {
-            ServerPlayNetworking.send(serverPlayer, new ScreenShakeS2CPayload(0.2f, WorldLeverComponent.MAX_CELESTIAL_ZOOM, RodsFromGod.MOD_ID, RodsFromGod.ARCHIMEDES_LEVER_SCREENSHAKE_REASON));
+            ServerPlayNetworking.send(serverPlayer, new ScreenShakeS2CPayload(0.1f, WorldLeverComponent.MAX_CELESTIAL_ZOOM, RodsFromGod.MOD_ID, RodsFromGod.ARCHIMEDES_LEVER_SCREENSHAKE_REASON));
         }
         this.lifted = lifted;
         this.switching = true;

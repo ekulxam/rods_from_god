@@ -8,12 +8,17 @@ import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 public class RodsFromGodModelGenerator extends FabricModelProvider {
+
+    public static final Model BOUNCY = new Model(Optional.of(RodsFromGod.id("block/super_bouncy_slime_block")), Optional.empty(), TextureKey.TEXTURE, TextureKey.PARTICLE);
+    public static final TexturedModel.Factory BOUNCY_FACTORY = TexturedModel.makeFactory(TextureMap::all, BOUNCY);
 
     public RodsFromGodModelGenerator(FabricDataOutput output) {
         super(output);
@@ -21,7 +26,9 @@ public class RodsFromGodModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleState(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK);
+        for (Block block : RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS.values()) {
+            blockStateModelGenerator.registerSingleton(block, BOUNCY_FACTORY);
+        }
         blockStateModelGenerator.registerSimpleCubeAll(RodsFromGodBlocks.SYNTHESIS_TABLE);
         excludeAndRegister(RodsFromGodBlocks.ARCHIMEDES_LEVER, blockStateModelGenerator, this::registerCustomLever);
     }

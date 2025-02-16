@@ -58,6 +58,9 @@ public class ArchimedesLeverBlock extends ExtendedLeverBlock {
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
         super.appendTooltip(stack, context, tooltip, options);
-        tooltip.add(Text.translatable("block.rods_from_god.archimedes_lever.tooltip"));
+        tooltip.add(Text.translatable("block.rods_from_god.archimedes_lever.tooltip.0"));
+        tooltip.add(Text.translatable("block.rods_from_god.archimedes_lever.tooltip.1"));
+        tooltip.add(Text.translatable("block.rods_from_god.archimedes_lever.tooltip.2"));
+        tooltip.add(Text.translatable("block.rods_from_god.archimedes_lever.tooltip.3"));
     }
 }

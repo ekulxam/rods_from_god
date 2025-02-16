@@ -8,6 +8,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.crash.CrashException;
@@ -19,7 +20,6 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.ExplosionBehavior;
-import survivalblock.atmosphere.atmospheric_api.not_mixin.damage_type.AtmosphericDamageTypes;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.entity.EntityWithAttributesImpl;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.*;
@@ -199,7 +199,7 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         int ticks = server.getTicks();
         GameRules gameRules = serverWorld.getGameRules();
         World.ExplosionSourceType sourceType = gameRules.get(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE).get();
-        DamageSource source = new DamageSource(AtmosphericDamageTypes.get(RodsFromGodDamageTypes.KINETIC_EXPLOSION, serverWorld), this);
+        DamageSource source = new DamageSource(serverWorld.atmospheric_api$getEntryFromKey(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.KINETIC_EXPLOSION), this);
         final ExplosionBehavior lessDamageExplosionBehavior = new ExplosionBehavior() {
             @Override
             public float calculateDamage(Explosion explosion, Entity entity) {

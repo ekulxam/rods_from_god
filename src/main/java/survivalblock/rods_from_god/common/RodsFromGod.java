@@ -2,22 +2,14 @@ package survivalblock.rods_from_god.common;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.mob.SlimeEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.AtmosphericAPI;
@@ -27,7 +19,6 @@ import survivalblock.rods_from_god.client.networking.BookTargetC2SPayload;
 import survivalblock.rods_from_god.client.networking.TheOneWatchComponentC2SPayload;
 import survivalblock.rods_from_god.common.block.SynthesisTable;
 import survivalblock.rods_from_god.common.compat.config.RodsFromGodConfig;
-import survivalblock.rods_from_god.common.entity.BookEntity;
 import survivalblock.rods_from_god.common.init.RodsFromGodCommands;
 import survivalblock.rods_from_god.common.init.*;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;
@@ -57,8 +48,8 @@ public class RodsFromGod implements ModInitializer {
 			}
 		}
 
-		ScreenShakePreventerRegistry.ALLOW_SHAKING.register((modId, reason) -> {
-			if (Objects.equals(MOD_ID, modId) && Objects.equals(ARCHIMEDES_LEVER_SCREENSHAKE_REASON, reason)) {
+		ScreenShakePreventerRegistry.ALLOW_SHAKING.register((screenShaker) -> {
+			if (Objects.equals(MOD_ID, screenShaker.getModId()) && Objects.equals(ARCHIMEDES_LEVER_SCREENSHAKE_REASON, screenShaker.getReason())) {
 				return RodsFromGodConfig.allowScreenShakingForArchimedesLever();
 			}
 			return true;

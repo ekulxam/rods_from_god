@@ -27,7 +27,6 @@ import java.util.function.Function;
 
 public class BookEntity extends EntityWithAttributesImpl {
 
-    public static final Identifier SCALE_MODIFIER_ID = RodsFromGod.id("book_scale");
     public static final String PROJECTILE_DURATION_KEY = "projectileDuration";
     public static final float DEFAULT_SCALE = 1.0F;
     public static final Function<PlayerEntity, Boolean> CAN_EDIT = PlayerEntity::isCreativeLevelTwoOp;
@@ -84,7 +83,7 @@ public class BookEntity extends EntityWithAttributesImpl {
         }
         World world = this.getWorld();
         boolean isClient = this.getWorld().isClient;
-        Vec3d pos = this.getPos();
+        Vec3d pos = this.getPos().add(0.0F, this.getHeight() * 0.25, 0.0F);
         if (isClient) this.pageTurningSpeed = this.nextPageTurningSpeed;
         this.lastBookRotation = this.bookRotation;
         BookTargetComponent component = this.getComponent();
@@ -152,7 +151,7 @@ public class BookEntity extends EntityWithAttributesImpl {
             this.flipTurn = this.flipTurn + (h - this.flipTurn) * 0.9F;
             this.nextPageAngle = this.nextPageAngle + this.flipTurn;
         } else if (entity != null && this.age % 4 == 0) {
-            Vec3d vec3d = Vec3d.fromPolar(-this.getPitch(), this.getYaw()).normalize().addRandom(this.random, 0.05f).multiply(5);
+            Vec3d vec3d = Vec3d.fromPolar(-this.getPitch(), this.getYaw()).normalize().addRandom(this.random, 0.02f).multiply(5);
             Vec3d arrowPos = pos.add(vec3d);
             EnchantedArrowEntity arrow = new EnchantedArrowEntity(world, arrowPos.getX(), arrowPos.getY(), arrowPos.getZ(), Items.ARROW.getDefaultStack(), null);
             arrow.setCritical(true);

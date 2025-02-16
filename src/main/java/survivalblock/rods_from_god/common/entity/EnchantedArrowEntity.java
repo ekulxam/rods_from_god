@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -17,8 +18,9 @@ import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 @SuppressWarnings("unused")
 public class EnchantedArrowEntity extends PersistentProjectileEntity {
 
-    public static final float DEFAULT_SCALE = 3.5f;
     private int duration = 200;
+    protected float scale = 1;
+    protected float prevScale = 0;
 
     public EnchantedArrowEntity(EntityType<? extends PersistentProjectileEntity> entityType, World world) {
         super(entityType, world);
@@ -43,6 +45,13 @@ public class EnchantedArrowEntity extends PersistentProjectileEntity {
     @Override
     public void tick() {
         super.tick();
+        if (this.getOwner() instanceof BookEntity book) {
+            this.scale = (float) (book.getAttributeValue(EntityAttributes.GENERIC_SCALE) * 0.375); // 1/2 * 3/4
+            if (this.scale != this.prevScale) {
+                this.prevScale = this.scale;
+                this.calculateDimensions();
+            }
+        }
         if (this.getWorld().isClient) {
             if (!this.inGround) {
                 this.getWorld().addParticle(ParticleTypes.ENCHANT, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
@@ -97,6 +106,6 @@ public class EnchantedArrowEntity extends PersistentProjectileEntity {
     }
 
     public float getScale() {
-        return DEFAULT_SCALE;
+        return this.scale;
     }
 }

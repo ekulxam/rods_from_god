@@ -2,6 +2,7 @@ package survivalblock.rods_from_god.common.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 
@@ -15,8 +16,10 @@ public class RodsFromGodBlockLootTableGenerator extends FabricBlockLootTableProv
 
     @Override
     public void generate() {
-        this.addDrop(RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCK);
         this.addDrop(RodsFromGodBlocks.ARCHIMEDES_LEVER);
         this.addDrop(RodsFromGodBlocks.SYNTHESIS_TABLE);
+        for (Block block : RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS.values()) {
+            this.addDrop(block);
+        }
     }
 }
