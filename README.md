@@ -33,4 +33,6 @@ Ensnared within the worlds of the cuboid</br>
 9. Solar Prism Headset - TLDR: I put a beacon in a helmet and made it do damage and overheat. ======= Long form if you want to read: The Solar Prism Headset is an equippable item that renders a beacon beam from the player's eye position as a solar laser. The solar laser only activates during the day and when the player is standing in the sun. It deals damage to entities every tick and sets them on fire. However, it can overheat (shown by an overlay) and when it does, you'd better take the helmet off fast if you don't want to die.
 10. Archimedes Lever - Makes the celestial bodies (sun and moon) render a lot bigger when on (to simulate the world being "lifted" to the cosmos).
 11. Synthesis Table - your average 5x5 crafting table.
+12. Μέδουσα Curse - Wear this to turn entities that look at you into stone.
+
 Created for Modfest 1.21. This mod requires Sinytra Connector and FFAPI (Forgified Fabric API) on NeoForge.
