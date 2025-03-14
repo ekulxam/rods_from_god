@@ -15,7 +15,7 @@ import survivalblock.rods_from_god.common.component.item.AimingDeviceComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;
-import survivalblock.rods_from_god.common.recipe.AimingDeviceUndoFireRecipe;
+import survivalblock.rods_from_god.common.recipe.AimingDeviceCleansingRecipe;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class RodsFromGodEMIPlugin implements EmiPlugin {
                         EmiStack.of(resultItemstack),
                         RodsFromGod.id("/crafting/aiming_device_fire"),
                         true));
-            } else if (recipe instanceof AimingDeviceUndoFireRecipe) {
+            } else if (recipe instanceof AimingDeviceCleansingRecipe) {
                 ItemStack aimingDeviceStack = new ItemStack(RodsFromGodItems.AIMING_DEVICE);
                 aimingDeviceStack.set(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.CREATES_FIRE);
                 EmiStack aimingDevice = EmiStack.of(aimingDeviceStack);

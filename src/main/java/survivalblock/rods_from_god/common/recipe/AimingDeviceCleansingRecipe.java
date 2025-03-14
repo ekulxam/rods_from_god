@@ -2,7 +2,8 @@ package survivalblock.rods_from_god.common.recipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.Registries;
@@ -15,17 +16,16 @@ import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
 import java.util.List;
 
+public class AimingDeviceCleansingRecipe extends AimingDeviceRecipe {
 
-public class AimingDeviceFireRecipe extends AimingDeviceRecipe {
+    public static final RecipeSerializer<AimingDeviceCleansingRecipe> SERIALIZER = new SpecialRecipeSerializer<>(AimingDeviceCleansingRecipe::new);
 
-    public static final RecipeSerializer<AimingDeviceFireRecipe> SERIALIZER = new SpecialRecipeSerializer<>(AimingDeviceFireRecipe::new);
-
-    public AimingDeviceFireRecipe(CraftingRecipeCategory category) {
-        super(category, Items.NETHER_STAR);
+    public AimingDeviceCleansingRecipe(CraftingRecipeCategory category) {
+        super(category, Items.HEART_OF_THE_SEA);
     }
 
     public static void init() {
-        Registry.register(Registries.RECIPE_SERIALIZER, RodsFromGod.id("crafting_special_aiming_device_fire"), SERIALIZER);
+        Registry.register(Registries.RECIPE_SERIALIZER, RodsFromGod.id("crafting_special_aiming_device_cleanse"), SERIALIZER);
     }
 
     @Override
@@ -38,12 +38,11 @@ public class AimingDeviceFireRecipe extends AimingDeviceRecipe {
         if (!stack.isOf(RodsFromGodItems.AIMING_DEVICE)) {
             stack = stacks.getLast();
         }
-        if (stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.DEFAULT_INSTANCE).createsFire()) {
+        if (stack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.DEFAULT_INSTANCE).equals(AimingDeviceComponent.DEFAULT_INSTANCE)) {
             return ItemStack.EMPTY;
         }
         ItemStack returnStack = stack.copy();
-        AimingDeviceComponent aimingDeviceComponent = returnStack.getOrDefault(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.DEFAULT_INSTANCE);
-        returnStack.set(RodsFromGodDataComponentTypes.AIMING_DEVICE, new AimingDeviceComponent.Builder().copyFrom(aimingDeviceComponent).createsFire(true).build());
+        returnStack.set(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.DEFAULT_INSTANCE);
         return returnStack;
     }
 

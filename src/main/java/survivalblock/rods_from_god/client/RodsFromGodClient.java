@@ -17,13 +17,16 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.render.overlay.client.AtmosphericOverlayRegistry;
 import survivalblock.rods_from_god.client.entity.*;
 import survivalblock.rods_from_god.client.screen.SynthesisScreen;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.block.SynthesisTable;
+import survivalblock.rods_from_god.common.component.cca.entity.StoneStatueComponent;
 import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
@@ -47,7 +50,7 @@ public class RodsFromGodClient implements ClientModInitializer {
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.BOOK, BookEntityRenderer::new);
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.ENCHANTED_ARROW, EnchantedArrowEntityRenderer::new);
 
-		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS.values().toArray(new Block[0]));
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS.values().toArray(Block[]::new));
 
 		FabricLoader.getInstance().getModContainer(RodsFromGod.MOD_ID).ifPresent(modContainer -> {
 			ResourceManagerHelper.registerBuiltinResourcePack(RodsFromGodClientUtil.ANIMATED_AIMING_DEVICE_PACK, modContainer, Text.translatable("resourcePack.rods_from_god.animatedaimingdevice.name"), ResourcePackActivationType.DEFAULT_ENABLED);
@@ -67,5 +70,7 @@ public class RodsFromGodClient implements ClientModInitializer {
 				return;
 			}
 		});
+
+		AtmosphericOverlayRegistry.registerOverlay(StoneStatueComponent.STONE_BLOCK, (client, player) -> RodsFromGodEntityComponents.STONE_STATUE.get(player).getOverlayFactor());
 	}
 }

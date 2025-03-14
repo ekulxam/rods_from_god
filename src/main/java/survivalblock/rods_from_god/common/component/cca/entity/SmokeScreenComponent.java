@@ -30,7 +30,7 @@ public class SmokeScreenComponent implements CommonTickingComponent, AutoSyncedC
         } else if (smokeScreenTicks < 0) {
             smokeScreenTicks = 0;
         }
-        if (smokeScreenTicks % 10 == 0) {
+        if (this.obj.getWorld().getTime() % 20 == 0) {
             RodsFromGodEntityComponents.SMOKE_SCREEN.sync(this.obj);
         }
     }

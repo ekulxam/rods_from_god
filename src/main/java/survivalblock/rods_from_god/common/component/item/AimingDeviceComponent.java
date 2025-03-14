@@ -25,6 +25,10 @@ public class AimingDeviceComponent implements TooltipAppender {
     public static final AimingDeviceComponent DEFAULT_INSTANCE = new Builder().build();
     public static final AimingDeviceComponent CREATES_FIRE = new Builder().createsFire(true).build();
 
+    public static final AimingDeviceComponent SMALL_BUT_SPEEDY = new Builder().cooldown(10).scale(1f).gravity(10.0).build();
+    public static final AimingDeviceComponent DESTROYER = new Builder().cooldown(300).scale(128).inverseExplosionDamageFactor(25).build();
+    //public static final AimingDeviceComponent WORLD_ENDER = new Builder().cooldown(6000).scale(256).inverseExplosionDamageFactor(1).build();
+
     public static final Codec<AimingDeviceComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                             Codecs.NONNEGATIVE_INT.optionalFieldOf("cooldown").forGetter((component) -> component.cooldown),
@@ -128,13 +132,13 @@ public class AimingDeviceComponent implements TooltipAppender {
 
     @SuppressWarnings("unused")
     public static class Builder {
-        int cooldown = DEFAULT_COOLDOWN_TICKS;
-        int maxExplosions = DEFAULT_MAX_EXPLOSIONS;
-        int explosionPower = DEFAULT_EXPLOSION_POWER;
-        int inverseExplosionDamageFactor = DEFAULT_INVERSE_EXPLOSION_DAMAGE_FACTOR;
-        double gravity = DEFAULT_GRAVITY;
-        float scale = DEFAULT_SCALE;
-        boolean createsFire = DEFAULT_FIRE_BOOLEAN_VALUE;
+        private int cooldown = DEFAULT_COOLDOWN_TICKS;
+        private int maxExplosions = DEFAULT_MAX_EXPLOSIONS;
+        private int explosionPower = DEFAULT_EXPLOSION_POWER;
+        private int inverseExplosionDamageFactor = DEFAULT_INVERSE_EXPLOSION_DAMAGE_FACTOR;
+        private double gravity = DEFAULT_GRAVITY;
+        private float scale = DEFAULT_SCALE;
+        private boolean createsFire = DEFAULT_FIRE_BOOLEAN_VALUE;
 
         public AimingDeviceComponent build() {
             return new AimingDeviceComponent(cooldown, maxExplosions, explosionPower, inverseExplosionDamageFactor, gravity, scale, createsFire);

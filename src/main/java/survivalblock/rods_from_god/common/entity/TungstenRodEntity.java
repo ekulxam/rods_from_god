@@ -34,6 +34,7 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
     public static final String EXPLOSION_POWER_NBT_KEY = "explosionPower";
     public static final String INVERSE_EXPLOSION_DAMAGE_FACTOR_NBT_KEY = "inverseExplosionDamageFactor";
     public static final String FIRE_NBT_KEY = "createsFire";
+    public static final String LANDED_KEY = "landed";
     public static final int DEFAULT_MAX_EXPLOSIONS = 5;
     public static final int DEFAULT_EXPLOSION_POWER = 10;
     public static final int DEFAULT_INVERSE_EXPLOSION_DAMAGE_FACTOR = 100;
@@ -48,7 +49,8 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
     protected int maxExplosions = DEFAULT_MAX_EXPLOSIONS;
     protected float explosionPower = DEFAULT_EXPLOSION_POWER;
     protected float inverseExplosionDamageFactor = DEFAULT_INVERSE_EXPLOSION_DAMAGE_FACTOR;
-    protected boolean createsFire = false;
+    protected boolean createsFire = DEFAULT_FIRE_BOOLEAN_VALUE;
+    private boolean landed = false;
 
     public TungstenRodEntity(EntityType<?> type, World world) {
         super(type, world);
@@ -101,6 +103,9 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         if (nbt.contains(FIRE_NBT_KEY)) {
             this.createsFire = nbt.getBoolean(FIRE_NBT_KEY);
         }
+        if (nbt.contains(LANDED_KEY)) {
+            this.landed = nbt.getBoolean(LANDED_KEY);
+        }
         try {
             if (nbt.contains(EXPLOSION_POS_NBT_KEY)) {
                 NbtList nbtList = nbt.getList(EXPLOSION_POS_NBT_KEY, NbtElement.DOUBLE_TYPE);
@@ -128,6 +133,7 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         nbt.putFloat(EXPLOSION_POWER_NBT_KEY, this.explosionPower);
         nbt.putFloat(INVERSE_EXPLOSION_DAMAGE_FACTOR_NBT_KEY, this.inverseExplosionDamageFactor);
         nbt.putBoolean(FIRE_NBT_KEY, this.createsFire);
+        nbt.putBoolean(LANDED_KEY, this.landed);
         nbt.put(EXPLOSION_POS_NBT_KEY, this.toNbtList(this.explosionPos.getX(), this.explosionPos.getY(), this.explosionPos.getZ()));
     }
 
@@ -151,24 +157,9 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
                 this.removeAllPassengers();
             }
             if (this.groundCollision || this.isOnGround()) {
-                /*
-                List<Entity> affectedEntities = world.getOtherEntities(this, this.getBoundingBox().expand(this.knockbackRadius * 2));
-                affectedEntities.forEach((entity) -> {
-                    Vec3d entityPosition = entity.getPos();
-                    Vec3d pos = this.getPos();
-                    double maxDistance = Math.abs(entityPosition.squaredDistanceTo(pos));
-                    if (maxDistance >= this.knockbackRadius) {
-                        return;
-                    }
-                    Vec3d yeet = pos.subtract(entityPosition).normalize().multiply(-1);
-                    yeet = new Vec3d(yeet.x, yeet.y >= 0 ? yeet.y + yStrength : yeet.y - yStrength, yeet.z);
-                    yeet.multiply(5 * ((this.knockbackRadius - maxDistance) / 50));
-                    entity.setVelocity(yeet);
-                });
-                */
                 this.shouldExplode = true;
                 this.updateExplosionPos();
-                RodsFromGodEntityComponents.TUNGSTEN_ROD_LANDED.get(this).setLanded(true);
+                this.landed = true;
             }
             if (this.shouldExplode) {
                 this.explode(serverWorld);
@@ -252,5 +243,9 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         return new AttributeContainer(DefaultAttributeContainer.builder()
                 .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE)
                 .add(EntityAttributes.GENERIC_GRAVITY, DEFAULT_GRAVITY).build());
+    }
+
+    public boolean hasLanded() {
+        return this.landed;
     }
 }

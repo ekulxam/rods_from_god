@@ -64,7 +64,11 @@ public class RodLandingMarkerEntity extends Entity {
                 this.discard();
             } else {
                 Entity entity = serverWorld.getEntity(tungstenRodUUID);
-                if (entity == null || entity.isRemoved() || (entity instanceof TungstenRodEntity tungstenRodEntity && RodsFromGodEntityComponents.TUNGSTEN_ROD_LANDED.get(tungstenRodEntity).isLanded())) {
+                if (entity == null || entity.isRemoved()) {
+                    this.discard();
+                } else if (!(entity instanceof TungstenRodEntity tungstenRodEntity)) {
+                    this.discard();
+                } else if (tungstenRodEntity.hasLanded()) {
                     this.discard();
                 }
             }

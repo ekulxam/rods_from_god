@@ -24,8 +24,8 @@ public class SolarPrismHeadsetComponent implements TooltipAppender {
 
     public static final Codec<SolarPrismHeadsetComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                            Codec.BOOL.optionalFieldOf("cooldown").forGetter((component) -> component.noOverheat),
-                            Codec.BOOL.optionalFieldOf("maxSets").forGetter((component) -> component.alwaysActive)
+                            Codec.BOOL.optionalFieldOf("noOverheat").forGetter((component) -> component.noOverheat),
+                            Codec.BOOL.optionalFieldOf("alwaysActive").forGetter((component) -> component.alwaysActive)
                     )
                     .apply(instance, SolarPrismHeadsetComponent::new)
     );

@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.BrewingRecipeRegistry;
@@ -25,7 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.SequencedCollection;
+import java.util.function.Function;
 
 public class RodsFromGodItems {
 
@@ -42,9 +43,15 @@ public class RodsFromGodItems {
     public static final Item SOLAR_PRISM_HEADSET = registerItem("solar_prism_headset", new SolarPrismHeadsetItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item ARCHIMEDES_LEVER = registerBlockItem(RodsFromGodBlocks.ARCHIMEDES_LEVER, new Item.Settings().rarity(Rarity.EPIC));
     public static final Item SYNTHESIS_TABLE = registerBlockItem(RodsFromGodBlocks.SYNTHESIS_TABLE, new Item.Settings());
+    public static final Item MEDUSA_CURSE = registerItem("medusa_curse", new Item.Settings().maxCount(1).rarity(Rarity.RARE).equipmentSlot((living, stack) -> EquipmentSlot.HEAD), Item::new);
 
-    private static Item registerItem(String name, Item item) {
+    private static <T extends Item> T registerItem(String name, T item) {
         return Registry.register(Registries.ITEM, RodsFromGod.id(name), item);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static <S extends Item.Settings, T extends Item> T registerItem(String name, S settings, Function<S, T> itemFromSettings) {
+        return registerItem(name, itemFromSettings.apply(settings));
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -63,11 +70,13 @@ public class RodsFromGodItems {
             entries.add(CORRUPTED_STAR_FRAGMENT);
             entries.add(EVOKER_INVOKER);
             entries.add(SOLAR_PRISM_HEADSET);
+            entries.add(MEDUSA_CURSE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(LIGHTNING_SPLASH_POTION);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries -> {
+            // in vanilla order
             entries.add(BOUNCIES.get(DyeColor.WHITE));
             entries.add(BOUNCIES.get(DyeColor.LIGHT_GRAY));
             entries.add(BOUNCIES.get(DyeColor.GRAY));

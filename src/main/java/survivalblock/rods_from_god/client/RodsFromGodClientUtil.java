@@ -2,6 +2,7 @@ package survivalblock.rods_from_god.client;
 
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.VertexConsumers;
 import net.minecraft.client.render.block.entity.BeaconBlockEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
@@ -17,6 +18,8 @@ public class RodsFromGodClientUtil {
     public static final Identifier ANIMATED_AIMING_DEVICE_PACK = RodsFromGod.id("animatedaimingdevice");
 
     public static boolean renderingSolarPrismBeam = false;
+
+    public static VertexConsumerProvider vertexConsumerProvider;
 
     public static void renderBeeeeeem(AbstractClientPlayerEntity clientPlayer, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider) {
         if (!shouldRenderBeam(clientPlayer)) {

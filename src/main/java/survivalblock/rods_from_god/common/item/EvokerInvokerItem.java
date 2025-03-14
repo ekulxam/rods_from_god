@@ -17,6 +17,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
+import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.component.item.EvokerInvokerComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 
@@ -28,6 +29,8 @@ public class EvokerInvokerItem extends Item {
     public static final int DEFAULT_COOLDOWN_TICKS = 120;
     public static final int DEFAULT_MAX_SETS = 3;
     public static final double DEFAULT_MAX_DISTANCE = 45;
+
+    protected boolean warned = false;
 
     public EvokerInvokerItem(Settings settings) {
         super(settings);
@@ -42,8 +45,15 @@ public class EvokerInvokerItem extends Item {
             TargetPredicate targetPredicate = TargetPredicate.createAttackable();
             Vec3d userPos = new Vec3d(user.getX(), user.getY(), user.getZ());
             List<LivingEntity> livings = world.getEntitiesByClass(LivingEntity.class, box.expand(evokerInvokerComponent.maxDistance()), (entity) -> entity.isAlive() && !entity.getType().equals(EntityType.ARMOR_STAND) && targetPredicate.test(user, entity));
-            Comparator<LivingEntity> sortByClosestLivingEntity = (first, second) -> (int) (100d * ((first.squaredDistanceTo(userPos) - second.squaredDistanceTo(userPos))));
-            livings.sort(sortByClosestLivingEntity);
+            try {
+                final Comparator<LivingEntity> sortByClosestLivingEntity = (first, second) -> (int) (100d * ((first.squaredDistanceTo(userPos) - second.squaredDistanceTo(userPos))));
+                livings.sort(sortByClosestLivingEntity);
+            } catch (RuntimeException runtimeException) {
+                if (!warned) {
+                    RodsFromGod.LOGGER.error("An error occurred when attempting to sort a list!", runtimeException);
+                    warned = true;
+                }
+            }
             int fangSets = evokerInvokerComponent.maxSets();
             for (int i = 0; i < fangSets; i++) {
                 if (livings.isEmpty()) {

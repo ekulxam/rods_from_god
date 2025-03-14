@@ -50,10 +50,6 @@ public class BookEntity extends EntityWithAttributesImpl {
         super(type, world);
     }
 
-    public BookEntity(World world) {
-        this(RodsFromGodEntityTypes.BOOK, world);
-    }
-
     @Override
     protected void initDataTracker(DataTracker.Builder builder) {
 
@@ -159,6 +155,7 @@ public class BookEntity extends EntityWithAttributesImpl {
             arrow.setVelocity(vec3d);
             arrow.setDuration(this.projectileDuration);
             world.spawnEntity(arrow);
+            //noinspection SuspiciousNameCombination
             arrow.setYaw((float)(MathHelper.atan2(vec3d.x, vec3d.z) * 180.0F / (float)Math.PI));
             arrow.setPitch((float)(MathHelper.atan2(vec3d.y, vec3d.horizontalLength()) * 180.0F / (float)Math.PI));
             arrow.prevYaw = this.getYaw();

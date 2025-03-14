@@ -46,7 +46,7 @@ public class EnchantedArrowEntity extends PersistentProjectileEntity {
     public void tick() {
         super.tick();
         if (this.getOwner() instanceof BookEntity book) {
-            this.scale = (float) (book.getAttributeValue(EntityAttributes.GENERIC_SCALE) * 0.375); // 1/2 * 3/4
+            this.scale = (float) (book.getAttributeValue(EntityAttributes.GENERIC_SCALE) * 0.6);
             if (this.scale != this.prevScale) {
                 this.prevScale = this.scale;
                 this.calculateDimensions();

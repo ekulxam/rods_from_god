@@ -30,13 +30,13 @@ public class SmallPlaneEntityRenderer extends EntityRenderer<RodLandingMarkerEnt
         matrixStack.push();
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getYaw()));
         MinecraftClient minecraftClient = MinecraftClient.getInstance();
-        boolean bl = this.isVisible(entity);
-        boolean bl2 = !bl && !entity.isInvisibleTo(minecraftClient.player);
-        boolean bl3 = minecraftClient.hasOutline(entity);
-        RenderLayer renderLayer = this.getRenderLayer(entity, bl, bl2, bl3);
+        boolean visible = this.isVisible(entity);
+        boolean translucent = !visible && !entity.isInvisibleTo(minecraftClient.player);
+        boolean outline = minecraftClient.hasOutline(entity);
+        RenderLayer renderLayer = this.getRenderLayer(entity, visible, translucent, outline);
         if (renderLayer != null) {
             VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(renderLayer);
-            this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, bl2 ? 654311423 : -1);
+            this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, translucent ? 654311423 : -1);
         }
         matrixStack.pop();
         super.render(entity, f, g, matrixStack, vertexConsumerProvider, i);

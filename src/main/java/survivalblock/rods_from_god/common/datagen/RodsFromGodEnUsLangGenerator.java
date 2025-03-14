@@ -56,6 +56,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("item.minecraft.splash_potion.effect.gravity_increase", "Splash Potion of Gravity Increase");
         translationBuilder.add("item.minecraft.lingering_potion.effect.gravity_increase", "Lingering Potion of Gravity Increase");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.gravity_increase", "Arrow of Gravity Increase");
+        translationBuilder.add(RodsFromGodItems.MEDUSA_CURSE, "Μέδουσα Curse");
 
         // block
         translationBuilder.add(RodsFromGodBlocks.ARCHIMEDES_LEVER, "The Lever that Moves the World");
@@ -123,13 +124,16 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodStatusEffects.GRAVITY_INCREASE.value(), "Gravity Increase");
 
         // command
-        translationBuilder.add("commands.worldlever.setlifted.success", "Set to the value of lifted in the World Lever Component to %2$s for dimension %1$s");
-        translationBuilder.add("commands.worldlever.query.switching.true", "The World Lever Component of dimension %1$s is currently switching");
-        translationBuilder.add("commands.worldlever.query.switching.false", "The World Lever Component of dimension %1$s is not currently switching");
-        translationBuilder.add("commands.worldlever.query.lifted.true", "The World Lever Component of dimension %1$s is currently lifted");
-        translationBuilder.add("commands.worldlever.query.lifted.false", "The World Lever Component of dimension %1$s is not currently lifted");
-        translationBuilder.add("commands.worldlever.query.canswitch.true", "The World Lever Component of dimension %1$s can normally switch");
-        translationBuilder.add("commands.worldlever.query.canswitch.false", "The World Lever Component of dimension %1$s cannot normally switch");
+        translationBuilder.add("commands.rodsfromgod.worldlever.setlifted.success", "Set to the value of lifted in the World Lever Component to %2$s for dimension %1$s");
+        translationBuilder.add("commands.rodsfromgod.worldlever.query.switching.true", "The World Lever Component of dimension %1$s is currently switching");
+        translationBuilder.add("commands.rodsfromgod.worldlever.query.switching.false", "The World Lever Component of dimension %1$s is not currently switching");
+        translationBuilder.add("commands.rodsfromgod.worldlever.query.lifted.true", "The World Lever Component of dimension %1$s is currently lifted");
+        translationBuilder.add("commands.rodsfromgod.worldlever.query.lifted.false", "The World Lever Component of dimension %1$s is not currently lifted");
+        translationBuilder.add("commands.rodsfromgod.worldlever.query.canswitch.true", "The World Lever Component of dimension %1$s can normally switch");
+        translationBuilder.add("commands.rodsfromgod.worldlever.query.canswitch.false", "The World Lever Component of dimension %1$s cannot normally switch");
+        translationBuilder.add("commands.rodsfromgod.medusastatue.set_statue", "Successfully turned %1$s into a statue.");
+        translationBuilder.add("commands.rodsfromgod.medusastatue.remove_statue", "Successfully freed %1$s from being a statue.");
+        translationBuilder.add("argument.rodsfromgod.medusastatue.entity_not_supported", "Entity %1$s does not provide StoneStatueComponent.");
 
         // packs
         translationBuilder.add("dataPack.rods_from_god.archimedes_lever_allow_lifting_overworld.name", "Rods from God - Archimedes Lever : Allow Lifting Overworld");

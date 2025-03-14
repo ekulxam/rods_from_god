@@ -17,7 +17,7 @@ import java.util.function.BiConsumer;
 
 public class RodsFromGodModelGenerator extends FabricModelProvider {
 
-    public static final Model BOUNCY = new Model(Optional.of(RodsFromGod.id("block/super_bouncy_slime_block")), Optional.empty(), TextureKey.TEXTURE, TextureKey.PARTICLE);
+    public static final Model BOUNCY = of(RodsFromGod.id("block/super_bouncy_slime_block"), TextureKey.TEXTURE, TextureKey.PARTICLE);
     public static final TexturedModel.Factory BOUNCY_FACTORY = TexturedModel.makeFactory(TextureMap::all, BOUNCY);
 
     public RodsFromGodModelGenerator(FabricDataOutput output) {
@@ -40,6 +40,7 @@ public class RodsFromGodModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(RodsFromGodItems.THE_ONE_WATCH, Models.GENERATED); // texture idea: clock/compass, but I put an eye and end portal texture in it
         itemModelGenerator.register(RodsFromGodItems.EVOKER_INVOKER, Models.GENERATED);
+        itemModelGenerator.register(RodsFromGodItems.MEDUSA_CURSE, Models.GENERATED);
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -79,5 +80,9 @@ public class RodsFromGodModelGenerator extends FabricModelProvider {
                                 .register(BlockFace.WALL,
                                         Direction.WEST,
                                         BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R270))));
+    }
+
+    private static Model of(Identifier parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(parent), Optional.empty(), requiredTextureKeys);
     }
 }

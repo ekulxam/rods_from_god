@@ -2,6 +2,7 @@ package survivalblock.rods_from_god.common;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -21,8 +22,7 @@ import survivalblock.rods_from_god.common.block.SynthesisTable;
 import survivalblock.rods_from_god.common.compat.config.RodsFromGodConfig;
 import survivalblock.rods_from_god.common.init.RodsFromGodCommands;
 import survivalblock.rods_from_god.common.init.*;
-import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;
-import survivalblock.rods_from_god.common.recipe.AimingDeviceUndoFireRecipe;
+import survivalblock.rods_from_god.common.recipe.AimingDeviceRecipe;
 
 import java.util.Objects;
 
@@ -63,11 +63,11 @@ public class RodsFromGod implements ModInitializer {
 		RodsFromGodItems.init();
 		RodsFromGodStatusEffects.init();
 		RodsFromGodStatusEffects.RodsFromGodPotions.init(); // I don't understand how classloading works here; is this even necessary?
-		RodsFromGodCommands.init();
+
+		CommandRegistrationCallback.EVENT.register(RodsFromGodCommands::init);
 
 		SynthesisTable.SynthesisScreenHandler.init();
-		AimingDeviceFireRecipe.init();
-		AimingDeviceUndoFireRecipe.init();
+		AimingDeviceRecipe.init();
 
 		PayloadTypeRegistry.playC2S().register(TheOneWatchComponentC2SPayload.ID, TheOneWatchComponentC2SPayload.CODEC);
 		PayloadTypeRegistry.playC2S().register(BookTargetC2SPayload.ID, BookTargetC2SPayload.CODEC);

@@ -8,13 +8,13 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.block.SuperBouncySlimeBlock;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceFireRecipe;
-import survivalblock.rods_from_god.common.recipe.AimingDeviceUndoFireRecipe;
+import survivalblock.rods_from_god.common.recipe.AimingDeviceCleansingRecipe;
+import survivalblock.rods_from_god.common.recipe.AimingDeviceMakeSmallRecipe;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -106,7 +106,8 @@ public class RodsFromGodRecipeGenerator extends FabricRecipeProvider {
                 .input('D', Items.RESPAWN_ANCHOR).criterion(FabricRecipeProvider.hasItem(Items.RESPAWN_ANCHOR),
                         FabricRecipeProvider.conditionsFromItem(Items.RESPAWN_ANCHOR)).offerTo(exporter);
         ComplexRecipeJsonBuilder.create(AimingDeviceFireRecipe::new).offerTo(exporter, RodsFromGod.id("aiming_device_fire"));
-        ComplexRecipeJsonBuilder.create(AimingDeviceUndoFireRecipe::new).offerTo(exporter, RodsFromGod.id("aiming_device_undo_fire"));
+        ComplexRecipeJsonBuilder.create(AimingDeviceCleansingRecipe::new).offerTo(exporter, RodsFromGod.id("aiming_device_cleanse"));
+        ComplexRecipeJsonBuilder.create(AimingDeviceMakeSmallRecipe::new).offerTo(exporter, RodsFromGod.id("aiming_device_small"));
     }
 
     public static void offerBounciesDyeingRecipe(RecipeExporter exporter, DyeColor dyeColor, ItemConvertible dye) {
