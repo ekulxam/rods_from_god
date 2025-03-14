@@ -51,10 +51,10 @@
 		"cardinal-components": [
 			"rods_from_god:death_explosion",
 			"rods_from_god:smoke_screen",
-			"rods_from_god:tungsten_rod_landed",
 			"rods_from_god:solar_laser",
 			"rods_from_god:slime_block_flying",
 			"rods_from_god:book_target",
+			"rods_from_god:stone_statue",
 			"rods_from_god:world_lever"
 		]
 	}

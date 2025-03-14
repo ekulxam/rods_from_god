@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "rods_from_god:item/aiming_device",
+    "layer1": "rods_from_god:item/sweep_line"
+  }
+}
