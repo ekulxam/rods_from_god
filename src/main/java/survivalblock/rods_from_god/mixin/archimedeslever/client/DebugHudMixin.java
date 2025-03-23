@@ -3,6 +3,7 @@ package survivalblock.rods_from_god.mixin.archimedeslever.client;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.DebugHud;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.*;
@@ -33,7 +34,7 @@ public class DebugHudMixin {
                 return original;
             }
             stringBuilder.delete(firstSlashIndex + 2, secondSlashIndex - 1); // delete y value but leave the spaces
-            String string = worldLeverComponent.isSwitching() ? "" + MathHelper.nextFloat(atmospheric_api$random, -400, 400) : "???";
+            String string = worldLeverComponent.isSwitching() ? "" + MathHelper.nextFloat(atmospheric_api$random, -400, 400) : Text.translatable("rods_from_god.archimedes_lever.unknown_y").getString();
             stringBuilder.insert(firstSlashIndex + 2, string); // insert string between the slashes and spaces
             return stringBuilder.toString();
         }

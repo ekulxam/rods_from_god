@@ -27,6 +27,9 @@ public class BookEntityMixin {
             return original;
         }
         MinecraftClient client = MinecraftClient.getInstance();
+        if (!BookEntity.CAN_EDIT.apply(player)) {
+            return original;
+        }
         client.setScreen(new BookTargetScreen(Text.translatable("entity.rods_from_god.book"),
                 client.currentScreen,
                 (BookEntity) (Object) this));

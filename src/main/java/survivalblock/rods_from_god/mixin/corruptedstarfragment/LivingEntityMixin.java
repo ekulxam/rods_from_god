@@ -28,41 +28,7 @@ public abstract class LivingEntityMixin extends Entity {
         super(type, world);
     }
 
-    @Shadow public abstract ItemStack getStackInHand(Hand hand);
-
-    @Shadow public abstract void setHealth(float health);
-
     @Shadow public abstract boolean damage(DamageSource source, float amount);
-
-    @ModifyReturnValue(method = "tryUseTotem", at = @At(value = "RETURN", ordinal = 1))
-    private boolean supernovae(boolean original, DamageSource source) {
-        if (original) {
-            return true;
-        }
-        if (!((LivingEntity) (Object) this instanceof PlayerEntity player)) {
-            return false;
-        }
-        ItemStack itemStack = null;
-        for (Hand hand : Hand.values()) {
-            ItemStack itemStack2 = this.getStackInHand(hand);
-            if (itemStack2.isOf(RodsFromGodItems.CORRUPTED_STAR_FRAGMENT)) {
-                itemStack = itemStack2.copy();
-                if (!itemStack2.getOrDefault(RodsFromGodDataComponentTypes.KEEP_CORRUPTED_STAR_FRAGMENT, false)) {
-                    itemStack2.decrement(1);
-                }
-                break;
-            }
-        }
-        boolean emptyStack = itemStack == null || itemStack.isEmpty();
-        if (!emptyStack) {
-            this.setHealth(1.0F);
-            if (this.getWorld() instanceof ServerWorld) {
-                RodsFromGodEntityComponents.DEATH_EXPLOSION.get(player).setup(true, source);
-            }
-            return true;
-        }
-        return false;
-    }
 
     @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
     private void cancelDamageIfExploding(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {

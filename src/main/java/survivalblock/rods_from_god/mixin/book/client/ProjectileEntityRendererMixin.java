@@ -34,7 +34,7 @@ public class ProjectileEntityRendererMixin {
     @Inject(method = "render(Lnet/minecraft/entity/projectile/PersistentProjectileEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "FIELD", target = "Lnet/minecraft/util/math/RotationAxis;POSITIVE_X:Lnet/minecraft/util/math/RotationAxis;", ordinal = 0))
     private void spin(PersistentProjectileEntity projectile, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
         if (projectile instanceof EnchantedArrowEntity) {
-            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(projectile.age * 60));
+            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(projectile.age * 48));
         }
     }
 }
