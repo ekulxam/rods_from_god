@@ -55,7 +55,8 @@
 			"rods_from_god:slime_block_flying",
 			"rods_from_god:book_target",
 			"rods_from_god:stone_statue",
-			"rods_from_god:world_lever"
+			"rods_from_god:world_lever",
+			"rods_from_god:was_day"
 		]
 	}
 }
