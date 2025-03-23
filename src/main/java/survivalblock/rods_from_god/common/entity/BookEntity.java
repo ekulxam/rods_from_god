@@ -11,17 +11,14 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.entity.EntityWithAttributesImpl;
-import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.component.cca.entity.BookTargetComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
-import survivalblock.rods_from_god.common.init.RodsFromGodEntityTypes;
 
 import java.util.function.Function;
 

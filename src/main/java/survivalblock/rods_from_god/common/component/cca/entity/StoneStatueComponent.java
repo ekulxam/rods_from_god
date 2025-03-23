@@ -4,7 +4,6 @@ import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
@@ -65,6 +64,9 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
             this.obj.getBrain().forget(MemoryModuleType.ANGRY_AT);
             if (this.obj.getVelocity().lengthSquared() > 1.0E-7 && this.obj.isLogicalSideForUpdatingMovement()) {
                 this.obj.setVelocity(Vec3d.ZERO);
+                if (this.obj instanceof ServerPlayerEntity) {
+                    this.obj.velocityModified = true;
+                }
             }
             if (this.obj.squaredDistanceTo(this.position) > 0.01) {
                 this.obj.setPosition(this.position);

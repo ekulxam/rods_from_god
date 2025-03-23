@@ -146,6 +146,9 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("rods_from_god.yacl.group.client", "Client");
         translationBuilder.add("rods_from_god.yacl.option.boolean.allowScreenShakingForArchimedesLever", "Archimedes Lever - Allow Screen Shaking");
         translationBuilder.add("rods_from_god.yacl.option.boolean.allowScreenShakingForArchimedesLever.desc", "Toggles the option for screen shaking during world lifting caused by the Archimedes Lever");
+
+        // other
+        translationBuilder.add("rods_from_god.archimedes_lever.unknown_y", "??? (the world has been lifted)");
     }
 
     public static String getDyeTranslation(DyeColor dyeColor) {

@@ -26,6 +26,7 @@ import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import survivalblock.rods_from_god.common.init.RodsFromGodSoundEvents;
+import survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,7 +39,6 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
     private final PlayerEntity obj;
     private int overheatTicks = 0;
     private int ticksUsed = 0;
-    private boolean wasDay = true;
 
     public SolarLaserComponent(PlayerEntity player) {
         this.obj = player;
@@ -85,7 +85,7 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
                 }
             }
         }
-        if (overheatTicks % 10 == 0) {
+        if (world.getTime() % 20 == 0) {
             RodsFromGodEntityComponents.SOLAR_LASER.sync(this.obj);
         }
     }
@@ -95,12 +95,6 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         CommonTickingComponent.super.serverTick();
         if (!(this.obj.getWorld() instanceof ServerWorld serverWorld)) {
             return;
-        }
-        boolean isDay = serverWorld.isDay();
-        if (wasDay != isDay || serverWorld.getTime() % 40 == 0) {
-            // apparently the client thinks it's always day somehow (according to the output and usages of the isDay method)
-            wasDay = isDay;
-            RodsFromGodEntityComponents.SOLAR_LASER.sync(this.obj);
         }
         if (!underTheSun(true)) {
             return;
@@ -139,14 +133,12 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
     public void readFromNbt(NbtCompound nbtCompound, RegistryWrapper.WrapperLookup wrapperLookup) {
         this.overheatTicks = nbtCompound.getInt("overheatTicks");
         this.ticksUsed = nbtCompound.getInt("ticksUsed");
-        this.wasDay = nbtCompound.getBoolean("wasDay");
     }
 
     @Override
     public void writeToNbt(NbtCompound nbtCompound, RegistryWrapper.WrapperLookup wrapperLookup) {
         nbtCompound.putInt("overheatTicks", this.overheatTicks);
         nbtCompound.putInt("ticksUsed", this.ticksUsed);
-        nbtCompound.putBoolean("wasDay", this.wasDay);
     }
 
     public int getOverheatTicks() {
@@ -168,10 +160,11 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
             return true;
         }
         // ignores weather, not going to fix
-        if (this.obj.atmospheric_api$isAffectedByDaylight() && wasDay) {
+        World world = this.obj.getWorld();
+        if (this.obj.atmospheric_api$isAffectedByDaylight() && RodsFromGodWorldComponents.WAS_DAY.get(world).wasDay()) {
             return true;
         }
-        return accountForUltrawarm && this.obj.getWorld().getDimension().ultrawarm();
+        return accountForUltrawarm && world.getDimension().ultrawarm();
     }
 
     public boolean shouldOverheat() {
