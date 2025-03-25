@@ -28,7 +28,7 @@ public class WorldRendererMixin {
             return original.call(instance, matrix4f, x, y, z);
         }
         WorldLeverComponent worldLeverComponent = RodsFromGodWorldComponents.WORLD_LEVER.get(this.world);
-        float scale = WorldLeverComponent.MAX_CELESTIAL_SCALE; // for readability
+        final float scale = WorldLeverComponent.MAX_CELESTIAL_SCALE; // for readability
         if (worldLeverComponent.isSwitching()) {
             int zoom = WorldLeverComponent.MAX_CELESTIAL_ZOOM;
             float delta = (float) (zoom - worldLeverComponent.getCelestialZoom()) / zoom;
