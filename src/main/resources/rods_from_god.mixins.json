@@ -6,6 +6,7 @@
   "mixins": [
     "archimedeslever.LeverBlockMixin",
     "book.PersistentProjectileEntityMixin",
+    "compat.client.SkyRendererMixin",
     "corruptedstarfragment.DamageSourceAccessor",
     "corruptedstarfragment.EntityAccessor",
     "corruptedstarfragment.LivingEntityMixin",
