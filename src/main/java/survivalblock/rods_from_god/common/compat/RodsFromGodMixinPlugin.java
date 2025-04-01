@@ -9,13 +9,10 @@ public class RodsFromGodMixinPlugin implements AtmosphericMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.contains("compat") ) {
-            final String lower = mixinClassName.toLowerCase(Locale.ROOT);
+        final String lower = mixinClassName.toLowerCase(Locale.ROOT);
+        if (lower.contains("compat")) {
             if (lower.contains("config")) {
                 return FabricLoader.getInstance().isModLoaded("yet_another_config_lib_v3");
-            }
-            if (lower.contains("skyrender")) {
-                return FabricLoader.getInstance().isModLoaded("sky_aesthetics");
             }
         }
         return true;
