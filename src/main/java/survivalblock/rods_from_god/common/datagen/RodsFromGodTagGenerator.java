@@ -43,6 +43,10 @@ public class RodsFromGodTagGenerator {
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_SHIELD).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
             getOrCreateTagBuilder(DamageTypeTags.BYPASSES_WOLF_ARMOR).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
             getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK).add(RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT);
+
+            getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN).add(RodsFromGodDamageTypes.NO_TOUCHY);
+            getOrCreateTagBuilder(DamageTypeTags.BYPASSES_INVULNERABILITY).add(RodsFromGodDamageTypes.NO_TOUCHY);
+            getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK).add(RodsFromGodDamageTypes.NO_TOUCHY);
         }
     }
 

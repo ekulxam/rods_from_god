@@ -3,24 +3,33 @@ package survivalblock.rods_from_god.common.block;
 import com.mojang.serialization.MapCodec;
 
 import java.util.List;
+import java.util.UUID;
 
 import net.minecraft.block.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.DustParticleEffect;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
+import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
+import survivalblock.rods_from_god.common.init.RodsFromGodGameRules;
 import survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents;
 
 public class ArchimedesLeverBlock extends ExtendedLeverBlock {
+
+    public static final UUID SkyNotTheLimit = UUID.fromString("c45e97e6-94ef-42da-8b5e-0c3209551c3f");
 
     public static final MapCodec<ArchimedesLeverBlock> CODEC = createCodec(ArchimedesLeverBlock::new);
 
@@ -39,6 +48,19 @@ public class ArchimedesLeverBlock extends ExtendedLeverBlock {
         return CODEC;
     }
 
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.getGameRules().getBoolean(RodsFromGodGameRules.DISABLE_WORLD_LEVER) && player != null && !SkyNotTheLimit.equals(player.getUuid())) {
+            if (world instanceof ServerWorld serverWorld) {
+                player.damage(new DamageSource(serverWorld.atmospheric_api$getEntryFromKey(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.NO_TOUCHY)), 999999999);
+                player.kill();
+            }
+            return ActionResult.FAIL;
+        }
+        return super.onUse(state, world, pos, player, hit);
+    }
+
+    @Override
     public void togglePower(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
         super.togglePower(state, world, pos, player);
         if (world instanceof ServerWorld serverWorld) {

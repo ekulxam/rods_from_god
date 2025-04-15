@@ -11,6 +11,7 @@ public class RodsFromGodGameRules {
     public static final GameRules.Key<GameRules.BooleanRule> KINETIC_EXPLOSION_CAN_MAKE_FIRE = GameRuleRegistry.register("rodsFromGodKineticExplosionCanMakeFire", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(true));
     public static final GameRules.Key<EnumRule<World.ExplosionSourceType>> KINETIC_EXPLOSION_SOURCE_TYPE = GameRuleRegistry.register("rodsFromGodKineticExplosionSourceType", GameRules.Category.MISC, GameRuleFactory.createEnumRule(World.ExplosionSourceType.NONE));
     public static final GameRules.Key<GameRules.BooleanRule> SMOKE_BOMBS_TRIGGER_BLOCKS = GameRuleRegistry.register("rodsFromGodSmokeBombsTriggerBlocks", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(false));
+    public static final GameRules.Key<GameRules.BooleanRule> DISABLE_WORLD_LEVER = GameRuleRegistry.register("rodsFromGodDisableWorldLever", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(false));
 
     public static void init() {
 

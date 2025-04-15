@@ -38,11 +38,15 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat", "%1$s overheated from using a solar laser");
         translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat.player", "%1$s overheated from using a solar laser whilst fighting %2$s");
         translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat.item", "%1$s overheated from using a solar laser whilst fighting %2$s using %3$s");
+        translationBuilder.add("death.attack.rods_from_god.no_touching", "%1$s had their soul sundered from this reality");
+        translationBuilder.add("death.attack.rods_from_god.no_touching.player", "%1$s had their soul sundered from this reality whilst fighting %2$s");
+        translationBuilder.add("death.attack.rods_from_god.no_touching.item", "%1$s had their soul sundered from this reality whilst fighting %2$s using %3$s");
 
         // gamerules
-        translationBuilder.add("gamerule.rodsFromGodKineticExplosionCanMakeFire", "Rods from God - Kinetic Explosions Can Produce Fire");
-        translationBuilder.add("gamerule.rodsFromGodKineticExplosionSourceType", "Rods from God - Kinetic Explosion Source Type");
-        translationBuilder.add("gamerule.rodsFromGodSmokeBombsTriggerBlocks", "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
+        translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_CAN_MAKE_FIRE.getTranslationKey(), "Rods from God - Kinetic Explosions Can Produce Fire");
+        translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE.getTranslationKey(), "Rods from God - Kinetic Explosion Source Type");
+        translationBuilder.add(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS.getTranslationKey(), "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
+        translationBuilder.add(RodsFromGodGameRules.DISABLE_WORLD_LEVER.getTranslationKey(), "Rods from God - Disable World Lever (May Have Funny Consequences)");
 
         // item
         translationBuilder.add(RodsFromGodItems.AIMING_DEVICE, "Rods from God - Aiming Device");
