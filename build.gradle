@@ -60,7 +60,12 @@ dependencies {
 
 	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 
+	//implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.2-beta.3"))
+
 	modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
+
+	modCompileOnly "maven.modrinth:lithium:${project.lithium_version}"
+	modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
 
 	modCompileOnly "dev.emi:emi-fabric:${project.emi_version}"
 	modRuntimeOnly "dev.emi:emi-fabric:${project.emi_version}"
