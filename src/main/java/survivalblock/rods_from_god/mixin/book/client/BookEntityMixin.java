@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.client.screen.BookTargetScreen;
 import survivalblock.rods_from_god.common.entity.BookEntity;
 
-@Debug(export = true)
 @Environment(EnvType.CLIENT)
 @Mixin(value = BookEntity.class)
 public class BookEntityMixin {

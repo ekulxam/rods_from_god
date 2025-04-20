@@ -18,10 +18,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Slice;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import survivalblock.rods_from_god.common.block.SynthesisTable.SynthesisScreenHandler;
 
-@Debug(export = true)
 @Mixin(CraftingScreenHandler.class)
 public class CraftingScreenHandlerMixin {
 
