@@ -57,6 +57,9 @@
 			"rods_from_god:stone_statue",
 			"rods_from_god:world_lever",
 			"rods_from_god:was_day"
-		]
+		],
+		"loom:injected_interfaces": {
+			"net/minecraft/class_1538": ["survivalblock/rods_from_god/common/entity/FireCreating"]
+		}
 	}
 }
