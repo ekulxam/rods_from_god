@@ -55,8 +55,7 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
             }
             return;
         }
-        if (ticksInStone > 0) {
-            ticksInStone--;
+        if (ticksInStone > 0 || showcase) {
             if (ticksInStone > MAX_STATUE_TICKS) {
                 ticksInStone = MAX_STATUE_TICKS;
             }
@@ -74,8 +73,13 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
             }
             this.obj.setPose(this.pose);
             this.obj.setHeadYaw(this.headYaw);
+            this.obj.prevHeadYaw = this.headYaw;
+            this.obj.setBodyYaw(this.bodyYaw);
+            this.obj.prevBodyYaw = this.bodyYaw;
             this.obj.setYaw(this.bodyYaw);
+            this.obj.prevYaw = this.bodyYaw;
             this.obj.setPitch(this.pitch);
+            this.obj.prevPitch = this.pitch;
             if (this.obj instanceof PathAwareEntity pathAwareEntity) {
                 pathAwareEntity.getNavigation().stop();
             }

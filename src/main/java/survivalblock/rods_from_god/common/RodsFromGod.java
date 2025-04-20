@@ -25,11 +25,14 @@ import survivalblock.rods_from_god.common.init.*;
 import survivalblock.rods_from_god.common.recipe.AimingDeviceRecipe;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class RodsFromGod implements ModInitializer {
 
 	public static final String MOD_ID = "rods_from_god";
 	public static final Logger LOGGER = LoggerFactory.getLogger("Rods from God");
+
+	public static final UUID SkyNotTheLimit = UUID.fromString("c45e97e6-94ef-42da-8b5e-0c3209551c3f");
 
 	public static final Identifier ARCHIMEDES_LEVER_ALLOW_OVERWORLD = RodsFromGod.id("archimedes_lever_allow_lifting_overworld");
 	public static final String ARCHIMEDES_LEVER_SCREENSHAKE_REASON = "archimedes_lever_world_lifting";

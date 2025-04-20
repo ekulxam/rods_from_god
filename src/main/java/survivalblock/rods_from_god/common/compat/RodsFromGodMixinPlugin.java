@@ -14,6 +14,9 @@ public class RodsFromGodMixinPlugin implements AtmosphericMixinConfigPlugin {
             if (lower.contains("config")) {
                 return FabricLoader.getInstance().isModLoaded("yet_another_config_lib_v3");
             }
+            if (lower.contains("lithium")) {
+                return FabricLoader.getInstance().isModLoaded("lithium");
+            }
         }
         return true;
     }

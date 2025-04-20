@@ -43,6 +43,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("death.attack.rods_from_god.no_touching.item", "%1$s had their soul sundered from this reality whilst fighting %2$s using %3$s");
 
         // gamerules
+        translationBuilder.add("gamerule.category.rods_from_god", "Rods from God");
         translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_CAN_MAKE_FIRE.getTranslationKey(), "Rods from God - Kinetic Explosions Can Produce Fire");
         translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE.getTranslationKey(), "Rods from God - Kinetic Explosion Source Type");
         translationBuilder.add(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS.getTranslationKey(), "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
@@ -128,7 +129,9 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodStatusEffects.GRAVITY_INCREASE.value(), "Gravity Increase");
 
         // command
-        translationBuilder.add("commands.rodsfromgod.worldlever.setlifted.success", "Set to the value of lifted in the World Lever Component to %2$s for dimension %1$s");
+        translationBuilder.add("commands.rodsfromgod.notplayersource", "Source was not a player!");
+        translationBuilder.add("commands.rodsfromgod.illegalexecute", "This command cannot be put within /execute!");
+        translationBuilder.add("commands.rodsfromgod.worldlever.setlifted.success", "Set the value of lifted in the World Lever Component to %2$s for dimension %1$s");
         translationBuilder.add("commands.rodsfromgod.worldlever.query.switching.true", "The World Lever Component of dimension %1$s is currently switching");
         translationBuilder.add("commands.rodsfromgod.worldlever.query.switching.false", "The World Lever Component of dimension %1$s is not currently switching");
         translationBuilder.add("commands.rodsfromgod.worldlever.query.lifted.true", "The World Lever Component of dimension %1$s is currently lifted");
@@ -138,6 +141,8 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("commands.rodsfromgod.medusastatue.set_statue", "Successfully turned %1$s into a statue.");
         translationBuilder.add("commands.rodsfromgod.medusastatue.remove_statue", "Successfully freed %1$s from being a statue.");
         translationBuilder.add("argument.rodsfromgod.medusastatue.entity_not_supported", "Entity %1$s does not provide StoneStatueComponent.");
+        translationBuilder.add("commands.rodsfromgod.lightningvolume.get", "Lightning Thunder Volume for dimension %1$s is currently set to %2$s");
+        translationBuilder.add("commands.rodsfromgod.lightningvolume.set", "Lightning Thunder Volume for dimension %1$s was changed from %2$s to %3$s");
 
         // packs
         translationBuilder.add("dataPack.rods_from_god.archimedes_lever_allow_lifting_overworld.name", "Rods from God - Archimedes Lever : Allow Lifting Overworld");

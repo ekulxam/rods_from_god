@@ -23,13 +23,16 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
+import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.RodsFromGodDamageTypes;
 import survivalblock.rods_from_god.common.init.RodsFromGodGameRules;
 import survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents;
 
+import static survivalblock.rods_from_god.common.RodsFromGod.SkyNotTheLimit;
+import static survivalblock.rods_from_god.common.init.RodsFromGodCommands.getIdFromServerWorld;
+
 public class ArchimedesLeverBlock extends ExtendedLeverBlock {
 
-    public static final UUID SkyNotTheLimit = UUID.fromString("c45e97e6-94ef-42da-8b5e-0c3209551c3f");
 
     public static final MapCodec<ArchimedesLeverBlock> CODEC = createCodec(ArchimedesLeverBlock::new);
 
@@ -56,6 +59,9 @@ public class ArchimedesLeverBlock extends ExtendedLeverBlock {
                 player.kill();
             }
             return ActionResult.FAIL;
+        }
+        if (world instanceof ServerWorld serverWorld) {
+            RodsFromGod.LOGGER.info("Player {} toggled World Lever in dimension {}", player, getIdFromServerWorld(serverWorld));
         }
         return super.onUse(state, world, pos, player, hit);
     }
