@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import survivalblock.rods_from_god.common.component.cca.entity.StoneStatueComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
 
-@Mixin(WorldHelper.class)
+@Mixin(value = WorldHelper.class, remap = false)
 public class WorldHelperMixin {
 
     @ModifyExpressionValue(method = {"getEntitiesForCollision", "getOtherEntitiesForCollision"}, at = @At(value = "FIELD", target = "Lnet/caffeinemc/mods/lithium/common/entity/EntityClassGroup$NoDragonClassGroup;BOAT_SHULKER_LIKE_COLLISION:Lnet/caffeinemc/mods/lithium/common/entity/EntityClassGroup$NoDragonClassGroup;"))

@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import survivalblock.rods_from_god.common.init.RodsFromGodGameRules;
 import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
 @Mixin(PotionEntity.class)
@@ -26,20 +27,23 @@ public abstract class PotionEntityMixin extends ThrownItemEntity {
     private void summonLightning(HitResult hitResult, CallbackInfo ci) {
         ItemStack stack = this.getStack();
         World world = this.getWorld();
-        if (!world.isClient() && stack != null && !stack.isEmpty() && stack.isOf(RodsFromGodItems.LIGHTNING_SPLASH_POTION)) {
-            LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(world);
-            if (lightningEntity != null) {
-                Vec3d vec3d = hitResult.getPos();
-                double x = Math.floor(vec3d.x) + 0.5;
-                double y = Math.floor(vec3d.y);
-                double z = Math.floor(vec3d.z) + 0.5;
-                lightningEntity.refreshPositionAfterTeleport(new Vec3d(x, y, z));
-                lightningEntity.setCosmetic(false);
-                if (this.getOwner() instanceof ServerPlayerEntity serverPlayer) {
-                    lightningEntity.setChanneler(serverPlayer);
-                }
-                world.spawnEntity(lightningEntity);
-            }
+        if (world.isClient() || stack == null || stack.isEmpty() || !stack.isOf(RodsFromGodItems.LIGHTNING_SPLASH_POTION)) {
+            return;
         }
+        LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(world);
+        if (lightningEntity == null) {
+            return;
+        }
+        Vec3d vec3d = hitResult.getPos();
+        double x = Math.floor(vec3d.x) + 0.5;
+        double y = Math.floor(vec3d.y);
+        double z = Math.floor(vec3d.z) + 0.5;
+        lightningEntity.refreshPositionAfterTeleport(new Vec3d(x, y, z));
+        lightningEntity.setCosmetic(false); // not cosmetic but doesn't make fire
+        lightningEntity.rods_from_god$setCreatesFire(world.getGameRules().getBoolean(RodsFromGodGameRules.LIGHTNING_SPLASH_POTION_CREATES_FIRE));
+        if (this.getOwner() instanceof ServerPlayerEntity serverPlayer) {
+            lightningEntity.setChanneler(serverPlayer);
+        }
+        world.spawnEntity(lightningEntity);
     }
 }

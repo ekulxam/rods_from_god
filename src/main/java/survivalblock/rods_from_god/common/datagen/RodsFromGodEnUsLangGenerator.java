@@ -48,6 +48,7 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE.getTranslationKey(), "Rods from God - Kinetic Explosion Source Type");
         translationBuilder.add(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS.getTranslationKey(), "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
         translationBuilder.add(RodsFromGodGameRules.DISABLE_WORLD_LEVER.getTranslationKey(), "Rods from God - Disable World Lever (May Have Funny Consequences)");
+        translationBuilder.add(RodsFromGodGameRules.LIGHTNING_SPLASH_POTION_CREATES_FIRE.getTranslationKey(), "Rods from God - Splash Potions of Lightning Create Fire");
 
         // item
         translationBuilder.add(RodsFromGodItems.AIMING_DEVICE, "Rods from God - Aiming Device");

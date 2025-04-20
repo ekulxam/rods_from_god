@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.function.BiPredicate;
 import java.util.function.Supplier;
 
-@Mixin(EntityClassGroup.class)
+@Mixin(value = EntityClassGroup.class, remap = false)
 public interface EntityClassGroupAccessor {
 
     @Accessor("classAndTypeFitEvaluator")

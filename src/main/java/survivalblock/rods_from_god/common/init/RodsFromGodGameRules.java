@@ -18,7 +18,7 @@ public class RodsFromGodGameRules {
     public static final GameRules.Key<EnumRule<World.ExplosionSourceType>> KINETIC_EXPLOSION_SOURCE_TYPE = register("rodsFromGodKineticExplosionSourceType", GameRuleFactory.createEnumRule(World.ExplosionSourceType.NONE));
     public static final GameRules.Key<GameRules.BooleanRule> SMOKE_BOMBS_TRIGGER_BLOCKS = registerBool("rodsFromGodSmokeBombsTriggerBlocks", false);
     public static final GameRules.Key<GameRules.BooleanRule> DISABLE_WORLD_LEVER = registerBool("rodsFromGodDisableWorldLever", false);
-    //public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_SPLASH_POTION_AFFECTS_BLOCKS = registerBool("rodsFromGodLightningSplashPotionAffectsBlocks", true);
+    public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_SPLASH_POTION_CREATES_FIRE = registerBool("rodsFromGodLightningSplashPotionCreatesFire", true);
 
     public static void init() {
 
