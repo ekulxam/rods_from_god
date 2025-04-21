@@ -184,10 +184,6 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
         }
     }
 
-    public boolean isMedusa() {
-        return this.obj.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.MEDUSA_CURSE);
-    }
-
     public boolean showcase() {
         return this.showcase;
     }

@@ -37,10 +37,4 @@ public abstract class EntityMixin {
             ci.cancel();
         }
     }
-
-    @ModifyReturnValue(method = "isCollidable", at = @At("RETURN"))
-    private boolean statuesAreCollidable(boolean original){
-        //noinspection ConstantValue
-        return original || ((Entity) (Object) this instanceof LivingEntity living && RodsFromGodEntityComponents.STONE_STATUE.get(living).isStatue());
-    }
 }

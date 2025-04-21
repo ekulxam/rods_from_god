@@ -2,6 +2,7 @@ package survivalblock.rods_from_god.mixin.medusa;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import survivalblock.rods_from_god.common.component.cca.entity.StoneStatueComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
+import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
@@ -46,7 +48,7 @@ public abstract class LivingEntityMixin extends Entity {
                     player.getEyeY())) {
                 continue;
             }
-            if (RodsFromGodEntityComponents.STONE_STATUE.get(player).isMedusa()) {
+            if (player.getEquippedStack(EquipmentSlot.HEAD).isOf(RodsFromGodItems.MEDUSA_CURSE)) {
                 RodsFromGodEntityComponents.STONE_STATUE.get(this).setInStone(false, true);
                 return;
             }
