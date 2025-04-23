@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.AtmosphericAPI;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.render.screenshake.ScreenShakePreventerRegistry;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.render.screenshake.ScreenShaker;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.resource.AtmosphericResourceManagerHelper;
 import survivalblock.rods_from_god.client.networking.BookTargetC2SPayload;
 import survivalblock.rods_from_god.client.networking.TheOneWatchComponentC2SPayload;
@@ -52,7 +53,7 @@ public class RodsFromGod implements ModInitializer {
 		}
 
 		ScreenShakePreventerRegistry.ALLOW_SHAKING.register((screenShaker) -> {
-			if (Objects.equals(MOD_ID, screenShaker.getModId()) && Objects.equals(ARCHIMEDES_LEVER_SCREENSHAKE_REASON, screenShaker.getReason())) {
+			if (isWorldLeverShake(screenShaker)) {
 				return RodsFromGodConfig.allowScreenShakingForArchimedesLever();
 			}
 			return true;
@@ -83,6 +84,10 @@ public class RodsFromGod implements ModInitializer {
 
 		ServerPlayConnectionEvents.JOIN.register((serverPlayNetworkHandler, packetSender, server) ->
 				server.getWorlds().forEach(RodsFromGodWorldComponents.WORLD_LEVER::sync));
+	}
+
+	public static boolean isWorldLeverShake(ScreenShaker screenShaker) {
+		return Objects.equals(MOD_ID, screenShaker.getModId()) && Objects.equals(ARCHIMEDES_LEVER_SCREENSHAKE_REASON, screenShaker.getReason());
 	}
 
 	public static Identifier id(String path) {
