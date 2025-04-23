@@ -22,6 +22,7 @@
     "medusa.ProjectileEntityMixin",
     "medusa.ServerPlayerEntityMixin",
     "medusa.ServerWorldMixin",
+    "medusa.collisions.EntityMixin",
     "superbouncyslimeblock.ServerPlayNetworkHandlerMixin",
     "superbouncyslimeblock.SlimeBlockMixin",
     "synthesistable.CraftingScreenHandlerAccessor",
@@ -33,6 +34,7 @@
     "tungstenrod.EntityAttributesMixin"
   ],
   "client": [
+    "archimedeslever.client.BasicScreenShakerMixin",
     "archimedeslever.client.DebugHudMixin",
     "archimedeslever.client.WorldRendererMixin",
     "book.client.BookEntityMixin",
