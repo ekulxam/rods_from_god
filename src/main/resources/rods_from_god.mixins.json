@@ -39,6 +39,7 @@
     "archimedeslever.client.WorldRendererMixin",
     "book.client.BookEntityMixin",
     "book.client.ProjectileEntityRendererMixin",
+    "compat.affinity.client.BeaconBlockEntityRendererMixin",
     "compat.client.RodsFromGodConfigMixin",
     "corruptedstarfragment.client.LivingEntityRendererMixin",
     "corruptedstarfragment.client.PlayerEntityRendererMixin",
