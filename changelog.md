@@ -1,2 +1,3 @@
-Rods from God 2.0.8+1.21.1
-- Statue collisions mixins are now disabled by default. They can be re-enabled by adding a rods_from_god_collisions.json file to the config directory.
+Rods from God 2.0.9+1.21.1
+- Removed ComponentKey.maybeGet calls to speed up logic
+- World Lever Screenshake now takes distortion effect option into account

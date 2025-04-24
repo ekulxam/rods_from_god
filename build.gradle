@@ -60,7 +60,7 @@ dependencies {
 
 	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 
-	//implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.2-beta.3"))
+	include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.2-beta.3")))
 
 	modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
 
