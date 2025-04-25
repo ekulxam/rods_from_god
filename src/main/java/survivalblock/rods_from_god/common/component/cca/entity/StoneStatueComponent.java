@@ -3,6 +3,7 @@ package survivalblock.rods_from_god.common.component.cca.entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -59,8 +60,9 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
             if (ticksInStone > MAX_STATUE_TICKS) {
                 ticksInStone = MAX_STATUE_TICKS;
             }
-            this.obj.getBrain().forget(MemoryModuleType.ATTACK_TARGET);
-            this.obj.getBrain().forget(MemoryModuleType.ANGRY_AT);
+            Brain<?> brain = this.obj.getBrain();
+            brain.forget(MemoryModuleType.ATTACK_TARGET);
+            brain.forget(MemoryModuleType.ANGRY_AT);
             if (this.obj.getVelocity().lengthSquared() > 1.0E-7 && this.obj.isLogicalSideForUpdatingMovement()) {
                 this.obj.setVelocity(Vec3d.ZERO);
                 if (this.obj instanceof ServerPlayerEntity) {
@@ -90,7 +92,7 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
             ticksInStone = 0;
         }
         this.shouldSendAll = true;
-        if (this.obj.getWorld().getTime() % 40 == 0) {
+        if (this.obj.getWorld().getTime() % 100 == 0) {
             sync();
         }
         this.alreadySynced = false;
