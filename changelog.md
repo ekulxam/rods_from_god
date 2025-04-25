@@ -1,2 +1,2 @@
-Rods from God 2.0.10+1.21.1
-- Return of affinity mixins (fixes affinity breaking beacon beam rendering)
+Rods from God 2.0.11+1.21.1
+- StoneStatueComponent now syncs 2.5x less
