@@ -29,6 +29,7 @@ import survivalblock.rods_from_god.common.init.RodsFromGodSoundEvents;
 import survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedComponent {
@@ -108,14 +109,25 @@ public class SolarLaserComponent implements CommonTickingComponent, AutoSyncedCo
         Vec3d direction = hitResultPos.subtract(eyePos).normalize();
         double distance = eyePos.squaredDistanceTo(hitResultPos);
         Set<Entity> entities = new HashSet<>(1024);
+        Set<Box> boxes = new HashSet<>(100);
         for (float step = 0; step * step < distance; step += 0.2f) {
             Vec3d vec3d = eyePos.add(direction.multiply(step));
             final double boxRadius = 0.25;
             Vec3d lowerCorner = vec3d.subtract(boxRadius, boxRadius, boxRadius);
             Vec3d upperCorner = vec3d.add(boxRadius, boxRadius, boxRadius);
-            Box box = new Box(lowerCorner, upperCorner);
-            serverWorld.atmospheric_api$getAndAddEntitiesToCollection((entity -> entity instanceof LivingEntity && entity.getBoundingBox().intersects(box)), entities);
+            boxes.add(new Box(lowerCorner, upperCorner));
         }
+        serverWorld.atmospheric_api$getAndAddEntitiesToCollection((entity -> {
+            if (!(entity instanceof LivingEntity)) {
+                return false;
+            }
+            for (Box box : boxes) {
+                if (entity.getBoundingBox().intersects(box)) {
+                    return true;
+                }
+            }
+            return false;
+        }), entities);
         entities.remove(this.obj);
         DamageSource source = new DamageSource(serverWorld.atmospheric_api$getEntryFromKey(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.SOLAR_LASER), this.obj);
         entities.forEach(entity -> {
