@@ -24,8 +24,6 @@ import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 import java.util.List;
 import java.util.Optional;
 
-import static survivalblock.rods_from_god.common.component.cca.entity.SmokeScreenComponent.MAX_SMOKE_SCREEN_TICKS;
-
 @SuppressWarnings("unused")
 public class SmokeBombEntity extends ThrownItemEntity {
 

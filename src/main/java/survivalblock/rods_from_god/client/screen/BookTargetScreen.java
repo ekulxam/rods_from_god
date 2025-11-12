@@ -6,12 +6,10 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.CyclingButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.gui.widget.ThreePartsLayoutWidget;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import survivalblock.rods_from_god.client.networking.BookTargetC2SPayload;
-import survivalblock.rods_from_god.common.TickSubcommand;
 import survivalblock.rods_from_god.common.component.cca.entity.BookTargetComponent;
 import survivalblock.rods_from_god.common.entity.BookEntity;
 

@@ -1,7 +1,6 @@
 package survivalblock.rods_from_god.common.component.cca.entity;
 
 import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
@@ -19,7 +18,6 @@ import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.init.RodsFromGodEntityComponents;
-import survivalblock.rods_from_god.common.init.RodsFromGodItems;
 
 public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingComponent {
 

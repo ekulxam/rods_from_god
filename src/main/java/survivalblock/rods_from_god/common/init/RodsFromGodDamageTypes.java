@@ -5,8 +5,6 @@ import net.minecraft.entity.damage.DamageType;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.world.World;
 import survivalblock.rods_from_god.common.RodsFromGod;
 
 import java.util.HashMap;

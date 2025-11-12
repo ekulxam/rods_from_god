@@ -3,7 +3,6 @@ package survivalblock.rods_from_god.common.block;
 import com.mojang.serialization.MapCodec;
 
 import java.util.List;
-import java.util.UUID;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.damage.DamageSource;

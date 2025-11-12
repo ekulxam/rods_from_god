@@ -37,9 +37,9 @@ public record TheOneWatchComponent(String subcommand, String arguments) implemen
         if (this == obj) {
             return true;
         }
-        if (obj instanceof TheOneWatchComponent oneWatchComponent) {
-            return (Objects.equals(this.subcommand(), oneWatchComponent.subcommand()))
-                    && (Objects.equals(this.arguments(), oneWatchComponent.arguments()));
+        if (obj instanceof TheOneWatchComponent(String subcommand1, String arguments1)) {
+            return (Objects.equals(this.subcommand(), subcommand1))
+                    && (Objects.equals(this.arguments(), arguments1));
         }
         return false;
     }

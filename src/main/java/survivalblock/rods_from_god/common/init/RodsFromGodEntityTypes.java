@@ -3,7 +3,6 @@ package survivalblock.rods_from_god.common.init;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.projectile.SpectralArrowEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import survivalblock.rods_from_god.common.RodsFromGod;

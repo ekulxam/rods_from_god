@@ -4,7 +4,6 @@ import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.function.ValueLists;
 
 import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
 
 @SuppressWarnings({"unused", "deprecation"})
 public enum TickSubcommand implements StringIdentifiable {

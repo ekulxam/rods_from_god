@@ -2,7 +2,6 @@ package survivalblock.rods_from_god.common.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.DyeColor;
 import survivalblock.rods_from_god.common.block.SuperBouncySlimeBlock;

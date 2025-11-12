@@ -6,7 +6,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.RotationAxis;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.entity.EnchantedArrowEntity;
 
