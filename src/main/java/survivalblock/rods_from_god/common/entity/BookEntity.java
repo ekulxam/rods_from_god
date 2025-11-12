@@ -30,6 +30,9 @@ public class BookEntity extends EntityWithAttributesImpl {
 
     private static final Random RANDOM = Random.create();
 
+    public static final DefaultAttributeContainer DEFAULT_ATTRIBUTES = DefaultAttributeContainer.builder()
+            .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE).build();
+
     protected float prevScale = 0;
     public int ticks;
     public float nextPageAngle;
@@ -175,9 +178,8 @@ public class BookEntity extends EntityWithAttributesImpl {
     }
 
     @Override
-    public AttributeContainer getDefaultAttributeContainer() {
-        return new AttributeContainer(DefaultAttributeContainer.builder()
-                .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE).build());
+    public DefaultAttributeContainer getDefaultAttributeContainer() {
+        return DEFAULT_ATTRIBUTES;
     }
 
     public int getProjectileDuration() {

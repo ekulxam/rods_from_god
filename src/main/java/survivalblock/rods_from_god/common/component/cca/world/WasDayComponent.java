@@ -26,7 +26,7 @@ public class WasDayComponent implements AutoSyncedComponent, ServerTickingCompon
         if (!(this.world instanceof ServerWorld serverWorld)) {
             return;
         }
-        boolean isDay = serverWorld.isDay();
+        boolean isDay = serverWorld.getAmbientDarkness() < 4; // is functionally day
         if (wasDay != isDay || prevLightningVolume != lightningThunderVolume || serverWorld.getTime() % 200 == 0) {
             // apparently the client thinks it's always day somehow (according to the output and usages of the isDay method)
             wasDay = isDay;

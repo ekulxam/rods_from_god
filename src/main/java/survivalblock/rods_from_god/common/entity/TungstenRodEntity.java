@@ -42,6 +42,10 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
     public static final float DEFAULT_SCALE = 16.0f;
     public static final double DEFAULT_GRAVITY = 0.1d;
 
+    public static final DefaultAttributeContainer DEFAULT_ATTRIBUTES = DefaultAttributeContainer.builder()
+            .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE)
+            .add(EntityAttributes.GENERIC_GRAVITY, DEFAULT_GRAVITY).build();
+
     protected float prevScale = 0;
     protected boolean shouldExplode = false;
     protected int explosionCounter = 0;
@@ -239,10 +243,8 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         return this.getType().getDimensions();
     }
 
-    public AttributeContainer getDefaultAttributeContainer() {
-        return new AttributeContainer(DefaultAttributeContainer.builder()
-                .add(EntityAttributes.GENERIC_SCALE, DEFAULT_SCALE)
-                .add(EntityAttributes.GENERIC_GRAVITY, DEFAULT_GRAVITY).build());
+    public DefaultAttributeContainer getDefaultAttributeContainer() {
+        return DEFAULT_ATTRIBUTES;
     }
 
     public boolean hasLanded() {

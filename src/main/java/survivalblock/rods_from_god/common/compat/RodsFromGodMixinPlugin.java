@@ -1,10 +1,9 @@
 package survivalblock.rods_from_god.common.compat;
 
-import com.bawnorton.mixinsquared.adjuster.MixinAnnotationAdjusterRegistrar;
 import com.bawnorton.mixinsquared.api.MixinCanceller;
 import com.bawnorton.mixinsquared.canceller.MixinCancellerRegistrar;
 import net.fabricmc.loader.api.FabricLoader;
-import survivalblock.atmosphere.atmospheric_api.mixin.compat.AtmosphericMixinConfigPlugin;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.compat.AtmosphericMixinConfigPlugin;
 
 import java.io.File;
 import java.util.List;
