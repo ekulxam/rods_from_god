@@ -17,6 +17,6 @@ public abstract class ExtendedLeverBlock extends LeverBlock {
 
     @Override
     public MapCodec<LeverBlock> getCodec() {
-        return codec;
+        return this.codec;
     }
 }

@@ -8,10 +8,10 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import survivalblock.rods_from_god.common.entity.FireCreating;
+import survivalblock.rods_from_god.common.entity.injected_interface.FireCreating;
 import survivalblock.rods_from_god.common.init.RodsFromGodWorldComponents;
 
-@Mixin(value = LightningEntity.class, priority = 1000)
+@Mixin(LightningEntity.class)
 public abstract class LightningEntityMixin extends Entity implements FireCreating {
 
     @Unique

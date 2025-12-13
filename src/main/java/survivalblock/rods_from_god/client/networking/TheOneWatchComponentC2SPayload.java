@@ -34,7 +34,18 @@ public record TheOneWatchComponentC2SPayload(String subcommand, String arguments
             if (!stack.isOf(RodsFromGodItems.THE_ONE_WATCH)) {
                 return;
             }
-            stack.set(RodsFromGodDataComponentTypes.THE_ONE_WATCH, new TheOneWatchComponent(payload.subcommand(), payload.arguments()));
+            String receivedArguments = payload.arguments();
+            StringBuilder actualArguments = new StringBuilder();
+            for (int i = 0; i < 3; i++) {
+                // hopefully this prevents executing chained commands or whatever
+                int space = receivedArguments.indexOf(" ");
+                if (space < 0) {
+                    break;
+                }
+                actualArguments.append(receivedArguments, 0, space);
+                receivedArguments = receivedArguments.substring(space);
+            }
+            stack.set(RodsFromGodDataComponentTypes.THE_ONE_WATCH, new TheOneWatchComponent(payload.subcommand(), actualArguments.toString()));
         }
     }
 }

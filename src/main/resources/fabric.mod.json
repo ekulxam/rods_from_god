@@ -59,7 +59,8 @@
 			"rods_from_god:was_day"
 		],
 		"loom:injected_interfaces": {
-			"net/minecraft/class_1538": ["survivalblock/rods_from_god/common/entity/FireCreating"]
+			"net/minecraft/class_1538": ["survivalblock/rods_from_god/common/entity/injected_interface/FireCreating"],
+            "net/minecraft/class_1657": ["survivalblock/rods_from_god/common/entity/injected_interface/RodsFromGodScreenSetter"]
 		}
 	}
 }

@@ -192,7 +192,8 @@ public class BookEntity extends EntityWithAttributesImpl {
 
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
-        return ActionResult.success(player.getWorld().isClient);
+        ActionResult success = ActionResult.success(player.getWorld().isClient);
+        return player.rods_from_god$openBookTargetScreen(success, hand, this);
     }
 
     @Override

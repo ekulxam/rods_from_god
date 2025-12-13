@@ -55,7 +55,7 @@ public class TheOneWatchScreen extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        context.drawText(this.textRenderer, Text.translatable("item.rods_from_god.the_one_watch.screen.argument").getString(), this.width / 2 - 50 - 100 - 4, this.height / 2 - 10 - this.textRenderer.fontHeight - 10, 0xFFFFFFFF, true);
+        context.drawText(this.textRenderer, Text.translatable("item.rods_from_god.the_one_watch.screen.argument"), this.width / 2 - 50 - 100 - 4, this.height / 2 - 10 - this.textRenderer.fontHeight - 10, 0xFFFFFFFF, true);
     }
 
     @Override
@@ -63,7 +63,6 @@ public class TheOneWatchScreen extends Screen {
         super.close();
         if (this.client != null) this.client.setScreen(this.parent);
     }
-
 
     public void saveAndClose() {
         // I'm sorry, Bawnorton

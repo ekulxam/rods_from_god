@@ -1,7 +1,5 @@
 package survivalblock.rods_from_god.client.entity;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.entity.EntityRenderer;
@@ -12,7 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.entity.TungstenRodEntity;
 
-@Environment(value= EnvType.CLIENT)
 public class OctagonalPrismEntityRenderer extends EntityRenderer<TungstenRodEntity> {
 
     protected OctagonalPrismEntityModel model;

@@ -14,7 +14,7 @@ public class RodsFromGodDataGenerator implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(RodsFromGodEnUsLangGenerator::new);
-		pack.addProvider(RodsFromGodDamageTypeGenerator::new);
+		pack.addProvider(RodsFromGodDynamicRegistriesGenerator::new);
 		pack.addProvider(RodsFromGodModelGenerator::new);
 		pack.addProvider(RodsFromGodBlockLootTableGenerator::new);
 		pack.addProvider(RodsFromGodRecipeGenerator::new);

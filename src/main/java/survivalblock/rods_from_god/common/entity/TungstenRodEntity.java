@@ -9,7 +9,6 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.crash.CrashException;
 import net.minecraft.util.crash.CrashReport;
@@ -190,8 +189,6 @@ public class TungstenRodEntity extends EntityWithAttributesImpl {
         if (!shouldExplode) {
             return;
         }
-        MinecraftServer server = serverWorld.getServer();
-        int ticks = server.getTicks();
         GameRules gameRules = serverWorld.getGameRules();
         World.ExplosionSourceType sourceType = gameRules.get(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE).get();
         DamageSource source = new DamageSource(serverWorld.atmospheric_api$getEntryFromKey(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.KINETIC_EXPLOSION), this);
