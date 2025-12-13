@@ -7,7 +7,7 @@
     "archimedeslever.CommandManagerMixin",
     "archimedeslever.LeverBlockMixin",
     "book.PersistentProjectileEntityMixin",
-    "book.PlayerEntityMixin",
+    "screensetter.PlayerEntityMixin",
     "compat.lithium.EntityClassGroupAccessor",
     "compat.lithium.WorldHelperMixin",
     "corruptedstarfragment.DamageSourceAccessor",
@@ -38,7 +38,7 @@
     "archimedeslever.client.BasicScreenShakerMixin",
     "archimedeslever.client.DebugHudMixin",
     "archimedeslever.client.WorldRendererMixin",
-    "book.client.AbstractClientPlayerEntityMixin",
+    "screensetter.client.AbstractClientPlayerEntityMixin",
     "book.client.ProjectileEntityRendererMixin",
     "compat.affinity.client.BeaconBlockEntityRendererMixin",
     "compat.client.RodsFromGodConfigMixin",
@@ -53,7 +53,6 @@
     "solarprismheadset.client.PlayerEntityRendererMixin",
     "synthesistable.client.CraftingScreenMixin",
     "theonewatch.client.ItemRendererMixin",
-    "theonewatch.client.OneWatchToRuleThemAllMixin"
   ],
   "injectors": {
     "defaultRequire": 1

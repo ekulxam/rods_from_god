@@ -28,7 +28,7 @@ public class OneWatchToRuleThemAllItem extends Item {
 
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
-        return Objects.equals(clickType, ClickType.RIGHT);
+        return player.rods_from_god$openOneWatchScreen(stack, otherStack, slot, clickType, cursorStackReference);
     }
 
     @Override
