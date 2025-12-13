@@ -1,26 +1,31 @@
 package survivalblock.rods_from_god.common.compat.config;
 
-import net.minecraft.client.gui.screen.Screen;
-import org.jetbrains.annotations.Nullable;
+import survivalblock.rods_from_god.common.RodsFromGod;
 
-public class RodsFromGodConfig {
+public interface RodsFromGodConfig {
 
-    private static class Defaults {
-        public static boolean allowScreenShakingForArchimedesLever = true;
+    RodsFromGodConfig INSTANCE = getInstance();
+
+    default boolean archimedesLeverScreenShake() {
+        return Defaults.ARCHIMEDES_LEVER_SCREEN_SHAKE;
     }
 
-    public static boolean allowScreenShakingForArchimedesLever() {
-        return Defaults.allowScreenShakingForArchimedesLever;
+    static RodsFromGodConfig getInstance() {
+        if (RodsFromGod.YACL) {
+            return RodsFromGodYACLCompat.getYACLConfigInstance();
+        }
+        RodsFromGod.LOGGER.warn("YACL is not installed, so Rods from God's YACL Config will not be accessible!");
+        return new RodsFromGodConfig() {};
     }
 
-    @SuppressWarnings("unused")
-    @Nullable
-    public static Screen create(Screen parent) {
-        return null;
+    static void init() {
+        // NO-OP
     }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public static boolean load() {
-        return false;
+    final class Defaults {
+        private Defaults() {
+        }
+
+        public static final boolean ARCHIMEDES_LEVER_SCREEN_SHAKE = true;
     }
 }

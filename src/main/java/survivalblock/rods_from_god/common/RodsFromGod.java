@@ -38,23 +38,17 @@ public class RodsFromGod implements ModInitializer {
 	public static final Identifier ARCHIMEDES_LEVER_ALLOW_OVERWORLD = RodsFromGod.id("archimedes_lever_allow_lifting_overworld");
 	public static final String ARCHIMEDES_LEVER_SCREENSHAKE_REASON = "archimedes_lever_world_lifting";
 
-	public static boolean shouldDoConfig = false;
-	public static boolean configLoaded = false;
+    public static final boolean YACL = FabricLoader.getInstance().isModLoaded("yet_another_config_lib_v3");
+    public static boolean configLoaded = false;
 
 	@Override
 	public void onInitialize() {
 		AtmosphericAPI.resetIsConnectorLoaded();
-		shouldDoConfig = FabricLoader.getInstance().isModLoaded("yet_another_config_lib_v3");
-		if (shouldDoConfig) {
-			configLoaded = RodsFromGodConfig.load();
-			if (!configLoaded) {
-				RodsFromGod.LOGGER.warn("Rods from God Config could not be loaded!");
-			}
-		}
+        RodsFromGodConfig.init();
 
 		ScreenShakePreventerRegistry.ALLOW_SHAKING.register((screenShaker) -> {
 			if (isWorldLeverShake(screenShaker)) {
-				return RodsFromGodConfig.allowScreenShakingForArchimedesLever();
+				return RodsFromGodConfig.INSTANCE.archimedesLeverScreenShake();
 			}
 			return true;
 		});

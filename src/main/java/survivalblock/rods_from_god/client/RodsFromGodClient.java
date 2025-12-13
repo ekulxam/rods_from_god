@@ -18,14 +18,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.render.overlay.client.AtmosphericOverlayRegistry;
-import survivalblock.atmosphere.atmospheric_api.not_mixin.render.overlay.client.OverlayHolder;
+import survivalblock.rods_from_god.client.compat.config.RodsFromGodConfigScreenCreator;
 import survivalblock.rods_from_god.client.entity.*;
 import survivalblock.rods_from_god.client.screen.SynthesisScreen;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.block.SynthesisTable;
 import survivalblock.rods_from_god.common.component.cca.entity.SolarLaserComponent;
 import survivalblock.rods_from_god.common.component.cca.entity.StoneStatueComponent;
-import survivalblock.rods_from_god.common.component.item.SolarPrismHeadsetComponent;
 import survivalblock.rods_from_god.common.component.item.TheOneWatchComponent;
 import survivalblock.rods_from_god.common.init.RodsFromGodBlocks;
 import survivalblock.rods_from_god.common.init.RodsFromGodDataComponentTypes;
@@ -43,6 +42,8 @@ public class RodsFromGodClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+        RodsFromGodConfigScreenCreator.init();
+
 		EntityModelLayerRegistry.registerModelLayer(TUNGSTEN_ROD, OctagonalPrismEntityModel::getTexturedModelData);
 		EntityRendererRegistry.register(RodsFromGodEntityTypes.TUNGSTEN_ROD,
 				(ctx -> new OctagonalPrismEntityRenderer(ctx, new OctagonalPrismEntityModel(ctx.getPart(TUNGSTEN_ROD)), 0.625f)));

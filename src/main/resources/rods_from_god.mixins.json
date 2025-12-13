@@ -41,7 +41,6 @@
     "screensetter.client.AbstractClientPlayerEntityMixin",
     "book.client.ProjectileEntityRendererMixin",
     "compat.affinity.client.BeaconBlockEntityRendererMixin",
-    "compat.client.RodsFromGodConfigMixin",
     "corruptedstarfragment.client.LivingEntityRendererMixin",
     "corruptedstarfragment.client.PlayerEntityRendererMixin",
     "lightningsplashpotion.client.ItemColorsMixin",
@@ -52,7 +51,7 @@
     "solarprismheadset.client.EntityRendererMixin",
     "solarprismheadset.client.PlayerEntityRendererMixin",
     "synthesistable.client.CraftingScreenMixin",
-    "theonewatch.client.ItemRendererMixin",
+    "theonewatch.client.ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
