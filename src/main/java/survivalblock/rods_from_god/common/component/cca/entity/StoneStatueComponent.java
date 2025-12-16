@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
+import org.jetbrains.annotations.Nullable;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
 import survivalblock.rods_from_god.common.RodsFromGod;
@@ -28,8 +29,10 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
 
     private final LivingEntity obj;
     private int ticksInStone = 0;
-    private Vec3d position;
-    private EntityPose pose;
+    @Nullable
+    private Vec3d position = null;
+    @Nullable
+    private EntityPose pose = null;
     private boolean showcase = false;
 
     // I literally cannot be bothered to make setter and getter methods for all of these
@@ -40,8 +43,6 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
 
     public StoneStatueComponent(LivingEntity living) {
         this.obj = living;
-        this.position = living.getPos();
-        this.pose = living.getPose();
     }
 
     @Override
@@ -67,11 +68,15 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
                     this.obj.velocityModified = true;
                 }
             }
-            if (this.obj.squaredDistanceTo(this.position) > 0.01) {
-                this.obj.setPosition(this.position);
-                this.obj.updateTrackedPosition(this.position.x, this.position.y, this.position.z);
+            if (this.position != null) {
+                if (this.obj.squaredDistanceTo(this.position) > 0.01) {
+                    this.obj.setPosition(this.position);
+                    this.obj.updateTrackedPosition(this.position.x, this.position.y, this.position.z);
+                }
             }
-            this.obj.setPose(this.pose);
+            if (this.pose != null) {
+                this.obj.setPose(this.pose);
+            }
             this.obj.setHeadYaw(this.headYaw);
             this.obj.prevHeadYaw = this.headYaw;
             this.obj.setBodyYaw(this.bodyYaw);
@@ -104,11 +109,15 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
         }
         if (nbt.contains("pose")) {
             this.pose = EntityPose.valueOf(nbt.getString("pose"));
+        } else {
+            this.pose = null;
         }
         if (nbt.contains("position")) {
             this.position = Vec3d.CODEC.parse(wrapperLookup.getOps(NbtOps.INSTANCE), nbt.get("position"))
                     .resultOrPartial(error -> RodsFromGod.LOGGER.error("Tried to load invalid Vec3d: '{}'", error))
                     .orElse(this.obj.getPos());
+        } else {
+            this.position = null;
         }
         if (nbt.contains("headYaw")) {
             this.headYaw = nbt.getFloat("headYaw");
@@ -130,9 +139,13 @@ public class StoneStatueComponent implements AutoSyncedComponent, CommonTickingC
     @Override
     public void writeToNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapperLookup) {
         this.writeBasicDataToNbt(nbt, wrapperLookup);
-        nbt.putString("pose", this.pose.toString());
-        nbt.put("position", Vec3d.CODEC.encodeStart(wrapperLookup.getOps(NbtOps.INSTANCE), this.position)
-                .getOrThrow());
+        if (this.pose != null) {
+            nbt.putString("pose", this.pose.toString());
+        }
+        if (this.position != null) {
+            nbt.put("position", Vec3d.CODEC.encodeStart(wrapperLookup.getOps(NbtOps.INSTANCE), this.position)
+                    .getOrThrow());
+        }
         nbt.putFloat("headYaw", this.headYaw);
         nbt.putFloat("bodyYaw", this.bodyYaw);
         nbt.putFloat("pitch", this.pitch);

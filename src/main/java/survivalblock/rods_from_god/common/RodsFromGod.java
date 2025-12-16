@@ -77,7 +77,8 @@ public class RodsFromGod implements ModInitializer {
 				.ifPresent(RodsFromGod::registerBuiltinDataPacks);
 
 		ServerPlayConnectionEvents.JOIN.register((serverPlayNetworkHandler, packetSender, server) ->
-				server.getWorlds().forEach(RodsFromGodWorldComponents.WORLD_LEVER::sync));
+                server.getWorlds().forEach(RodsFromGodWorldComponents.WORLD_LEVER::sync)
+        );
 	}
 
 	public static boolean isWorldLeverShake(ScreenShaker screenShaker) {

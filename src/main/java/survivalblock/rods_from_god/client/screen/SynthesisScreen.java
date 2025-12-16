@@ -1,10 +1,13 @@
 package survivalblock.rods_from_god.client.screen;
 
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.CraftingScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.CraftingScreenHandler;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.AtmosphericAPI;
 import survivalblock.rods_from_god.common.RodsFromGod;
 
 public class SynthesisScreen extends CraftingScreen {
@@ -22,5 +25,14 @@ public class SynthesisScreen extends CraftingScreen {
         super.init();
         this.titleX -= 18;
         this.titleY -= 18;
+    }
+
+    @Override
+    protected void drawSlot(DrawContext context, Slot slot) {
+        super.drawSlot(context, slot);
+
+        if (AtmosphericAPI.development && this.client != null && this.client.getEntityRenderDispatcher().shouldRenderHitboxes()) {
+            context.drawText(this.client.textRenderer, String.valueOf(slot.id), slot.x, slot.y, 0xFFFFFFFF, false);
+        }
     }
 }
