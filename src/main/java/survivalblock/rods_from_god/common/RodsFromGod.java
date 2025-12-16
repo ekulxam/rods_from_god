@@ -3,8 +3,8 @@ package survivalblock.rods_from_god.common;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -76,8 +76,8 @@ public class RodsFromGod implements ModInitializer {
 		FabricLoader.getInstance().getModContainer(MOD_ID)
 				.ifPresent(RodsFromGod::registerBuiltinDataPacks);
 
-		ServerPlayConnectionEvents.JOIN.register((serverPlayNetworkHandler, packetSender, server) ->
-                server.getWorlds().forEach(RodsFromGodWorldComponents.WORLD_LEVER::sync)
+		ServerPlayerEvents.JOIN.register(player ->
+                RodsFromGodWorldComponents.WORLD_LEVER.sync(player.getServerWorld())
         );
 	}
 
