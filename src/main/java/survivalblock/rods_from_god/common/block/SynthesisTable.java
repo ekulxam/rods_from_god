@@ -44,7 +44,6 @@ public class SynthesisTable extends CraftingTableBlock {
     public static class SynthesisScreenHandler extends CraftingScreenHandler {
 
         public static final ScreenHandlerType<SynthesisScreenHandler> TYPE = Registry.register(Registries.SCREEN_HANDLER, RodsFromGod.id("synthesis_screen_handler"), new ScreenHandlerType<>(SynthesisScreenHandler::new, FeatureSet.empty()));
-        public static final int CRAFTING_SLOT_COUNT = 1 + 25;
         public static final int MAX_SIDE_LENGTH = 5;
         public static final int CRAFTING_SLOT_COUNT = 1 + MAX_SIDE_LENGTH * MAX_SIDE_LENGTH;
         public static final int RESULT_SLOT_X_OFFSET = 15;
