@@ -25,6 +25,6 @@ public class RodsFromGodDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
-		registryBuilder.addRegistry(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.DAMAGE_TYPE, RodsFromGodDamageTypes.registrant::bootstrap);
 	}
 }

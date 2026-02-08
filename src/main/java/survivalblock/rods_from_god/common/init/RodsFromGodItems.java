@@ -2,7 +2,7 @@ package survivalblock.rods_from_god.common.init;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
-import net.minecraft.block.Block;
+import net.fabricmc.fabric.impl.datagen.FabricDataGenHelper;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
@@ -10,11 +10,9 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.BrewingRecipeRegistry;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.registrant.ItemRegistrant;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.block.SuperBouncySlimeBlock;
 import survivalblock.rods_from_god.common.component.item.AimingDeviceComponent;
@@ -26,41 +24,24 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
+@SuppressWarnings("UnstableApiUsage")
 public class RodsFromGodItems {
-
+    public static final ItemRegistrant registrant = new ItemRegistrant(RodsFromGod::id);
     public static final LinkedHashMap<DyeColor, Item> BOUNCIES = new LinkedHashMap<>();
 
     public static final PotionContentsComponent LIGHTING_POTION_CONTENTS = new PotionContentsComponent(Optional.empty(), Optional.of(10724049), List.of());
 
-    public static final Item AIMING_DEVICE = registerItem("aiming_device", new AimingDeviceItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE).component(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.DEFAULT_INSTANCE)));
-    public static final Item SMOKE_BOMB = registerItem("smoke_bomb", new SmokeBombItem(new Item.Settings().maxCount(64)));
-    public static final Item LIGHTNING_SPLASH_POTION = registerItem("lightning_splash_potion", new LightningSplashPotionItem(new Item.Settings().maxCount(1).component(DataComponentTypes.POTION_CONTENTS, LIGHTING_POTION_CONTENTS)));
-    public static final Item CORRUPTED_STAR_FRAGMENT = registerItem("corrupted_star_fragment", new CorruptedStarFragmentItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
-    public static final Item THE_ONE_WATCH = registerItem("the_one_watch", new OneWatchToRuleThemAllItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).component(RodsFromGodDataComponentTypes.THE_ONE_WATCH, TheOneWatchComponent.DEFAULT_INSTANCE)));
-    public static final Item EVOKER_INVOKER = registerItem("evoker_invoker", new EvokerInvokerItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(RodsFromGodDataComponentTypes.EVOKER_INVOKER, EvokerInvokerComponent.DEFAULT_INSTANCE)));
-    public static final Item SOLAR_PRISM_HEADSET = registerItem("solar_prism_headset", new SolarPrismHeadsetItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
-    public static final Item ARCHIMEDES_LEVER = registerBlockItem(RodsFromGodBlocks.ARCHIMEDES_LEVER, new Item.Settings().rarity(Rarity.EPIC));
-    public static final Item SYNTHESIS_TABLE = registerBlockItem(RodsFromGodBlocks.SYNTHESIS_TABLE, new Item.Settings());
-    public static final Item MEDUSA_CURSE = registerItem("medusa_curse", new Item.Settings().maxCount(1).rarity(Rarity.RARE).equipmentSlot((living, stack) -> EquipmentSlot.HEAD), Item::new);
-
-    private static <T extends Item> T registerItem(String name, T item) {
-        return Registry.register(Registries.ITEM, RodsFromGod.id(name), item);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private static <S extends Item.Settings, T extends Item> T registerItem(String name, S settings, Function<S, T> itemFromSettings) {
-        return registerItem(name, itemFromSettings.apply(settings));
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private static Item registerBlockItem(Block block, Item.Settings settings) {
-        BlockItem item = new BlockItem(block, settings);
-        Identifier id = Registries.BLOCK.getId(block);
-        item.appendBlocks(Item.BLOCK_ITEMS, item);
-        return Registry.register(Registries.ITEM, id, item);
-    }
+    public static final Item AIMING_DEVICE = registrant.register("aiming_device", new AimingDeviceItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE).component(RodsFromGodDataComponentTypes.AIMING_DEVICE, AimingDeviceComponent.DEFAULT_INSTANCE)));
+    public static final Item SMOKE_BOMB = registrant.register("smoke_bomb", new SmokeBombItem(new Item.Settings().maxCount(64)));
+    public static final Item LIGHTNING_SPLASH_POTION = registrant.register("lightning_splash_potion", new LightningSplashPotionItem(new Item.Settings().maxCount(1).component(DataComponentTypes.POTION_CONTENTS, LIGHTING_POTION_CONTENTS)));
+    public static final Item CORRUPTED_STAR_FRAGMENT = registrant.register("corrupted_star_fragment", new CorruptedStarFragmentItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+    public static final Item THE_ONE_WATCH = registrant.register("the_one_watch", new OneWatchToRuleThemAllItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).component(RodsFromGodDataComponentTypes.THE_ONE_WATCH, TheOneWatchComponent.DEFAULT_INSTANCE)));
+    public static final Item EVOKER_INVOKER = registrant.register("evoker_invoker", new EvokerInvokerItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).component(RodsFromGodDataComponentTypes.EVOKER_INVOKER, EvokerInvokerComponent.DEFAULT_INSTANCE)));
+    public static final Item SOLAR_PRISM_HEADSET = registrant.register("solar_prism_headset", new SolarPrismHeadsetItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
+    public static final Item ARCHIMEDES_LEVER = registrant.register(RodsFromGodBlocks.ARCHIMEDES_LEVER, new Item.Settings().rarity(Rarity.EPIC));
+    public static final Item SYNTHESIS_TABLE = registrant.register(RodsFromGodBlocks.SYNTHESIS_TABLE, new Item.Settings());
+    public static final Item MEDUSA_CURSE = registrant.register("medusa_curse", Item::new, new Item.Settings().maxCount(1).rarity(Rarity.RARE).equipmentSlot((living, stack) -> EquipmentSlot.HEAD));
 
     @SuppressWarnings("CodeBlock2Expr")
     public static void init() {
@@ -108,6 +89,10 @@ public class RodsFromGodItems {
         DispenserBlock.registerProjectileBehavior(SMOKE_BOMB);
         // smiling_imp emoji - I'm having too much fun
         FabricBrewingRecipeRegistryBuilder.BUILD.register(RodsFromGodItems::addCustomPotionRecipes);
+
+        if (!FabricDataGenHelper.ENABLED) {
+            BOUNCIES.clear();
+        }
     }
 
     public static void addCustomPotionRecipes(BrewingRecipeRegistry.Builder builder) {
@@ -137,7 +122,7 @@ public class RodsFromGodItems {
 
     static {
         for (Map.Entry<DyeColor, SuperBouncySlimeBlock> entry : RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS.entrySet()) {
-            BOUNCIES.put(entry.getKey(), registerBlockItem(entry.getValue(), new Item.Settings()));
+            BOUNCIES.put(entry.getKey(), registrant.register(entry.getValue()));
         }
     }
 }

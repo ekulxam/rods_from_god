@@ -1,9 +1,10 @@
 package survivalblock.rods_from_god.common.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.DyeColor;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.datagen.language.AtmosphericLanguageGenerator;
+import survivalblock.atmosphere.atmospheric_api.not_mixin.datagen.language.AtmosphericTranslationBuilder;
 import survivalblock.rods_from_god.common.block.SuperBouncySlimeBlock;
 import survivalblock.rods_from_god.common.init.*;
 
@@ -12,14 +13,14 @@ import java.util.concurrent.CompletableFuture;
 
 import static survivalblock.rods_from_god.common.init.RodsFromGodBlocks.SUPER_BOUNCY_SLIME_BLOCKS;
 
-public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
+public class RodsFromGodEnUsLangGenerator extends AtmosphericLanguageGenerator {
 
     public RodsFromGodEnUsLangGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+    public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, AtmosphericTranslationBuilder translationBuilder) {
         // entity
         translationBuilder.add(RodsFromGodEntityTypes.TUNGSTEN_ROD, "Tungsten Rod");
         translationBuilder.add(RodsFromGodEntityTypes.SMOKE_BOMB, "Smoke Bomb");
@@ -28,26 +29,42 @@ public class RodsFromGodEnUsLangGenerator extends FabricLanguageProvider {
         translationBuilder.add(RodsFromGodEntityTypes.ENCHANTED_ARROW, "Enchanted Arrow");
 
         // damage
-        translationBuilder.add("death.attack.rods_from_god.kinetic_explosion", "%1$s was struck by a kinetic bombardment");
-        translationBuilder.add("death.attack.rods_from_god.kinetic_explosion.player", "%1$s was struck by a kinetic bombardment from %2$s");
-        translationBuilder.add("death.attack.rods_from_god.kinetic_explosion.item", "%1$s was struck by a kinetic bombardment from %2$s using %3$s");
-        translationBuilder.add("death.attack.rods_from_god.solar_laser", "%1$s was hit by a solar laser from %2$s");
-        translationBuilder.add("death.attack.rods_from_god.solar_laser.player", "%1$s was hit by a solar laser from %2$s");
-        translationBuilder.add("death.attack.rods_from_god.solar_laser.item", "%1$s was hit by a solar laser from %2$s using %3$s");
-        translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat", "%1$s overheated from using a solar laser");
-        translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat.player", "%1$s overheated from using a solar laser whilst fighting %2$s");
-        translationBuilder.add("death.attack.rods_from_god.solar_laser_overheat.item", "%1$s overheated from using a solar laser whilst fighting %2$s using %3$s");
-        translationBuilder.add("death.attack.rods_from_god.no_touching", "%1$s had their soul sundered from this reality");
-        translationBuilder.add("death.attack.rods_from_god.no_touching.player", "%1$s had their soul sundered from this reality whilst fighting %2$s");
-        translationBuilder.add("death.attack.rods_from_god.no_touching.item", "%1$s had their soul sundered from this reality whilst fighting %2$s using %3$s");
+        translationBuilder.addDamageType(
+                wrapperLookup,
+                RodsFromGodDamageTypes.KINETIC_EXPLOSION,
+                "%1$s was struck by a kinetic bombardment",
+                "%1$s was struck by a kinetic bombardment from %2$s",
+                "%1$s was struck by a kinetic bombardment from %2$s using %3$s"
+        );
+        translationBuilder.addDamageType(
+                wrapperLookup,
+                RodsFromGodDamageTypes.SOLAR_LASER,
+                "%1$s was hit by a solar laser from %2$s",
+                "%1$s was hit by a solar laser from %2$s",
+                "%1$s was hit by a solar laser from %2$s using %3$s"
+        );
+        translationBuilder.addDamageType(
+                wrapperLookup,
+                RodsFromGodDamageTypes.SOLAR_LASER_OVERHEAT,
+                "%1$s overheated from using a solar laser",
+                "%1$s overheated from using a solar laser whilst fighting %2$s",
+                "%1$s overheated from using a solar laser whilst fighting %2$s using %3$s"
+        );
+        translationBuilder.addDamageType(
+                wrapperLookup,
+                RodsFromGodDamageTypes.NO_TOUCHY,
+                "%1$s had their soul sundered from this reality",
+                "%1$s had their soul sundered from this reality whilst fighting %2$s",
+                "%1$s had their soul sundered from this reality whilst fighting %2$s using %3$s"
+        );
 
         // gamerules
         translationBuilder.add("gamerule.category.rods_from_god", "Rods from God");
-        translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_CAN_MAKE_FIRE.getTranslationKey(), "Rods from God - Kinetic Explosions Can Produce Fire");
-        translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE.getTranslationKey(), "Rods from God - Kinetic Explosion Source Type");
-        translationBuilder.add(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS.getTranslationKey(), "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
-        translationBuilder.add(RodsFromGodGameRules.DISABLE_WORLD_LEVER.getTranslationKey(), "Rods from God - Disable World Lever (May Have Funny Consequences)");
-        translationBuilder.add(RodsFromGodGameRules.LIGHTNING_SPLASH_POTION_CREATES_FIRE.getTranslationKey(), "Rods from God - Splash Potions of Lightning Create Fire");
+        translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_CAN_MAKE_FIRE, "Rods from God - Kinetic Explosions Can Produce Fire");
+        translationBuilder.add(RodsFromGodGameRules.KINETIC_EXPLOSION_SOURCE_TYPE, "Rods from God - Kinetic Explosion Source Type");
+        translationBuilder.add(RodsFromGodGameRules.SMOKE_BOMBS_TRIGGER_BLOCKS, "Rods from God - Smoke Bombs Trigger Blocks (Similar to Wind Charges)");
+        translationBuilder.add(RodsFromGodGameRules.DISABLE_WORLD_LEVER, "Rods from God - Disable World Lever (May Have Funny Consequences)");
+        translationBuilder.add(RodsFromGodGameRules.LIGHTNING_SPLASH_POTION_CREATES_FIRE, "Rods from God - Splash Potions of Lightning Create Fire");
 
         // item
         translationBuilder.add(RodsFromGodItems.AIMING_DEVICE, "Rods from God - Aiming Device");
