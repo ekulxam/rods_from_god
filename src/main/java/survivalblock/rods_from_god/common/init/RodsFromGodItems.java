@@ -90,9 +90,9 @@ public class RodsFromGodItems {
         // smiling_imp emoji - I'm having too much fun
         FabricBrewingRecipeRegistryBuilder.BUILD.register(RodsFromGodItems::addCustomPotionRecipes);
 
-        if (!FabricDataGenHelper.ENABLED) {
+        /*if (!FabricDataGenHelper.ENABLED) {
             BOUNCIES.clear();
-        }
+        }*/
     }
 
     public static void addCustomPotionRecipes(BrewingRecipeRegistry.Builder builder) {
