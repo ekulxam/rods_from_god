@@ -1,3 +1,2 @@
-Rods from God 2.0.14+1.21.1
-- Fix synthesis table quickmove
-- Update Fabric API and Atmospheric API versions
+Rods from God 2.0.15+1.21.1
+- Bump Atmospheric API version to 3.4.0 and use new "abilities" accordingly

@@ -1,10 +1,7 @@
 package survivalblock.rods_from_god.common.init;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import survivalblock.atmosphere.atmospheric_api.not_mixin.registrant.EntityTypeRegistrant;
 import survivalblock.rods_from_god.common.RodsFromGod;
 import survivalblock.rods_from_god.common.entity.*;
@@ -19,7 +16,6 @@ public class RodsFromGodEntityTypes {
     public static final EntityType<BookEntity> BOOK = registrant.register("book", EntityType.Builder.<BookEntity>create(BookEntity::new, SpawnGroup.MISC).dimensions(0.8f, 0.5f));
     public static final EntityType<EnchantedArrowEntity> ENCHANTED_ARROW = registrant.register("enchanted_arrow", EntityType.Builder.<EnchantedArrowEntity>create(EnchantedArrowEntity::new, SpawnGroup.MISC).dimensions(0.5F, 0.5F).eyeHeight(0.13F).maxTrackingRange(4).trackingTickInterval(20));
 
-    public static void init(){
-
+    public static void init() {
     }
 }
